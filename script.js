@@ -1,7 +1,7 @@
 /**
- * UR-WORLD-AQURIUM — Official Website Script
- * Premium Aquarium & Pet Lifestyle
- * Theme System (Dark/Light), WhatsApp & Email Integrations, Shopping Bag, Hero Video
+ * UR-WORLD-AQUARIUM — Official Website Script
+ * Complete Premium Pet & Aquatic Lifestyle
+ * Multi-Animal Collections, Theming, WhatsApp & Email Integrations, Shopping Bag
  */
 
 // -----------------------------------------------------------------------------
@@ -14,14 +14,32 @@ const CONFIG = {
   CART_STORAGE_KEY: "ur_world_cart"
 };
 
-// Official Product Catalogue
+// Official Product Catalogue across Dogs, Cats, Birds, Small Pets, Aquatics & Accessories
 const products = {
-  flakes: { name: "Daily Fish Flakes", price: 149, category: "food" },
-  pump: { name: "Compact Air Pump", price: 399, category: "equipment" },
-  conditioner: { name: "Water Conditioner", price: 199, category: "care" },
-  light: { name: "Submersible Tank Light", price: 649, category: "equipment" },
-  plantcare: { name: "Plant Micronutrients", price: 289, category: "care" },
-  pellets: { name: "Tropical Mini Pellets", price: 229, category: "food" }
+  // Dogs
+  dog_kibble: { name: "Nutri-Balance Dog Food (1.2kg)", price: 499, category: "dog" },
+  dog_leash: { name: "Reflective Harness & Leash", price: 349, category: "dog" },
+
+  // Cats
+  cat_food: { name: "Gourmet Ocean Cat Food (1kg)", price: 389, category: "cat" },
+  cat_scratch: { name: "Sisal Scratching Post Tower", price: 549, category: "cat" },
+
+  // Birds
+  bird_seed: { name: "Exotic Bird Seed Blend (1kg)", price: 249, category: "bird" },
+  bird_cage: { name: "Enamelled Bird Habitat Cage", price: 899, category: "bird" },
+
+  // Small Pets
+  smallpet_food: { name: "Hamster Gourmet Mix (800g)", price: 219, category: "smallpet" },
+  smallpet_wheel: { name: "Silent Exercise Running Wheel", price: 299, category: "smallpet" },
+
+  // Aquarium
+  fish_flakes: { name: "Daily Tropical Fish Flakes", price: 149, category: "aquarium" },
+  air_pump: { name: "Compact Quiet Air Pump", price: 399, category: "aquarium" },
+  water_cond: { name: "Water Conditioner & Detoxifier", price: 199, category: "aquarium" },
+
+  // Accessories
+  pet_bowl: { name: "Non-Slip Stainless Dual Bowl", price: 249, category: "accessories" },
+  pet_brush: { name: "Self-Cleaning Deshedding Brush", price: 229, category: "accessories" }
 };
 
 // Utilities
@@ -51,7 +69,7 @@ function applyTheme(theme) {
   }
 
   if (metaThemeColor) {
-    metaThemeColor.setAttribute("content", isDark ? "#061B2C" : "#F4FAFC");
+    metaThemeColor.setAttribute("content", isDark ? "#000000" : "#F8FAFC");
   }
 
   if (themeToggle) {
@@ -66,7 +84,7 @@ function applyTheme(theme) {
  * Detects initial theme:
  * 1. Checks localStorage preference.
  * 2. If not found, checks system preference via matchMedia.
- * 3. Defaults to dark mode for cinematic underwater feel.
+ * 3. Defaults to dark mode for cinematic look.
  */
 function initTheme() {
   const savedTheme = localStorage.getItem(CONFIG.THEME_STORAGE_KEY);
@@ -185,9 +203,9 @@ function renderCart() {
   if (cart.length === 0) {
     cartItemsEl.innerHTML = `
       <div class="empty-cart">
-        <div class="empty-cart-icon">🫧</div>
+        <div class="empty-cart-icon">🐾</div>
         <p>Your bag is waiting for something lovely.</p>
-        <a href="#shop" class="btn btn-outline btn-sm empty-shop-btn" id="emptyShopBtn">Browse Essentials</a>
+        <a href="#shop" class="btn btn-outline btn-sm empty-shop-btn" id="emptyShopBtn">Browse Pet Supplies</a>
       </div>
     `;
     const emptyShopBtn = $("#emptyShopBtn");
@@ -339,7 +357,7 @@ $$(".product-wa-btn").forEach((button) => {
     const prod = products[id];
     if (!prod) return;
 
-    const message = `Hi UR-WORLD-AQURIUM! I would like to enquire about:
+    const message = `Hi UR-WORLD-AQUARIUM! I would like to enquire about:
 • Product: ${prod.name}
 • Price: ${formatINR(prod.price)}
 • Category: ${prod.category.toUpperCase()}
@@ -350,11 +368,11 @@ Please share stock availability and delivery options.`;
   });
 });
 
-// Fish Cards Direct WhatsApp Enquiry
-$$(".fish-enquire-btn").forEach((button) => {
+// Animal Cards Direct WhatsApp Enquiry
+$$(".animal-enquire-btn").forEach((button) => {
   button.addEventListener("click", () => {
-    const fishName = button.dataset.fish || "Aquarium Fish";
-    const message = `Hi UR-WORLD-AQURIUM! I am interested in inquiring about ${fishName} from your fish collection. Could you please share stock availability, tank requirements, and care guidance?`;
+    const animalName = button.dataset.animal || "Pet Companion";
+    const message = `Hi UR-WORLD-AQUARIUM! I am interested in inquiring about ${animalName}. Could you please share details on current availability, dietary care, and guidance?`;
     openWhatsApp(message);
   });
 });
@@ -380,7 +398,7 @@ if (checkoutButton) {
       0
     );
 
-    const message = `Hi UR-WORLD-AQURIUM! I would like to place an order / enquiry for the following items from my bag:
+    const message = `Hi UR-WORLD-AQUARIUM! I would like to place an order / enquiry for the following pet supplies from my bag:
 
 ${itemLines}
 
@@ -406,7 +424,7 @@ if (contactForm) {
     const formData = new FormData(contactForm);
     const name = (formData.get("name") || "").toString().trim();
     const email = (formData.get("email") || "").toString().trim();
-    const topic = (formData.get("topic") || "Aquarium Inquiry").toString().trim();
+    const topic = (formData.get("topic") || "Pet & Aquatic Inquiry").toString().trim();
     const message = (formData.get("message") || "").toString().trim();
 
     if (!name || !email || !message) {
@@ -417,8 +435,8 @@ if (contactForm) {
       return;
     }
 
-    const subject = `[UR-WORLD-AQURIUM Inquiry] ${topic} from ${name}`;
-    const body = `Hello UR-WORLD-AQURIUM Team,
+    const subject = `[UR-WORLD-AQUARIUM Inquiry] ${topic} from ${name}`;
+    const body = `Hello UR-WORLD-AQUARIUM Team,
 
 Name: ${name}
 Email: ${email}
@@ -428,7 +446,7 @@ Message:
 ${message}
 
 ---
-Sent via UR-WORLD-AQURIUM Website Contact Form`;
+Sent via UR-WORLD-AQUARIUM Website Contact Form`;
 
     const mailtoUrl = `mailto:${CONFIG.CONTACT_EMAIL}?subject=${encodeURIComponent(
       subject
