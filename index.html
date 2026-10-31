@@ -31,11 +31,32 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
         rel="stylesheet">
 
+    <!-- Preload Official Loading GIF -->
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" />
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+    <!-- Official Website Loading Screen -->
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR-WORLD-AQUARIUM">
+        <div class="loader-content">
+            <div class="loader-media-wrap">
+                <img src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" 
+                     alt="UR-WORLD-AQUARIUM Loading Animation" 
+                     class="loader-gif" 
+                     width="150" 
+                     height="150"
+                     onerror="this.style.display='none'; var fb=document.getElementById('loaderFallback'); if(fb) fb.style.display='inline-flex';" />
+                <div id="loaderFallback" class="loader-fallback" style="display:none;" aria-hidden="true">
+                    <span class="loader-paw-pulse">🐾</span>
+                </div>
+            </div>
+            <p class="loader-text">Finding your perfect companion...</p>
+        </div>
+    </div>
+
     <!-- Navigation Header -->
     <header class="site-header" id="top">
         <a class="brand" href="#home" aria-label="UR-WORLD-AQUARIUM Home">
@@ -52,8 +73,8 @@
         <nav class="nav" id="nav" aria-label="Main Navigation">
             <a href="#home" class="nav-link">Home</a>
             <a href="#animals" class="nav-link">Animals</a>
-            <a href="#gallery" class="nav-link">Gallery</a>
             <a href="#shop" class="nav-link">Pet Shop</a>
+            <a href="#reviews" class="nav-link">Reviews</a>
             <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
@@ -85,17 +106,16 @@
                 <span class="theme-label" id="themeLabel">Dark</span>
             </button>
 
-            <!-- Cart Bag Trigger -->
-            <button class="cart-button" id="cartOpen" aria-label="Open shopping bag">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="bag-svg">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+            <!-- Shopping Bag Pill Button -->
+            <a href="cart.html" class="cart-pill-button" id="cartOpen" aria-label="Shopping Bag" title="View your shopping bag">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#087F9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bag-pill-icon" aria-hidden="true">
+                    <path d="M6 7l2-4h8l2 4"></path>
+                    <rect x="4" y="7" width="16" height="14" rx="2"></rect>
+                    <path d="M9 11a3 3 0 0 0 6 0"></path>
                 </svg>
-                <span>Bag</span>
-                <span class="cart-count" id="cartCount">0</span>
-            </button>
+                <span class="bag-pill-text">Bag</span>
+                <span class="bag-pill-badge" id="cartCount">0</span>
+            </a>
 
             <!-- Mobile Hamburger Toggle -->
             <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">
@@ -146,32 +166,33 @@
             </div>
         </section>
 
-        <!-- Intro Section -->
-        <section class="intro section-pad">
-            <div class="intro-label reveal">
-                <span class="eyebrow">COMPANIONS &amp; AQUATIC LIFE</span>
-                <span class="line"></span>
-            </div>
-            <div class="intro-main reveal">
+        <!-- Companions & Aquatic Life Section -->
+        <section class="intro section-pad" id="about">
+            <div class="intro-container reveal">
+                <p class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    COMPANIONS &amp; AQUATIC LIFE
+                </p>
                 <h2>More than pets.<br><em>It's a lifelong bond.</em></h2>
-                <p>
+                <p class="intro-desc">
                     From the unwavering loyalty of dogs and quiet affection of cats, to cheerful songbirds, lively small
                     pets, and mesmerizing underwater ecosystems—we connect animal lovers with healthy companions,
                     balanced nutrition, and dedicated care.
                 </p>
-            </div>
-            <div class="stats reveal">
-                <div class="stat-card">
-                    <strong>7+</strong>
-                    <span>Animal &amp; aquatic categories</span>
-                </div>
-                <div class="stat-card">
-                    <strong>100%</strong>
-                    <span>Careful health &amp; dietary standards</span>
-                </div>
-                <div class="stat-card">
-                    <strong>&infin;</strong>
-                    <span>Cherished moments with beloved pets</span>
+                <div class="intro-divider" aria-hidden="true"></div>
+                <div class="stats">
+                    <div class="stat-card">
+                        <strong>7+</strong>
+                        <span>Animal &amp; aquatic categories</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong>100%</strong>
+                        <span>Careful health &amp; dietary standards</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong>&infin;</strong>
+                        <span>Cherished moments with beloved pets</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -209,9 +230,9 @@
                             <span><strong>Nature:</strong> Affectionate</span>
                         </div>
                         <div class="animal-action">
-                            <button class="btn btn-sm btn-outline animal-enquire-btn" data-animal="Dogs and Puppies">
-                                Enquire on WhatsApp &nearr;
-                            </button>
+                            <a class="btn-explore-collection" href="collections/dogs.html">
+                                VIEW COLLECTION <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -237,9 +258,9 @@
                             <span><strong>Nature:</strong> Gentle &amp; Curious</span>
                         </div>
                         <div class="animal-action">
-                            <button class="btn btn-sm btn-outline animal-enquire-btn" data-animal="Cats and Kittens">
-                                Enquire on WhatsApp &nearr;
-                            </button>
+                            <a class="btn-explore-collection" href="collections/cats.html">
+                                VIEW COLLECTION <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -265,9 +286,9 @@
                             <span><strong>Nature:</strong> Social &amp; Vocal</span>
                         </div>
                         <div class="animal-action">
-                            <button class="btn btn-sm btn-outline animal-enquire-btn" data-animal="Pet and Songbirds">
-                                Enquire on WhatsApp &nearr;
-                            </button>
+                            <a class="btn-explore-collection" href="collections/birds.html">
+                                VIEW COLLECTION <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -293,9 +314,9 @@
                             <span><strong>Nature:</strong> Lively &amp; Inquisitive</span>
                         </div>
                         <div class="animal-action">
-                            <button class="btn btn-sm btn-outline animal-enquire-btn" data-animal="Fancy Mice">
-                                Enquire on WhatsApp &nearr;
-                            </button>
+                            <a class="btn-explore-collection" href="collections/mice.html">
+                                VIEW COLLECTION <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -321,10 +342,9 @@
                             <span><strong>Nature:</strong> Quiet &amp; Sweet</span>
                         </div>
                         <div class="animal-action">
-                            <button class="btn btn-sm btn-outline animal-enquire-btn"
-                                data-animal="Hamsters and Small Pets">
-                                Enquire on WhatsApp &nearr;
-                            </button>
+                            <a class="btn-explore-collection" href="collections/small-pets.html">
+                                VIEW COLLECTION <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -350,9 +370,9 @@
                             <span><strong>Nature:</strong> Peaceful &amp; Serene</span>
                         </div>
                         <div class="animal-action">
-                            <button class="btn btn-sm btn-outline animal-enquire-btn" data-animal="Aquarium Fish">
-                                Enquire on WhatsApp &nearr;
-                            </button>
+                            <a class="btn-explore-collection" href="collections/aquarium-fish.html">
+                                VIEW COLLECTION <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -378,10 +398,9 @@
                             <span><strong>Nature:</strong> Calm &amp; Unique</span>
                         </div>
                         <div class="animal-action">
-                            <button class="btn btn-sm btn-outline animal-enquire-btn"
-                                data-animal="Other Specialty Animals">
-                                Enquire on WhatsApp &nearr;
-                            </button>
+                            <a class="btn-explore-collection" href="collections/other-animals.html">
+                                VIEW COLLECTION <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -390,88 +409,14 @@
                 health. Contact us directly for tailored advice.</p>
         </section>
 
-        <!-- Feature Band: Land & Water Lifestyle -->
-        <section class="feature-band">
-            <div class="feature-photo" role="img" aria-label="Happy pet lifestyle and natural habitat"></div>
-            <div class="feature-copy reveal">
-                <span class="eyebrow">LIFESTYLE &amp; CARE</span>
-                <h2>Happy pets.<br><em>Thriving homes.</em></h2>
-                <p>
-                    Every animal deserves wholesome nutrition, clean housing, and genuine affection. Whether setting up
-                    an enriched cage for your hamster, feeding a growing puppy, or scaping a planted nano aquarium, we
-                    are here with quality supplies and expert support.
-                </p>
-                <div class="feature-buttons">
-                    <a href="#shop" class="text-link">Browse Pet Shop <span>&rarr;</span></a>
-                    <a href="#contact" class="btn btn-primary">Custom Pet Consultation <span>&nearr;</span></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section class="gallery-section section-pad" id="gallery">
-            <div class="section-heading reveal">
-                <div>
-                    <span class="eyebrow">CAPTURED MOMENTS</span>
-                    <h2>Life Across <em>Land &amp; Water</em></h2>
-                </div>
-                <p>A curated look into our favorite moments with happy pets, playful friends, and serene aquatic
-                    environments.</p>
-            </div>
-
-            <div class="gallery-grid">
-                <figure class="gallery-item gallery-tall reveal">
-                    <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1000&q=85"
-                        alt="Friendly companion dog enjoying nature" loading="lazy">
-                    <figcaption>
-                        <span class="gallery-num">01</span>
-                        <span class="gallery-title">CANINE LOYALTY &middot; JOYFUL COMPANION</span>
-                    </figcaption>
-                </figure>
-                <figure class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=85"
-                        alt="Graceful cat resting indoors" loading="lazy">
-                    <figcaption>
-                        <span class="gallery-num">02</span>
-                        <span class="gallery-title">QUIET HARMONY &middot; INDOOR FELINE COMFORT</span>
-                    </figcaption>
-                </figure>
-                <figure class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=900&q=85"
-                        alt="Serene aquatic planted setup" loading="lazy">
-                    <figcaption>
-                        <span class="gallery-num">03</span>
-                        <span class="gallery-title">INTO THE DEEP &middot; FRESHWATER SANCTUARY</span>
-                    </figcaption>
-                </figure>
-                <figure class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1522858547137-f1dcec554f55?auto=format&fit=crop&w=900&q=85"
-                        alt="Colourful companion bird" loading="lazy">
-                    <figcaption>
-                        <span class="gallery-num">04</span>
-                        <span class="gallery-title">FEATHERED BEAUTY &middot; VIBRANT SONGBIRD</span>
-                    </figcaption>
-                </figure>
-                <figure class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=900&q=85"
-                        alt="Hamster in a cozy clean habitat" loading="lazy">
-                    <figcaption>
-                        <span class="gallery-num">05</span>
-                        <span class="gallery-title">POCKET PETS &middot; ENRICHED HAMSTER HABITAT</span>
-                    </figcaption>
-                </figure>
-            </div>
-        </section>
-
         <!-- Online Shop Section -->
         <section class="shop-section section-pad" id="shop">
             <div class="section-heading reveal">
                 <div>
-                    <span class="eyebrow">ESSENTIAL PET &amp; AQUATIC SUPPLIES</span>
-                    <h2>Care for your <em>cherished pets.</em></h2>
+                    <span class="eyebrow">ESSENTIAL SUPPLIES</span>
+                    <h2>Recommended Food &amp; Accessories</h2>
                 </div>
-                <p>Wholesome foods, sturdy cages, water conditioning, and everyday accessories for dogs, cats, birds,
-                    small pets, and aquatic life.</p>
+                <p>Everything your companion needs for a healthy, happy and comfortable life.</p>
             </div>
 
             <!-- Shop Toolbar & Category Filters -->
@@ -501,19 +446,15 @@
                     </div>
                     <div class="product-info">
                         <h3>Nutri-Balance Dog Food (1.2kg)</h3>
-                        <p>Complete daily kibble formulated with real chicken, wholesome grains, and omega fatty acids
-                            for a glossy coat.</p>
+                        <p>Complete daily kibble formulated with real chicken, wholesome grains, and omega fatty acids for a glossy coat.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹499</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹499</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="dog_kibble" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="dog_kibble" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="dog_kibble" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="dog_kibble" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -522,25 +463,21 @@
                 <!-- 2. Dogs: Dog Leash & Harness -->
                 <article class="product-card" data-category="dog">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=700&q=80"
                             alt="Reflective Nylon Dog Leash and Harness" loading="lazy">
                         <span class="product-category-tag">DOG ACCESSORY</span>
                     </div>
                     <div class="product-info">
                         <h3>Reflective Harness &amp; Leash</h3>
-                        <p>Durable padded harness with high-visibility reflective stitching and secure zinc-alloy safety
-                            clasp.</p>
+                        <p>Durable padded harness with high-visibility reflective stitching and secure zinc-alloy safety clasp.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹349</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹349</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="dog_leash" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="dog_leash" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="dog_leash" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="dog_leash" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -555,19 +492,15 @@
                     </div>
                     <div class="product-info">
                         <h3>Gourmet Ocean Cat Food (1kg)</h3>
-                        <p>Delicious salmon and tuna recipe enriched with essential taurine, vitamins, and minerals for
-                            feline vitality.</p>
+                        <p>Delicious salmon and tuna recipe enriched with essential taurine, vitamins, and minerals for feline vitality.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹389</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹389</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="cat_food" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="cat_food" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="cat_food" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="cat_food" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -576,26 +509,21 @@
                 <!-- 4. Cats: Scratching Post -->
                 <article class="product-card" data-category="cat">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=700&q=80"
                             alt="Natural Sisal Cat Scratching Post" loading="lazy">
                         <span class="product-category-tag">CAT ACCESSORY</span>
                     </div>
                     <div class="product-info">
                         <h3>Sisal Scratching Post Tower</h3>
-                        <p>Stable wooden base wrapped in natural sisal fibers with a dangling plush bell toy to protect
-                            your home furniture.</p>
+                        <p>Stable wooden base wrapped in natural sisal fibers with a dangling plush bell toy to protect your home furniture.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹549</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹549</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="cat_scratch" title="Add to Bag">Add to bag
-                                    +</button>
-                                <button class="product-wa-btn" data-id="cat_scratch" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="cat_scratch" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="cat_scratch" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -604,25 +532,21 @@
                 <!-- 5. Birds: Bird Seed -->
                 <article class="product-card" data-category="bird">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1522858547137-f1dcec554f55?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1591154669695-5f2a8d20c089?auto=format&fit=crop&w=700&q=80"
                             alt="Fortified Bird Seed Mix pack" loading="lazy">
                         <span class="product-category-tag">BIRD FOOD</span>
                     </div>
                     <div class="product-info">
                         <h3>Exotic Bird Seed Blend (1kg)</h3>
-                        <p>Sun-cured yellow millet, canary seed, and sunflower kernels blended for budgies, finches, and
-                            pet birds.</p>
+                        <p>Sun-cured yellow millet, canary seed, and sunflower kernels blended for budgies, finches, and pet birds.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹249</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹249</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="bird_seed" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="bird_seed" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="bird_seed" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="bird_seed" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -631,25 +555,21 @@
                 <!-- 6. Birds: Bird Cage -->
                 <article class="product-card" data-category="bird">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1549608276-5786777e6587?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=700&q=80"
                             alt="Spacious Enamelled Bird Habitat Cage" loading="lazy">
                         <span class="product-category-tag">BIRD CAGE</span>
                     </div>
                     <div class="product-info">
                         <h3>Enamelled Bird Habitat Cage</h3>
-                        <p>Safe narrow wire spacing with twin feeding cups, wooden perches, and a slide-out tray for
-                            easy hygiene.</p>
+                        <p>Safe narrow wire spacing with twin feeding cups, wooden perches, and a slide-out tray for easy hygiene.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹899</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹899</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="bird_cage" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="bird_cage" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="bird_cage" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="bird_cage" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -658,26 +578,21 @@
                 <!-- 7. Small Pets: Gourmet Mix -->
                 <article class="product-card" data-category="smallpet">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=700&q=80"
                             alt="Hamster and small pet gourmet food mix" loading="lazy">
                         <span class="product-category-tag">SMALL PET FOOD</span>
                     </div>
                     <div class="product-info">
                         <h3>Hamster Gourmet Mix (800g)</h3>
-                        <p>Wholesome blend of seeds, dehydrated vegetables, extruded grains, and vitamins for active
-                            little foragers.</p>
+                        <p>Wholesome blend of seeds, dehydrated vegetables, extruded grains, and vitamins for active little foragers.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹219</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹219</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="smallpet_food" title="Add to Bag">Add to bag
-                                    +</button>
-                                <button class="product-wa-btn" data-id="smallpet_food" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="smallpet_food" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="smallpet_food" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -686,26 +601,21 @@
                 <!-- 8. Small Pets: Exercise Wheel -->
                 <article class="product-card" data-category="smallpet">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1520087619250-584c0ebd4ec1?auto=format&fit=crop&w=700&q=80"
                             alt="Silent running wheel for small pets" loading="lazy">
                         <span class="product-category-tag">SMALL PET CARE</span>
                     </div>
                     <div class="product-info">
                         <h3>Silent Exercise Running Wheel</h3>
-                        <p>Smooth dual-ball-bearing mechanism ensuring quiet nocturnal running with a tail-safe solid
-                            running surface.</p>
+                        <p>Smooth dual-ball-bearing mechanism ensuring quiet nocturnal running with a tail-safe solid running surface.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹299</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹299</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="smallpet_wheel" title="Add to Bag">Add to bag
-                                    +</button>
-                                <button class="product-wa-btn" data-id="smallpet_wheel" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="smallpet_wheel" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="smallpet_wheel" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -714,26 +624,21 @@
                 <!-- 9. Aquarium: Daily Fish Flakes -->
                 <article class="product-card" data-category="aquarium">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=700&q=80"
                             alt="Daily Fish Flakes nutrition pack" loading="lazy">
                         <span class="product-category-tag">FISH FOOD</span>
                     </div>
                     <div class="product-info">
                         <h3>Daily Tropical Fish Flakes</h3>
-                        <p>Complete balanced nutrition formulated with natural spirulina and carotenoids for healthy
-                            immune systems.</p>
+                        <p>Complete balanced nutrition formulated with natural spirulina and carotenoids for healthy immune systems.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹149</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹149</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="fish_flakes" title="Add to Bag">Add to bag
-                                    +</button>
-                                <button class="product-wa-btn" data-id="fish_flakes" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="fish_flakes" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="fish_flakes" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -742,25 +647,21 @@
                 <!-- 10. Aquarium: Compact Air Pump -->
                 <article class="product-card" data-category="aquarium">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1520302519878-5a4f6b3f9c7d?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=700&q=80"
                             alt="Compact Air Pump for aquariums" loading="lazy">
                         <span class="product-category-tag">EQUIPMENT</span>
                     </div>
                     <div class="product-info">
                         <h3>Compact Quiet Air Pump</h3>
-                        <p>Energy-efficient aerator maintaining steady dissolved oxygen for fish and beneficial
-                            biological filtration.</p>
+                        <p>Energy-efficient aerator maintaining steady dissolved oxygen for fish and beneficial biological filtration.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹399</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹399</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="air_pump" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="air_pump" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="air_pump" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="air_pump" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -769,25 +670,21 @@
                 <!-- 11. Aquarium: Water Conditioner -->
                 <article class="product-card" data-category="aquarium">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=700&q=80"
                             alt="Aquarium water conditioner bottle" loading="lazy">
                         <span class="product-category-tag">WATER CARE</span>
                     </div>
                     <div class="product-info">
                         <h3>Water Conditioner &amp; Detoxifier</h3>
-                        <p>Instantly neutralizes tap water chlorine, chloramines, and binds harmful heavy metals during
-                            tank maintenance.</p>
+                        <p>Instantly neutralizes tap water chlorine, chloramines, and binds harmful heavy metals during tank maintenance.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹199</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹199</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="water_cond" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="water_cond" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="water_cond" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="water_cond" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -802,19 +699,15 @@
                     </div>
                     <div class="product-info">
                         <h3>Non-Slip Stainless Dual Bowl</h3>
-                        <p>Rust-proof, hygienic stainless steel food and water bowls set inside a non-skid silicone
-                            base.</p>
+                        <p>Rust-proof, hygienic stainless steel food and water bowls set inside a non-skid silicone base.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹249</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹249</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="pet_bowl" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="pet_bowl" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="pet_bowl" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="pet_bowl" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -823,25 +716,21 @@
                 <!-- 13. General: Grooming Brush -->
                 <article class="product-card" data-category="accessories">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=700&q=80"
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=700&q=80"
                             alt="Self-cleaning pet grooming brush" loading="lazy">
                         <span class="product-category-tag">ACCESSORY</span>
                     </div>
                     <div class="product-info">
                         <h3>Self-Cleaning Deshedding Brush</h3>
-                        <p>Gentle curved bristle design removes loose fur and tangles for dogs, cats, and small pets
-                            with one-click fur release.</p>
+                        <p>Gentle curved bristle design removes loose fur and tangles for dogs, cats, and small pets with one-click fur release.</p>
                         <div class="product-bottom">
-                            <strong class="product-price">₹229</strong>
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹229</strong>
+                                <span class="product-stock"><span class="product-stock-dot"></span> In Stock</span>
+                            </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="pet_brush" title="Add to Bag">Add to bag +</button>
-                                <button class="product-wa-btn" data-id="pet_brush" title="Enquire on WhatsApp">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                                        <path
-                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
-                                    </svg>
-                                    WhatsApp
-                                </button>
+                                <button class="add-button" data-id="pet_brush" title="Add to Bag">ADD TO BAG</button>
+                                <button class="product-wa-btn" data-id="pet_brush" title="Enquire">ENQUIRE ↗</button>
                             </div>
                         </div>
                     </div>
@@ -849,6 +738,63 @@
             </div>
             <p class="small-note">Prices in INR. Orders are confirmed directly on WhatsApp to ensure availability and
                 personalized local delivery.</p>
+        </section>
+
+        <!-- Customer Reviews & Testimonials Section (Google Review Card Slider) -->
+        <section class="reviews-section section-pad" id="reviews">
+            <!-- Subtle Pet-Themed Silhouette Decorative Elements -->
+            <div class="paw-decor paw-decor-top-left" aria-hidden="true">
+                <svg viewBox="0 0 100 100" width="80" height="80" fill="currentColor">
+                    <path d="M50 56c-8.8 0-16 6.3-16 14 0 6.6 5.4 12 12 12 2.2 0 4.4-.7 6.3-2 1.9 1.3 4.1 2 6.3 2 6.6 0 12-5.4 12-12 0-7.7-7.2-14-20.6-14zm-22-12c-4.4 0-8 5.4-8 12s3.6 12 8 12 8-5.4 8-12-3.6-12-8-12zm44 0c-4.4 0-8 5.4-8 12s3.6 12 8 12 8-5.4 8-12-3.6-12-8-12zm-32-16c-4.4 0-8 5.4-8 12s3.6 12 8 12 8-5.4 8-12-3.6-12-8-12zm20 0c-4.4 0-8 5.4-8 12s3.6 12 8 12 8-5.4 8-12-3.6-12-8-12z"/>
+                </svg>
+            </div>
+            <div class="paw-decor paw-decor-bottom-right" aria-hidden="true">
+                <svg viewBox="0 0 100 100" width="95" height="95" fill="currentColor">
+                    <path d="M50 56c-8.8 0-16 6.3-16 14 0 6.6 5.4 12 12 12 2.2 0 4.4-.7 6.3-2 1.9 1.3 4.1 2 6.3 2 6.6 0 12-5.4 12-12 0-7.7-7.2-14-20.6-14zm-22-12c-4.4 0-8 5.4-8 12s3.6 12 8 12 8-5.4 8-12-3.6-12-8-12zm44 0c-4.4 0-8 5.4-8 12s3.6 12 8 12 8-5.4 8-12-3.6-12-8-12zm-32-16c-4.4 0-8 5.4-8 12s3.6 12 8 12 8-5.4 8-12-3.6-12-8-12zm20 0c-4.4 0-8 5.4-8 12s3.6 12 8 12 8-5.4 8-12-3.6-12-8-12z"/>
+                </svg>
+            </div>
+
+            <div class="section-heading reveal">
+                <div>
+                    <span class="eyebrow">WHAT PET LOVERS SAY</span>
+                    <h2>Trusted by Pet Lovers. <em>Loved by Companions.</em></h2>
+                </div>
+                <p>Real experiences from pet parents who trust UR-WORLD-AQUARIUM for their beloved companions and their everyday care.</p>
+            </div>
+
+            <!-- Google Review Card Carousel Stage -->
+            <div class="google-review-stage reveal" id="googleReviewStage">
+                <button class="slider-arrow slider-arrow-prev" id="googleRevPrev" aria-label="Previous Review" type="button">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="google-card-viewport" id="googleCardViewport">
+                    <div class="google-cards-track" id="googleCardsTrack">
+                        <!-- Review cards rendered dynamically -->
+                    </div>
+                </div>
+
+                <button class="slider-arrow slider-arrow-next" id="googleRevNext" aria-label="Next Review" type="button">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Slider Pagination Dots -->
+            <div class="google-slider-dots" id="googleSliderDots"></div>
+
+            <!-- Google Review Link CTA Button -->
+            <div class="google-review-cta reveal">
+                <a href="https://www.google.com/maps/place/UR+world+pet+shop/@13.0230885,77.6871755,652m/data=!3m1!1e3!4m18!1m9!3m8!1s0x3bae10fee4432baf:0xd6afe87d86a80dd0!2sUR+world+pet+shop!8m2!3d13.0230833!4d77.6897504!9m1!1b1!16s%2Fg%2F11b7q736pc!3m7!1s0x3bae10fee4432baf:0xd6afe87d86a80dd0!8m2!3d13.0230833!4d77.6897504!9m1!1b1!16s%2Fg%2F11b7q736pc?entry=ttu" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-share-story">
+                    SHARE YOUR STORY <span>&nearr;</span>
+                </a>
+            </div>
         </section>
 
         <!-- Care Banner Strip -->
@@ -987,8 +933,8 @@
             <div class="footer-links">
                 <a href="#home">Home</a>
                 <a href="#animals">Animals</a>
-                <a href="#gallery">Gallery</a>
                 <a href="#shop">Pet Shop</a>
+                <a href="#reviews">Reviews</a>
                 <a href="#contact">Contact</a>
                 <a href="https://wa.me/919980039294" target="_blank" rel="noopener">WhatsApp (+91 99800 39294)</a>
                 <a href="mailto:stk22446@gmail.com">stk22446@gmail.com</a>

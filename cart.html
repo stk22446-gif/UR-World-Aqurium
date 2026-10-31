@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" id="metaThemeColor" />
+    <meta name="description"
+        content="UR-WORLD-AQUARIUM — Shopping Bag, Live Animal Reservations, and Checkout Enquiry." />
+    <title>Shopping Bag &amp; Reservations | UR-WORLD-AQUARIUM</title>
+
+    <link rel="icon" type="image/png"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
+        rel="stylesheet">
+    <!-- Preload Official Loading GIF -->
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="collection-page">
+    <!-- Official Website Loading Screen -->
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR-WORLD-AQUARIUM">
+        <div class="loader-content">
+            <div class="loader-media-wrap">
+                <img src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" 
+                     alt="UR-WORLD-AQUARIUM Loading Animation" 
+                     class="loader-gif" 
+                     width="150" 
+                     height="150"
+                     onerror="this.style.display='none'; var fb=document.getElementById('loaderFallback'); if(fb) fb.style.display='inline-flex';" />
+                <div id="loaderFallback" class="loader-fallback" style="display:none;" aria-hidden="true">
+                    <span class="loader-paw-pulse">🐾</span>
+                </div>
+            </div>
+            <p class="loader-text">Finding your perfect companion...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header" id="top">
+        <a class="brand" href="index.html" aria-label="UR-WORLD-AQUARIUM Home">
+            <img class="brand-logo"
+                src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                alt="UR-WORLD-AQUARIUM Official Logo" width="46" height="46" />
+            <span class="brand-text">
+                <span class="brand-name">UR-WORLD<span class="brand-accent">-AQUARIUM</span></span>
+                <small class="brand-tagline">PETS &amp; AQUATIC LIFESTYLE</small>
+            </span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Main Navigation">
+            <a href="index.html#home" class="nav-link">Home</a>
+            <a href="index.html#animals" class="nav-link">All Collections</a>
+            <a href="index.html#shop" class="nav-link">Pet Shop</a>
+            <a href="index.html#reviews" class="nav-link">Reviews</a>
+            <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme mode">
+                <span class="theme-icon" aria-hidden="true">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </span>
+                <span class="theme-label" id="themeLabel">Dark</span>
+            </button>
+
+            <!-- Shopping Bag Pill Button -->
+            <a href="cart.html" class="cart-pill-button" id="cartOpen" aria-label="Shopping Bag" title="View your shopping bag">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#087F9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bag-pill-icon" aria-hidden="true">
+                    <path d="M6 7l2-4h8l2 4"></path>
+                    <rect x="4" y="7" width="16" height="14" rx="2"></rect>
+                    <path d="M9 11a3 3 0 0 0 6 0"></path>
+                </svg>
+                <span class="bag-pill-text">Bag</span>
+                <span class="bag-pill-badge" id="cartCount">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="collection-page" style="padding-top: 15px;">
+        <div class="collection-topbar">
+            <a href="javascript:history.back()" class="back-link">
+                &larr; Continue Browsing
+            </a>
+            <div class="collection-breadcrumbs">
+                <a href="index.html">Home</a> / <span>Shopping Bag</span>
+            </div>
+        </div>
+
+        <div class="cart-page-wrapper">
+            <div id="fullCartContent">
+                <!-- Dynamically rendered Amazon-inspired 2-column shopping bag -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Slide-out Drawer for compatibility -->
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-summary-line">
+                <span>Total Estimated</span>
+                <strong id="cartTotal">₹0</strong>
+            </div>
+            <button class="btn btn-primary checkout-btn" id="checkoutButton" type="button">
+                Checkout / Enquire on WhatsApp &rarr;
+            </button>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a class="brand" href="index.html">
+                <img class="brand-logo"
+                    src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                    alt="Logo" width="46" height="46" />
+                <span class="brand-text">
+                    <span class="brand-name">UR-WORLD<span class="brand-accent">-AQUARIUM</span></span>
+                    <small class="brand-tagline">PETS &amp; AQUATIC LIFESTYLE</small>
+                </span>
+            </a>
+            <p class="footer-blurb">Dedicated to cherished pets and thriving aquatic life.</p>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; <span id="year">2026</span> UR-WORLD-AQUARIUM. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // -----------------------------------------------------------------------------
+        // Amazon-Inspired Shopping Bag Page Logic
+        // -----------------------------------------------------------------------------
+        function getCartItems() {
+            let items = [];
+            try {
+                if (typeof window.getCart === 'function') {
+                    items = window.getCart();
+                } else {
+                    const raw = localStorage.getItem('ur_world_cart');
+                    if (raw) items = JSON.parse(raw);
+                }
+            } catch (e) {
+                items = [];
+            }
+            return Array.isArray(items) ? items : [];
+        }
+
+        function resolveItemData(item) {
+            if (item.isLiveAnimal) {
+                let pet = null;
+                if (item.petId && window.PET_BREEDS_CATALOG) {
+                    pet = window.PET_BREEDS_CATALOG[item.petId];
+                }
+                return {
+                    id: item.id,
+                    petId: item.petId || '',
+                    isLiveAnimal: true,
+                    name: item.name || (pet ? pet.name : 'Live Companion Animal'),
+                    breed: item.breed || (pet ? pet.breed : 'Purebred Companion'),
+                    category: item.category || (pet ? pet.category : 'Companion'),
+                    gender: item.gender || (item.options && item.options.gender) || 'Verified',
+                    age: item.age || (item.options && item.options.age) || 'Young',
+                    price: Number(item.price || (pet ? pet.price : 0)),
+                    deposit: item.deposit || (pet ? pet.reservationDeposit : 2000),
+                    image: item.image || (pet && pet.gallery && pet.gallery[0]) || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80',
+                    desc: (pet && pet.tagline) || 'Raised in hygienic environments with comprehensive veterinary health check and certified lineage.',
+                    availability: (pet && pet.availability) || 'Available for Live Reservation • In-Store Handover & Vet Check',
+                    qty: 1
+                };
+            } else {
+                const prod = (window.PRODUCTS_CATALOG && window.PRODUCTS_CATALOG[item.id]) || (typeof products !== 'undefined' && products[item.id]) || null;
+                return {
+                    id: item.id,
+                    isLiveAnimal: false,
+                    name: item.name || (prod ? prod.name : 'Pet Essential'),
+                    category: (prod && prod.category ? prod.category.toUpperCase() : 'SUPPLIES'),
+                    price: Number(item.price !== undefined ? item.price : (prod ? prod.price : 0)),
+                    image: item.image || (prod && prod.image) || 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&q=80',
+                    desc: (prod && prod.desc) || 'Premium pet nutrition & companion care supply.',
+                    availability: 'In Stock • Ready for Store Pickup / Delivery',
+                    qty: Number(item.qty || 1)
+                };
+            }
+        }
+
+        function renderFullCartPage() {
+            const container = document.getElementById('fullCartContent');
+            if (!container) return;
+
+            const rawItems = getCartItems();
+
+            if (!rawItems || rawItems.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty-panel">
+                        <span class="empty-icon-art">🐾</span>
+                        <h2 class="empty-title">Your Shopping Bag is empty</h2>
+                        <p class="empty-desc">Your bag currently has no companion reservations or pet accessories. Discover our verified breeds, healthy aquatic life, and premium nutrition.</p>
+                        <div class="empty-actions-row">
+                            <a href="index.html#animals" class="btn-empty-primary">Explore Animal Collections &rarr;</a>
+                            <a href="index.html#shop" class="btn-empty-secondary">Browse Pet Supplies &rarr;</a>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const items = rawItems.map(resolveItemData);
+            const liveAnimals = items.filter(i => i.isLiveAnimal);
+            const accessories = items.filter(i => !i.isLiveAnimal);
+
+            const animalTotal = liveAnimals.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const accessoryTotal = accessories.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const grandTotal = animalTotal + accessoryTotal;
+
+            const totalItemCount = items.reduce((sum, item) => sum + item.qty, 0);
+            const animalCount = liveAnimals.reduce((sum, item) => sum + item.qty, 0);
+            const accessoryCount = accessories.reduce((sum, item) => sum + item.qty, 0);
+
+            const itemsHtml = items.map(item => {
+                if (item.isLiveAnimal) {
+                    return `
+                        <article class="cart-item-entry live-animal-entry" id="cart-item-${item.id}">
+                            <div class="cart-item-media">
+                                <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80'" />
+                            </div>
+                            <div class="cart-item-info">
+                                <div>
+                                    <div class="cart-item-badge-row">
+                                        <span class="cart-badge-tag tag-animal">🐾 Live Companion Reservation</span>
+                                        <span class="cart-badge-tag tag-supply">${item.category.toUpperCase()}</span>
+                                    </div>
+                                    <h3 class="cart-item-title">${item.name}</h3>
+                                    ${item.breed ? `<div style="font-size:12px; color:#55DDEB; margin-bottom:4px; font-weight:600;">Breed / Lineage: ${item.breed}</div>` : ''}
+                                    
+                                    <div class="cart-animal-specs">
+                                        <span class="cart-spec-chip">Gender: <strong>${item.gender}</strong></span>
+                                        <span class="cart-spec-chip">Age: <strong>${item.age}</strong></span>
+                                        <span class="cart-spec-chip">Health: <strong>Verified &amp; Vaccinated</strong></span>
+                                    </div>
+
+                                    <p class="cart-item-desc">${item.desc}</p>
+
+                                    <div class="cart-status-row status-live-res">
+                                        <span>✓ ${item.availability}</span>
+                                    </div>
+
+                                    <div class="cart-live-notice">
+                                        ⚠️ Live companion availability, vaccination record verification, and physical handover schedule must be confirmed directly with UR-WORLD-AQUARIUM on WhatsApp.
+                                    </div>
+                                </div>
+
+                                <div class="cart-item-controls">
+                                    <span class="cart-static-qty">Qty: 1 (Individual Live Companion)</span>
+                                    <span class="cart-action-divider">|</span>
+                                    <button type="button" class="cart-delete-btn" onclick="removeBagItem('${item.id}')">Delete / Cancel Reservation</button>
+                                </div>
+                            </div>
+
+                            <div class="cart-item-price-col">
+                                <div class="cart-item-main-price">₹${item.price.toLocaleString('en-IN')}</div>
+                                <div class="cart-item-deposit">Deposit: ₹${item.deposit.toLocaleString('en-IN')}</div>
+                            </div>
+                        </article>
+                    `;
+                }
+
+                return `
+                    <article class="cart-item-entry" id="cart-item-${item.id}">
+                        <div class="cart-item-media">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.src='https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&q=80'" />
+                        </div>
+                        <div class="cart-item-info">
+                            <div>
+                                <div class="cart-item-badge-row">
+                                    <span class="cart-badge-tag tag-supply">${item.category} ESSENTIAL</span>
+                                </div>
+                                <h3 class="cart-item-title">${item.name}</h3>
+                                <p class="cart-item-desc">${item.desc}</p>
+
+                                <div class="cart-status-row status-in-stock">
+                                    <span>✓ ${item.availability}</span>
+                                </div>
+                            </div>
+
+                            <div class="cart-item-controls">
+                                <div class="cart-qty-stepper">
+                                    <button type="button" class="stepper-btn" onclick="changeBagQty('${item.id}', -1)" aria-label="Decrease quantity for ${item.name}">−</button>
+                                    <span class="stepper-qty">${item.qty}</span>
+                                    <button type="button" class="stepper-btn" onclick="changeBagQty('${item.id}', 1)" aria-label="Increase quantity for ${item.name}">+</button>
+                                </div>
+                                <span class="cart-action-divider">|</span>
+                                <button type="button" class="cart-delete-btn" onclick="removeBagItem('${item.id}')">Delete</button>
+                            </div>
+                        </div>
+
+                        <div class="cart-item-price-col">
+                            <div class="cart-item-main-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+                            ${item.qty > 1 ? `<div class="cart-item-unit-price">₹${item.price.toLocaleString('en-IN')} each</div>` : ''}
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <div class="cart-two-column-layout">
+                    <!-- LEFT COLUMN: Cart Items (~72%) -->
+                    <div class="cart-items-column">
+                        <div class="cart-surface-card">
+                            <div class="cart-card-header">
+                                <div class="cart-card-header-left">
+                                    <h1 class="cart-main-title">Shopping Bag</h1>
+                                    <span class="cart-items-count-pill">${totalItemCount} ${totalItemCount === 1 ? 'item' : 'items'}</span>
+                                </div>
+                                <div class="cart-header-price-col">Price</div>
+                            </div>
+
+                            <div class="cart-items-stack">
+                                ${itemsHtml}
+                            </div>
+
+                            <div class="cart-left-subtotal-bar">
+                                <span>Subtotal (${totalItemCount} ${totalItemCount === 1 ? 'item' : 'items'}):</span>
+                                <span class="cart-left-subtotal-amount">₹${grandTotal.toLocaleString('en-IN')}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Sticky Order Summary (~28%) -->
+                    <div class="cart-summary-column">
+                        <div class="cart-summary-card">
+                            <h2 class="summary-title">Order Summary</h2>
+
+                            <div class="summary-line-row">
+                                <span>Live Animal Reservations (${animalCount}):</span>
+                                <span class="summary-line-val">₹${animalTotal.toLocaleString('en-IN')}</span>
+                            </div>
+
+                            <div class="summary-line-row">
+                                <span>Food &amp; Accessories (${accessoryCount}):</span>
+                                <span class="summary-line-val">₹${accessoryTotal.toLocaleString('en-IN')}</span>
+                            </div>
+
+                            <div class="summary-divider"></div>
+
+                            <div class="summary-grand-total-row">
+                                <span class="summary-grand-total-label">Estimated Grand Total:</span>
+                                <span class="summary-grand-total-val">₹${grandTotal.toLocaleString('en-IN')}</span>
+                            </div>
+
+                            <p class="summary-disclaimer">
+                                Prices in Indian Rupees (INR). Handover, veterinary health records, and collection schedules are confirmed directly with our store.
+                            </p>
+
+                            <button type="button" class="btn-cart-checkout-wa" onclick="checkoutViaWhatsApp()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.954.557 3.784 1.528 5.342L2 22l4.805-1.498A9.973 9.973 0 0 0 12.031 22C17.567 22 22 17.505 22 12.031 22 6.495 17.567 2 12.031 2zm5.79 14.28c-.244.686-1.42 1.306-1.958 1.39-.516.08-1.18.114-1.905-.117-.463-.147-1.06-.347-1.834-.694-3.237-1.455-5.35-4.733-5.513-4.954-.162-.222-1.31-1.745-1.31-3.327 0-1.583.83-2.36 1.123-2.684.293-.324.64-.405.854-.405.214 0 .428.002.615.012.2.01.468-.076.732.558.274.659.933 2.278 1.015 2.443.082.165.137.357.027.578-.11.222-.165.357-.33.55-.165.193-.346.43-.495.578-.165.165-.337.346-.145.677.192.33 8.56 1.405 1.838 2.28 1.258 1.127 2.32 1.474 2.65 1.64.33.165.523.137.715-.083.192-.22 8.24-.962 1.045-1.293.22-.33.44-.275.743-.165.303.11 1.924.908 2.254 1.073.33.165.55.248.633.385.082.138.082.798-.162 1.484z"/>
+                                </svg>
+                                <span>CHECKOUT ON WHATSAPP &rarr;</span>
+                            </button>
+
+                            <div class="summary-trust-box">
+                                <div class="trust-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Verified Live Lineage:</strong> Purebred health documentation and vaccination verification.</span>
+                                </div>
+                                <div class="trust-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Direct WhatsApp Support:</strong> Connect instantly with UR-WORLD-AQUARIUM staff (+91 99800 39294).</span>
+                                </div>
+                                <div class="trust-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Safe Handover:</strong> Secure store pickup &amp; companion acclimation assistance.</span>
+                                </div>
+                            </div>
+
+                            <a href="index.html#animals" class="summary-continue-link">&larr; Continue Browsing Collections</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.changeBagQty = function(id, delta) {
+            if (typeof window.updateCartQty === 'function') {
+                window.updateCartQty(id, delta);
+            } else {
+                let list = getCartItems();
+                const item = list.find(i => i.id === id);
+                if (item) {
+                    item.qty += delta;
+                    if (item.qty <= 0) {
+                        list = list.filter(i => i.id !== id);
+                    }
+                    localStorage.setItem('ur_world_cart', JSON.stringify(list));
+                    if (typeof renderCart === 'function') renderCart();
+                    renderFullCartPage();
+                }
+            }
+        };
+
+        window.removeBagItem = function(id) {
+            if (typeof window.removeFromCart === 'function') {
+                window.removeFromCart(id);
+            } else {
+                let list = getCartItems();
+                list = list.filter(i => i.id !== id);
+                localStorage.setItem('ur_world_cart', JSON.stringify(list));
+                if (typeof renderCart === 'function') renderCart();
+                renderFullCartPage();
+            }
+        };
+
+        window.checkoutViaWhatsApp = function() {
+            const rawItems = getCartItems();
+            if (!rawItems.length) {
+                alert("Your shopping bag is empty. Please add companion reservations or supplies.");
+                return;
+            }
+
+            const resolved = rawItems.map(resolveItemData);
+            const animals = resolved.filter(i => i.isLiveAnimal);
+            const supplies = resolved.filter(i => !i.isLiveAnimal);
+
+            let totalAnimalsVal = 0;
+            let totalSuppliesVal = 0;
+
+            let msg = `*UR-WORLD-AQUARIUM — Shopping Bag Checkout / Reservation Request*\n`;
+            msg += `────────────────────────────\n`;
+
+            if (animals.length > 0) {
+                msg += `🐾 *LIVE COMPANION RESERVATIONS:*\n`;
+                animals.forEach((item, index) => {
+                    const price = item.price || 0;
+                    totalAnimalsVal += price;
+                    const deposit = item.deposit ? ` (Deposit: ₹${item.deposit.toLocaleString('en-IN')})` : '';
+                    msg += `${index + 1}. *${item.name}*\n`;
+                    if (item.breed) msg += `   • Breed / Species: ${item.breed}\n`;
+                    msg += `   • Selected: Gender: ${item.gender} | Age: ${item.age}\n`;
+                    msg += `   • Valuation: ₹${price.toLocaleString('en-IN')}${deposit}\n`;
+                });
+                msg += `\n_Live Animal Note: Companion availability, health & vaccination documents, reservation confirmation, and physical handover must be confirmed directly with UR-WORLD-AQUARIUM._\n\n`;
+            }
+
+            if (supplies.length > 0) {
+                msg += `🛍️ *FOOD & ACCESSORIES:*\n`;
+                supplies.forEach((item, index) => {
+                    const subtotal = item.price * item.qty;
+                    totalSuppliesVal += subtotal;
+                    msg += `${index + 1}. *${item.name}* [${item.category}] — Qty: ${item.qty} × ₹${item.price.toLocaleString('en-IN')} = ₹${subtotal.toLocaleString('en-IN')}\n`;
+                });
+                msg += `\n`;
+            }
+
+            const grandTotal = totalAnimalsVal + totalSuppliesVal;
+            msg += `────────────────────────────\n`;
+            if (animals.length > 0) {
+                msg += `*Live Animal Reservations Valuation:* ₹${totalAnimalsVal.toLocaleString('en-IN')}\n`;
+            }
+            if (supplies.length > 0) {
+                msg += `*Food & Accessories Subtotal:* ₹${totalSuppliesVal.toLocaleString('en-IN')}\n`;
+            }
+            msg += `*ESTIMATED GRAND TOTAL:* ₹${grandTotal.toLocaleString('en-IN')}\n`;
+            msg += `────────────────────────────\n`;
+            msg += `Please confirm companion availability, documentation verification, and order handover/dispatch. Thank you!`;
+
+            const waUrl = `https://wa.me/919980039294?text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
+        };
+
+        // Expose renderer to window so script.js reactive updates can call it
+        window.renderFullCartPage = renderFullCartPage;
+
+        document.addEventListener('DOMContentLoaded', renderFullCartPage);
+        renderFullCartPage();
+    </script>
+</body>
+
+</html>
+

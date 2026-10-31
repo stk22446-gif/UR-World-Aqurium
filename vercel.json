@@ -1,5 +1,17 @@
 {
   "version": 2,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/collections/dogs", "destination": "/collections/dogs.html" },
+    { "source": "/collections/cats", "destination": "/collections/cats.html" },
+    { "source": "/collections/birds", "destination": "/collections/birds.html" },
+    { "source": "/collections/mice", "destination": "/collections/mice.html" },
+    { "source": "/collections/small-pets", "destination": "/collections/small-pets.html" },
+    { "source": "/collections/aquarium-fish", "destination": "/collections/aquarium-fish.html" },
+    { "source": "/collections/other-animals", "destination": "/collections/other-animals.html" },
+    { "source": "/pets/:id", "destination": "/pet-detail.html?id=:id" },
+    { "source": "/pet/:id", "destination": "/pet-detail.html?id=:id" },
+    { "source": "/pet-detail", "destination": "/pet-detail.html" },
+    { "source": "/cart", "destination": "/cart.html" }
+  ]
 }
-

@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" id="metaThemeColor" />
+    <meta name="description"
+        content="UR-WORLD-AQUARIUM — Individual Pet Profile, Lineage, Health Records, Reservation and Care Accessories." />
+    <meta property="og:title" content="Pet Details &amp; Reservation | UR-WORLD-AQUARIUM" />
+    <meta property="og:image"
+        content="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <title id="pageTitle">Individual Pet Detail &amp; Reservation | UR-WORLD-AQUARIUM</title>
+
+    <link rel="icon" type="image/png"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <link rel="apple-touch-icon"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Preload Official Loading GIF -->
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="collection-page pet-detail-body">
+    <!-- Official Website Loading Screen -->
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR-WORLD-AQUARIUM">
+        <div class="loader-content">
+            <div class="loader-media-wrap">
+                <img src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" 
+                     alt="UR-WORLD-AQUARIUM Loading Animation" 
+                     class="loader-gif" 
+                     width="150" 
+                     height="150"
+                     onerror="this.style.display='none'; var fb=document.getElementById('loaderFallback'); if(fb) fb.style.display='inline-flex';" />
+                <div id="loaderFallback" class="loader-fallback" style="display:none;" aria-hidden="true">
+                    <span class="loader-paw-pulse">🐾</span>
+                </div>
+            </div>
+            <p class="loader-text">Finding your perfect companion...</p>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="site-header" id="top">
+        <a class="brand" href="index.html" aria-label="UR-WORLD-AQUARIUM Home">
+            <img class="brand-logo"
+                src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                alt="UR-WORLD-AQUARIUM Official Logo" width="46" height="46" />
+            <span class="brand-text">
+                <span class="brand-name">UR-WORLD<span class="brand-accent">-AQUARIUM</span></span>
+                <small class="brand-tagline">PETS &amp; AQUATIC LIFESTYLE</small>
+            </span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Main Navigation">
+            <a href="index.html#home" class="nav-link">Home</a>
+            <a href="index.html#animals" class="nav-link active">All Collections</a>
+            <a href="index.html#shop" class="nav-link">Pet Shop</a>
+            <a href="index.html#reviews" class="nav-link">Reviews</a>
+            <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- Theme Mode Toggle -->
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme mode"
+                title="Switch between Dark and Light mode">
+                <span class="theme-icon" aria-hidden="true">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </span>
+                <span class="theme-label" id="themeLabel">Dark</span>
+            </button>
+
+            <!-- Shopping Bag Pill Button -->
+            <a href="cart.html" class="cart-pill-button" id="cartOpen" aria-label="Shopping Bag" title="View your shopping bag">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#087F9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bag-pill-icon" aria-hidden="true">
+                    <path d="M6 7l2-4h8l2 4"></path>
+                    <rect x="4" y="7" width="16" height="14" rx="2"></rect>
+                    <path d="M9 11a3 3 0 0 0 6 0"></path>
+                </svg>
+                <span class="bag-pill-text">Bag</span>
+                <span class="bag-pill-badge" id="cartCount">0</span>
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Top Navigation Bar & Breadcrumbs -->
+        <div class="collection-topbar">
+            <a href="javascript:history.back()" class="back-link" id="categoryBackLink">
+                &larr; <span id="backLinkLabel">Back to Collection</span>
+            </a>
+            <nav class="collection-breadcrumbs" aria-label="Breadcrumb" id="breadcrumbsNav">
+                <a href="index.html">Home</a> /
+                <a href="index.html#animals">Animal Collections</a> /
+                <a href="collections/dogs.html" id="crumbCategory">Dogs &amp; Puppies</a> /
+                <span id="crumbPetName">Golden Retriever</span>
+            </nav>
+        </div>
+
+        <!-- Level 3 Amazon-Inspired Product Layout -->
+        <section class="pet-detail-container">
+            <div class="pet-detail-layout">
+                <!-- LEFT COLUMN: Image Gallery & Zoom -->
+                <div class="pet-gallery-column">
+                    <div class="pet-gallery-sticky">
+                        <div class="pet-main-image-wrapper" id="mainImageWrapper">
+                            <img id="petMainImage" src="" alt="Pet Photograph" class="pet-main-image" />
+                            <div class="pet-zoom-lens" id="zoomLens"></div>
+                            <span class="pet-zoom-hint">🔍 Hover image to zoom</span>
+                        </div>
+                        <!-- Thumbnails Row -->
+                        <div class="pet-thumbnails-row" id="thumbnailsRow" role="tablist" aria-label="Pet Image Thumbnails">
+                            <!-- Thumbnails injected via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Pet Information & Customer Actions -->
+                <div class="pet-info-column">
+                    <!-- Availability Badge -->
+                    <div class="pet-status-header">
+                        <span class="pet-availability-badge" id="petAvailability">
+                            <span class="status-dot"></span> Available for Reservation
+                        </span>
+                        <span class="pet-category-tag" id="petCategoryTag">Canine</span>
+                    </div>
+
+                    <!-- Pet Titles -->
+                    <h1 class="pet-detail-title" id="petName">Golden Retriever Puppy</h1>
+                    <div class="pet-detail-subtitle" id="petBreed">Purebred Canine &bull; Golden Retriever</div>
+
+                    <!-- Pricing & Reservation Info -->
+                    <div class="pet-pricing-card">
+                        <div class="pet-price-row">
+                            <span class="pet-price-amount" id="petPrice">₹24,999</span>
+                            <span class="pet-price-note">All taxes included</span>
+                        </div>
+                        <div class="pet-deposit-note" id="petDeposit">
+                            Reservation Deposit: <strong>₹2,000</strong> to hold puppy pending in-store health check &amp; handover.
+                        </div>
+                    </div>
+
+                    <!-- Options: Gender Selection -->
+                    <div class="pet-option-group" id="genderSelectionGroup">
+                        <label class="pet-option-label">
+                            SELECT GENDER <span class="verified-tag">&#10003; Verified</span>
+                        </label>
+                        <div class="pet-pill-options" id="genderPillContainer">
+                            <!-- Gender pills dynamically injected -->
+                        </div>
+                    </div>
+
+                    <!-- Options: Age & Life Stage -->
+                    <div class="pet-option-group" id="ageSelectionGroup">
+                        <label class="pet-option-label">CURRENT AGE &amp; STAGE</label>
+                        <div class="pet-pill-options" id="agePillContainer">
+                            <!-- Age pill dynamically injected -->
+                        </div>
+                    </div>
+
+                    <!-- Verified Health & Certifications Box -->
+                    <div class="pet-health-card">
+                        <h4 class="pet-health-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            VERIFIED HEALTH &amp; CARE STANDARDS
+                        </h4>
+                        <ul class="pet-health-list">
+                            <li><span class="check-icon">&#10003;</span> Complete Routine Veterinary Health Examination Passed</li>
+                            <li><span class="check-icon">&#10003;</span> <span id="petHealthDetail">Dewormed &amp; Core Vaccinations Administered</span></li>
+                            <li><span class="check-icon">&#10003;</span> Starter Nutritional Advice &amp; Acclimatization Guidance Included</li>
+                        </ul>
+                    </div>
+
+                    <!-- TWO MAIN CUSTOMER ACTIONS -->
+                    <div class="pet-actions-card">
+                        <div class="pet-buttons-row">
+                            <!-- Action 1: Add to Bag -->
+                            <button type="button" class="btn-primary-action btn-add-bag" id="btnAddToBag">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                                ADD TO BAG
+                            </button>
+
+                            <!-- Action 2: Enquire on WhatsApp -->
+                            <a href="#" class="btn-secondary-action btn-whatsapp-action" id="btnWhatsAppEnquiry" target="_blank" rel="noopener">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                                </svg>
+                                ENQUIRE ON WHATSAPP
+                            </a>
+                        </div>
+                        <p class="pet-action-disclaimer">
+                            Live companion animals are reserved subject to health confirmation. In-store handover or specialized city delivery available.
+                        </p>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="pet-description-section">
+                        <h4 class="pet-section-title">ABOUT THIS COMPANION</h4>
+                        <p class="pet-description-text" id="petDescription">Loading description...</p>
+                    </div>
+
+                    <!-- Key Characteristics Grid -->
+                    <div class="pet-specs-section">
+                        <h4 class="pet-section-title">BREED CHARACTERISTICS &amp; CARE</h4>
+                        <div class="pet-specs-grid" id="petSpecsGrid">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 3 - BELOW MAIN DETAILS: RECOMMENDED FOOD & ACCESSORIES -->
+            <section class="recommended-products-section" id="recommended">
+                <div class="section-title-wrap">
+                    <span class="eyebrow"><span class="eyebrow-line"></span>ESSENTIAL SUPPLIES</span>
+                    <h2>Recommended Food &amp; Accessories</h2>
+                    <p class="section-lead">
+                        Everything your companion needs for a healthy, happy and comfortable life.
+                    </p>
+                </div>
+
+                <div class="recommended-products-grid" id="recommendedProductsGrid">
+                    <!-- Recommended products injected dynamically -->
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Shopping Bag Slide-out Drawer -->
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag" aria-hidden="true">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="cart-close" id="cartClose" aria-label="Close Shopping Bag">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <!-- Injected via script.js -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-summary-line">
+                <span>Total Estimated</span>
+                <strong id="cartTotal">₹0</strong>
+            </div>
+            <p class="cart-disclaimer">
+                Live animals are reserved subject to availability and handover inspection.
+            </p>
+            <div class="cart-footer-actions">
+                <button class="btn btn-primary checkout-btn" id="checkoutButton" type="button">
+                    Checkout / Enquire on WhatsApp &rarr;
+                </button>
+                <a href="cart.html" class="cart-view-link">View Detailed Bag &amp; Reservation Page</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a class="brand" href="index.html" aria-label="UR-WORLD-AQUARIUM Home">
+                <img class="brand-logo"
+                    src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                    alt="UR-WORLD-AQUARIUM Official Logo" width="46" height="46" />
+                <span class="brand-text">
+                    <span class="brand-name">UR-WORLD<span class="brand-accent">-AQUARIUM</span></span>
+                    <small class="brand-tagline">PETS &amp; AQUATIC LIFESTYLE</small>
+                </span>
+            </a>
+            <p class="footer-blurb">
+                Dedicated to cherished companion animals—dogs, cats, birds, mice, small pets, and thriving freshwater aquariums.
+            </p>
+            <div class="footer-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#animals">All Collections</a>
+                <a href="index.html#shop">Pet Shop</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://wa.me/919980039294" target="_blank" rel="noopener">WhatsApp (+91 99800 39294)</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; <span id="year">2026</span> UR-WORLD-AQUARIUM. All Rights Reserved.</span>
+            <div class="footer-bottom-links">
+                <span>Passionate Pet &amp; Aquatic Community</span>
+                <a href="#top" class="back-to-top">BACK TO TOP &uarr;</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Individual Pet Detail Page Controller
+        (function() {
+            // 1. Resolve Pet ID from URL Query String (?id=...)
+            const urlParams = new URLSearchParams(window.location.search);
+            let petId = urlParams.get('id') || 'golden-retriever';
+            let pet = window.getPetById ? window.getPetById(petId) : null;
+
+            if (!pet && window.PET_BREEDS_CATALOG) {
+                // Fallback to first available pet if ID not found
+                const keys = Object.keys(window.PET_BREEDS_CATALOG);
+                if (keys.length > 0) {
+                    petId = keys[0];
+                    pet = window.PET_BREEDS_CATALOG[petId];
+                }
+            }
+
+            if (!pet) return;
+
+            // 2. Resolve Category Meta
+            const categoryMeta = window.getCategoryMeta ? window.getCategoryMeta(pet.category) : null;
+
+            // 3. Update Titles & Breadcrumbs
+            document.title = `${pet.name} | UR-WORLD-AQUARIUM`;
+            const pageTitle = document.getElementById('pageTitle');
+            if (pageTitle) pageTitle.textContent = `${pet.name} | UR-WORLD-AQUARIUM`;
+
+            const crumbCategory = document.getElementById('crumbCategory');
+            const crumbPetName = document.getElementById('crumbPetName');
+            const categoryBackLink = document.getElementById('categoryBackLink');
+            const backLinkLabel = document.getElementById('backLinkLabel');
+
+            if (categoryMeta) {
+                if (crumbCategory) {
+                    crumbCategory.textContent = categoryMeta.name;
+                    crumbCategory.href = categoryMeta.collectionUrl;
+                }
+                if (categoryBackLink) {
+                    categoryBackLink.href = categoryMeta.collectionUrl;
+                }
+                if (backLinkLabel) {
+                    backLinkLabel.textContent = `Back to ${categoryMeta.name} Lineup`;
+                }
+            }
+            if (crumbPetName) crumbPetName.textContent = pet.name;
+
+            // 4. Fill Header & Meta
+            document.getElementById('petAvailability').innerHTML = `<span class="status-dot"></span> ${pet.availability || 'Available for Reservation'}`;
+            document.getElementById('petCategoryTag').textContent = (categoryMeta ? categoryMeta.name : pet.category).toUpperCase();
+            document.getElementById('petName').textContent = pet.name;
+            document.getElementById('petBreed').textContent = pet.breed;
+            document.getElementById('petPrice').textContent = `₹${Number(pet.price).toLocaleString('en-IN')}`;
+            document.getElementById('petDeposit').innerHTML = `Reservation Deposit: <strong>₹${Number(pet.reservationDeposit || 2000).toLocaleString('en-IN')}</strong> to reserve this companion.`;
+            document.getElementById('petDescription').textContent = pet.description;
+            document.getElementById('petHealthDetail').textContent = pet.healthInfo || 'Dewormed & Core Vaccinations Administered';
+
+            // 5. Image Gallery & Zoom
+            const mainImg = document.getElementById('petMainImage');
+            const mainImgWrapper = document.getElementById('mainImageWrapper');
+            const thumbnailsRow = document.getElementById('thumbnailsRow');
+
+            if (pet.gallery && pet.gallery.length > 0) {
+                mainImg.src = pet.gallery[0];
+                mainImg.alt = `${pet.name} companion photography`;
+
+                thumbnailsRow.innerHTML = pet.gallery.map((imgUrl, index) => `
+                    <button type="button" class="pet-thumbnail-btn ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="View photo ${index + 1}">
+                        <img src="${imgUrl}" alt="${pet.name} thumbnail ${index + 1}" loading="lazy" />
+                    </button>
+                `).join('');
+
+                // Thumbnail switching
+                const thumbs = thumbnailsRow.querySelectorAll('.pet-thumbnail-btn');
+                thumbs.forEach((thumb, idx) => {
+                    const switchImg = () => {
+                        thumbs.forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                        mainImg.src = pet.gallery[idx];
+                    };
+                    thumb.addEventListener('click', switchImg);
+                    thumb.addEventListener('mouseenter', switchImg);
+                });
+
+                // Interactive Zoom effect on mouse movement
+                mainImgWrapper.addEventListener('mousemove', function(e) {
+                    const rect = mainImgWrapper.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    mainImg.style.transformOrigin = `${x}% ${y}%`;
+                    mainImg.style.transform = 'scale(1.85)';
+                });
+
+                mainImgWrapper.addEventListener('mouseleave', function() {
+                    mainImg.style.transformOrigin = 'center center';
+                    mainImg.style.transform = 'scale(1)';
+                });
+            }
+
+            // 6. Interactive Gender Selection
+            let selectedGender = pet.defaultGender || (pet.genderOptions && pet.genderOptions[0]) || 'Male';
+            const genderContainer = document.getElementById('genderPillContainer');
+            if (pet.genderOptions && pet.genderOptions.length > 0) {
+                genderContainer.innerHTML = pet.genderOptions.map(g => `
+                    <button type="button" class="pet-option-pill ${g === selectedGender ? 'active' : ''}" data-gender="${g}">
+                        ${g}
+                    </button>
+                `).join('');
+
+                genderContainer.querySelectorAll('.pet-option-pill').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        genderContainer.querySelectorAll('.pet-option-pill').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        selectedGender = btn.dataset.gender;
+                        updateWhatsAppMessage();
+                    });
+                });
+            } else {
+                document.getElementById('genderSelectionGroup').style.display = 'none';
+            }
+
+            // 7. Age Selection
+            let selectedAge = pet.age || '3 Months';
+            const ageContainer = document.getElementById('agePillContainer');
+            const ageOptions = pet.ageOptions || [pet.age];
+            ageContainer.innerHTML = ageOptions.map((a, i) => `
+                <button type="button" class="pet-option-pill ${i === 0 ? 'active' : ''}" data-age="${a}">
+                    ${a}
+                </button>
+            `).join('');
+
+            ageContainer.querySelectorAll('.pet-option-pill').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    ageContainer.querySelectorAll('.pet-option-pill').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedAge = btn.dataset.age;
+                    updateWhatsAppMessage();
+                });
+            });
+
+            // 8. Key Specs Grid
+            const specsGrid = document.getElementById('petSpecsGrid');
+            if (pet.characteristics) {
+                specsGrid.innerHTML = Object.entries(pet.characteristics).map(([key, val]) => `
+                    <div class="pet-spec-item">
+                        <span class="spec-label">${key.replace(/([A-Z])/g, ' $1').toUpperCase()}</span>
+                        <span class="spec-value">${val}</span>
+                    </div>
+                `).join('');
+            }
+
+            // 9. Two Main Customer Actions: WhatsApp Enquiry & Add to Bag
+            const btnWhatsApp = document.getElementById('btnWhatsAppEnquiry');
+            function updateWhatsAppMessage() {
+                const message = `Hi UR-WORLD-AQUARIUM! I would like to inquire about reserving:
+• Companion: ${pet.name}
+• Breed / Species: ${pet.breed}
+• Selected Gender: ${selectedGender}
+• Age: ${selectedAge}
+• Price / Reservation: ₹${Number(pet.price).toLocaleString('en-IN')}
+
+Could you please confirm current availability, vaccination documentation, and the handover / adoption procedure? Thank you!`;
+                btnWhatsApp.href = `https://wa.me/919980039294?text=${encodeURIComponent(message)}`;
+            }
+            updateWhatsAppMessage();
+
+            // Action 1: Add to Bag
+            const btnAddToBag = document.getElementById('btnAddToBag');
+            btnAddToBag.addEventListener('click', function() {
+                if (typeof window.addLiveAnimalToCart === 'function') {
+                    window.addLiveAnimalToCart({
+                        id: `live_${pet.id}_${selectedGender.toLowerCase().replace(/\s+/g, '_')}`,
+                        petId: pet.id,
+                        name: `${pet.name} (${selectedGender}, ${selectedAge})`,
+                        breed: pet.breed,
+                        category: pet.category,
+                        gender: selectedGender,
+                        age: selectedAge,
+                        price: pet.price,
+                        deposit: pet.reservationDeposit || 2000,
+                        isLiveAnimal: true,
+                        image: pet.gallery ? pet.gallery[0] : ''
+                    });
+                }
+            });
+
+            // 10. Recommended Food & Accessories
+            const recGrid = document.getElementById('recommendedProductsGrid');
+            if (pet.recommendedProducts && window.PRODUCTS_CATALOG) {
+                recGrid.innerHTML = pet.recommendedProducts.map(prodId => {
+                    const prod = window.PRODUCTS_CATALOG[prodId];
+                    if (!prod) return '';
+                    return `
+                        <article class="rec-card" data-category="${prod.category}">
+                            <div class="rec-card-media">
+                                <img src="${prod.image}" alt="${prod.name}" loading="lazy" class="rec-card-img">
+                                <span class="rec-badge">${prod.category.toUpperCase()} ESSENTIAL</span>
+                            </div>
+                            <div class="rec-card-body">
+                                <span class="rec-category-tag">${prod.category.toUpperCase()} CARE</span>
+                                <h3 class="rec-title">${prod.name}</h3>
+                                <p class="rec-desc">${prod.desc}</p>
+                                <div class="rec-meta">
+                                    <span class="rec-price">₹${Number(prod.price).toLocaleString('en-IN')}</span>
+                                    <span class="rec-stock"><span class="rec-stock-dot"></span> In Stock</span>
+                                </div>
+                                <div class="rec-actions">
+                                    <button class="btn-rec-add" data-id="${prod.id}" type="button">
+                                        ADD TO BAG
+                                    </button>
+                                    <button class="btn-rec-enquire" data-id="${prod.id}" type="button">
+                                        ENQUIRE &nearr;
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                // Attach Add to Bag listeners with immediate confirmation
+                recGrid.querySelectorAll('.btn-rec-add').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = btn.dataset.id;
+                        if (id && typeof window.addToCart === 'function') {
+                            window.addToCart(id);
+                            const origText = btn.textContent;
+                            btn.textContent = '✓ ADDED';
+                            btn.classList.add('added-success');
+                            setTimeout(() => {
+                                btn.textContent = origText;
+                                btn.classList.remove('added-success');
+                            }, 1200);
+                        }
+                    });
+                });
+
+                // Attach WhatsApp Enquiry listeners (Ocean Blue styling, NO green)
+                recGrid.querySelectorAll('.btn-rec-enquire').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = btn.dataset.id;
+                        const prod = window.PRODUCTS_CATALOG[id];
+                        if (!prod) return;
+                        const msg = `Hi UR-WORLD-AQUARIUM! I would like to enquire about:
+• Product: ${prod.name}
+• Price: ₹${Number(prod.price).toLocaleString('en-IN')}
+• Category: ${prod.category.toUpperCase()}
+
+Please let me know if this is currently available in stock for store pickup or delivery.`;
+                        window.open(`https://wa.me/919980039294?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" id="metaThemeColor" />
+    <meta name="description"
+        content="Canine Breeds & Lineup — UR-WORLD-AQUARIUM. Explore verified dog breeds, characteristics, and available companion lineup." />
+    <meta property="og:title" content="Canine Breeds &amp; Lineup | UR-WORLD-AQUARIUM" />
+    <meta property="og:image"
+        content="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <title>Canine Breeds &amp; Lineup | UR-WORLD-AQUARIUM</title>
+
+    <link rel="icon" type="image/png"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <link rel="apple-touch-icon"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Preload Official Loading GIF -->
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" />
+
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="collection-page">
+    <!-- Official Website Loading Screen -->
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR-WORLD-AQUARIUM">
+        <div class="loader-content">
+            <div class="loader-media-wrap">
+                <img src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" 
+                     alt="UR-WORLD-AQUARIUM Loading Animation" 
+                     class="loader-gif" 
+                     width="150" 
+                     height="150"
+                     onerror="this.style.display='none'; var fb=document.getElementById('loaderFallback'); if(fb) fb.style.display='inline-flex';" />
+                <div id="loaderFallback" class="loader-fallback" style="display:none;" aria-hidden="true">
+                    <span class="loader-paw-pulse">🐾</span>
+                </div>
+            </div>
+            <p class="loader-text">Finding your perfect companion...</p>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="site-header" id="top">
+        <a class="brand" href="../index.html" aria-label="UR-WORLD-AQUARIUM Home">
+            <img class="brand-logo"
+                src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                alt="UR-WORLD-AQUARIUM Official Logo" width="46" height="46" />
+            <span class="brand-text">
+                <span class="brand-name">UR-WORLD<span class="brand-accent">-AQUARIUM</span></span>
+                <small class="brand-tagline">PETS &amp; AQUATIC LIFESTYLE</small>
+            </span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Main Navigation">
+            <a href="../index.html#home" class="nav-link">Home</a>
+            <a href="../index.html#animals" class="nav-link active">All Collections</a>
+            <a href="../index.html#shop" class="nav-link">Pet Shop</a>
+            <a href="../index.html#reviews" class="nav-link">Reviews</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- Theme Mode Toggle -->
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme mode"
+                title="Switch between Dark and Light mode">
+                <span class="theme-icon" aria-hidden="true">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </span>
+                <span class="theme-label" id="themeLabel">Dark</span>
+            </button>
+
+            <!-- Shopping Bag Pill Button -->
+            <a href="../cart.html" class="cart-pill-button" id="cartOpen" aria-label="Shopping Bag" title="View your shopping bag">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#087F9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bag-pill-icon" aria-hidden="true">
+                    <path d="M6 7l2-4h8l2 4"></path>
+                    <rect x="4" y="7" width="16" height="14" rx="2"></rect>
+                    <path d="M9 11a3 3 0 0 0 6 0"></path>
+                </svg>
+                <span class="bag-pill-text">Bag</span>
+                <span class="bag-pill-badge" id="cartCount">0</span>
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Top Navigation Bar & Breadcrumbs -->
+        <div class="collection-topbar">
+            <a href="../index.html#animals" class="back-link">
+                &larr; Back to All Animal Collections
+            </a>
+            <div class="collection-breadcrumbs">
+                <a href="../index.html">Home</a> /
+                <a href="../index.html#animals">Animal Collections</a> /
+                <span>Dogs &amp; Puppies</span>
+            </div>
+        </div>
+
+        <!-- Collection Hero Header (Level 2) -->
+        <section class="collection-hero">
+            <span class="eyebrow"><span class="eyebrow-line"></span>CANINE COMPANIONS &amp; CARE</span>
+            <h1>Canine Breeds &amp; <em>Lineup</em></h1>
+            <p>
+                Explore our verified canine breeds, temperament guides, and available companion lineup. Click View Details on any breed to inspect verified health records, view high-resolution photography, and choose your reservation options.
+            </p>
+        </section>
+
+        <!-- Breeds & Lineup Grid (Level 2) -->
+        <section class="collection-section">
+            <div class="collection-grid">
+                <!-- Breed 1: Golden Retriever -->
+                <article class="animal-detail-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=85"
+                            alt="Golden Retriever companion dog" loading="lazy">
+                        <span class="care-level-badge">Family Favourite</span>
+                    </div>
+                    <div class="animal-content">
+                        <div class="card-meta">
+                            <h3>Golden Retriever</h3>
+                            <span class="species-badge">GENTLE &amp; DEVOTED</span>
+                        </div>
+                        <p class="animal-desc">Renowned for supreme patience, joyful intelligence, and heartwarming companionship. Thrives in active family environments.</p>
+                        <div class="animal-specs">
+                            <span><strong>Energy:</strong> High</span>
+                            <span><strong>Diet:</strong> Large-Breed Kibble</span>
+                            <span><strong>Coat:</strong> Dense Golden</span>
+                        </div>
+                        <a href="../pet-detail.html?id=golden-retriever" class="btn-view-details">
+                            VIEW DETAILS <span>&rarr;</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Breed 2: Labrador Retriever -->
+                <article class="animal-detail-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1579202673506-ca3ce28943ef?auto=format&fit=crop&w=800&q=85"
+                            alt="Labrador Retriever puppy looking forward" loading="lazy">
+                        <span class="care-level-badge">Loyal Friend</span>
+                    </div>
+                    <div class="animal-content">
+                        <div class="card-meta">
+                            <h3>Labrador Retriever</h3>
+                            <span class="species-badge">PLAYFUL &amp; HARDY</span>
+                        </div>
+                        <p class="animal-desc">Friendly, eager to please, and effortlessly adaptable. Outstanding temperament for homes with children, other pets, and outdoor lifestyles.</p>
+                        <div class="animal-specs">
+                            <span><strong>Energy:</strong> Medium–High</span>
+                            <span><strong>Diet:</strong> Balanced Protein</span>
+                            <span><strong>Nature:</strong> Outgoing &amp; Eager</span>
+                        </div>
+                        <a href="../pet-detail.html?id=labrador-retriever" class="btn-view-details">
+                            VIEW DETAILS <span>&rarr;</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Breed 3: German Shepherd -->
+                <article class="animal-detail-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&w=800&q=85"
+                            alt="Noble German Shepherd sitting attentively" loading="lazy">
+                        <span class="care-level-badge">Protector</span>
+                    </div>
+                    <div class="animal-content">
+                        <div class="card-meta">
+                            <h3>German Shepherd</h3>
+                            <span class="species-badge">INTELLIGENT &amp; ALERT</span>
+                        </div>
+                        <p class="animal-desc">Vigilant, courageous, and deeply trainable. Excels in active households looking for a loyal guardian and dedicated exercise companion.</p>
+                        <div class="animal-specs">
+                            <span><strong>Energy:</strong> High</span>
+                            <span><strong>Diet:</strong> High-Performance Kibble</span>
+                            <span><strong>Focus:</strong> Sharp &amp; Obedient</span>
+                        </div>
+                        <a href="../pet-detail.html?id=german-shepherd" class="btn-view-details">
+                            VIEW DETAILS <span>&rarr;</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Breed 4: Beagle -->
+                <article class="animal-detail-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=85"
+                            alt="Beagle hound looking curious" loading="lazy">
+                        <span class="care-level-badge">Curious Hound</span>
+                    </div>
+                    <div class="animal-content">
+                        <div class="card-meta">
+                            <h3>Beagle</h3>
+                            <span class="species-badge">MERRY &amp; SOCIAL</span>
+                        </div>
+                        <p class="animal-desc">Compact, gentle-mannered, and endlessly inquisitive with an extraordinary sense of scent. A great companion for children.</p>
+                        <div class="animal-specs">
+                            <span><strong>Energy:</strong> Moderate–High</span>
+                            <span><strong>Diet:</strong> Controlled Calorie</span>
+                            <span><strong>Nature:</strong> Affectionate &amp; Vocal</span>
+                        </div>
+                        <a href="../pet-detail.html?id=beagle" class="btn-view-details">
+                            VIEW DETAILS <span>&rarr;</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Breed 5: Pomeranian -->
+                <article class="animal-detail-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=85"
+                            alt="Fluffy Pomeranian toy companion" loading="lazy">
+                        <span class="care-level-badge">Toy Companion</span>
+                    </div>
+                    <div class="animal-content">
+                        <div class="card-meta">
+                            <h3>Pomeranian</h3>
+                            <span class="species-badge">LIVELY &amp; PLUSH</span>
+                        </div>
+                        <p class="animal-desc">Lively, affectionate toy dog with a luxuriant lion-like coat and sharp mind. Ideal for loving apartment life and indoor companionship.</p>
+                        <div class="animal-specs">
+                            <span><strong>Energy:</strong> Moderate</span>
+                            <span><strong>Diet:</strong> Small-Breed Nutrient</span>
+                            <span><strong>Coat:</strong> Extra Plush Double</span>
+                        </div>
+                        <a href="../pet-detail.html?id=pomeranian" class="btn-view-details">
+                            VIEW DETAILS <span>&rarr;</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Breed 6: Indie & Rescue Puppies -->
+                <article class="animal-detail-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=85"
+                            alt="Playful rescue puppy" loading="lazy">
+                        <span class="care-level-badge">Rescue &amp; Love</span>
+                    </div>
+                    <div class="animal-content">
+                        <div class="card-meta">
+                            <h3>Indie &amp; Rescue Puppies</h3>
+                            <span class="species-badge">HARDY &amp; DEVOTED</span>
+                        </div>
+                        <p class="animal-desc">Naturally resilient with supreme immunity and unconditional devotion. Give a deserving companion a lifetime of warmth and happiness.</p>
+                        <div class="animal-specs">
+                            <span><strong>Immunity:</strong> High</span>
+                            <span><strong>Diet:</strong> Wholesome Diet</span>
+                            <span><strong>Nature:</strong> Empathetic &amp; Loyal</span>
+                        </div>
+                        <a href="../pet-detail.html?id=indie-rescue" class="btn-view-details">
+                            VIEW DETAILS <span>&rarr;</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Bag Slide-out Drawer -->
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag" aria-hidden="true">
+        <div class="cart-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="cart-close" id="cartClose" aria-label="Close Shopping Bag">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-summary-line">
+                <span>Total Estimated</span>
+                <strong id="cartTotal">₹0</strong>
+            </div>
+            <p class="cart-disclaimer">Live animals reserved pending availability confirmation.</p>
+            <button class="btn btn-primary checkout-btn" id="checkoutButton" type="button">
+                Checkout / Enquire on WhatsApp &rarr;
+            </button>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a class="brand" href="../index.html" aria-label="UR-WORLD-AQUARIUM Home">
+                <img class="brand-logo"
+                    src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                    alt="UR-WORLD-AQUARIUM Official Logo" width="46" height="46" />
+                <span class="brand-text">
+                    <span class="brand-name">UR-WORLD<span class="brand-accent">-AQUARIUM</span></span>
+                    <small class="brand-tagline">PETS &amp; AQUATIC LIFESTYLE</small>
+                </span>
+            </a>
+            <p class="footer-blurb">
+                Dedicated to cherished companion animals—dogs, cats, birds, mice, small pets, and thriving freshwater aquariums.
+            </p>
+            <div class="footer-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#animals">All Collections</a>
+                <a href="../index.html#shop">Pet Shop</a>
+                <a href="../index.html#contact">Contact</a>
+                <a href="https://wa.me/919980039294" target="_blank" rel="noopener">WhatsApp (+91 99800 39294)</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; <span id="year">2026</span> UR-WORLD-AQUARIUM. All Rights Reserved.</span>
+            <div class="footer-bottom-links">
+                <span>Passionate Pet &amp; Aquatic Community</span>
+                <a href="#top" class="back-to-top">BACK TO TOP &uarr;</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../catalog-data.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
