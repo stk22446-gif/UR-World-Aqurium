@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#061B2C" id="metaThemeColor" />
+    <meta name="description"
+        content="UR-WORLD-AQURIUM — Discover your own underwater world. Explore vibrant freshwater fish, aquascaping inspiration, high-grade fish food, equipment and aquatic accessories." />
+    <meta name="keywords"
+        content="aquarium, pet lifestyle, underwater world, fish collection, aquascaping, tropical fish, aquarium accessories, Betta fish, UR-World-Aqurium" />
+    <meta property="og:title" content="UR-WORLD-AQURIUM | Discover Your Own Underwater World" />
+    <meta property="og:description"
+        content="Explore the beauty of aquatic life, nature and everything beyond with UR-WORLD-AQURIUM." />
+    <meta property="og:image"
+        content="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <meta property="og:type" content="website" />
+    
+    <title>UR-WORLD-AQURIUM | Discover Your Own Underwater World</title>
+
+    <!-- Official Brand Favicons -->
+    <link rel="icon" type="image/png"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <link rel="apple-touch-icon"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
+        rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="site-header" id="top">
+        <a class="brand" href="#home" aria-label="UR-WORLD-AQURIUM Home">
+            <img class="brand-logo"
+                src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                alt="UR-WORLD-AQURIUM Official Logo" width="46" height="46" />
+            <span class="brand-text">
+                <span class="brand-name">UR-WORLD<span class="brand-accent">-AQURIUM</span></span>
+                <small class="brand-tagline">THE WORLD BENEATH</small>
+            </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="nav" id="nav" aria-label="Main Navigation">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#fish" class="nav-link">Fish Collection</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#shop" class="nav-link">Shop</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Header Actions: Theme Switcher & Cart Bag -->
+        <div class="header-actions">
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch between dark and light mode"
+                title="Toggle Theme (Dark / Light)">
+                <span class="theme-toggle-icon sun-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+                <span class="theme-toggle-icon moon-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </span>
+                <span class="theme-label" id="themeLabel">Dark</span>
+            </button>
+
+            <!-- Cart Bag Trigger -->
+            <button class="cart-button" id="cartOpen" aria-label="Open shopping bag">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="bag-svg">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span>Bag</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section: Video Background & Cinematic Text Overlay -->
+        <section class="hero" id="home">
+            <div class="hero-video-wrap" aria-hidden="true">
+                <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata">
+                    <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1793466284/HERO_PAGE_yg0wvw.mp4" type="video/mp4">
+                </video>
+                <div class="hero-shade"></div>
+            </div>
+
+            <!-- Floating Underwater Bubbles -->
+            <div class="bubble bubble-one" aria-hidden="true"></div>
+            <div class="bubble bubble-two" aria-hidden="true"></div>
+            <div class="bubble bubble-three" aria-hidden="true"></div>
+            <div class="bubble bubble-four" aria-hidden="true"></div>
+
+            <div class="hero-content reveal">
+                <p class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    WELCOME TO UR-WORLD-AQURIUM
+                </p>
+                <h1>Discover Your Own<br> <em>Underwater World</em></h1>
+                <p class="hero-copy">
+                    Explore the beauty of aquatic life, nature and everything beyond.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#fish">
+                        Explore Our Collection
+                        <span class="arrow-icon">&rarr;</span>
+                    </a>
+                    <a class="btn btn-outline-hero" href="#gallery">
+                        Discover More
+                        <span class="arrow-icon">&nearr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="intro section-pad">
+            <div class="intro-label reveal">
+                <span class="eyebrow">A WORLD FULL OF LIFE</span>
+                <span class="line"></span>
+            </div>
+            <div class="intro-main reveal">
+                <h2>More than an aquarium.<br><em>It's a living art.</em></h2>
+                <p>
+                    From the quiet grace of freshwater fish to lush, vibrant underwater flora, every tank tells its own serene story. We bring you hand-picked aquatic species, reliable filtration, premium foods, and expert guidance to help your home sanctuary flourish.
+                </p>
+            </div>
+            <div class="stats reveal">
+                <div class="stat-card">
+                    <strong>100%</strong>
+                    <span>Healthy, quarantined fish species</span>
+                </div>
+                <div class="stat-card">
+                    <strong>500+</strong>
+                    <span>Happy aquarium owners supported</span>
+                </div>
+                <div class="stat-card">
+                    <strong>&infin;</strong>
+                    <span>Peaceful underwater moments created</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fish Collection Section -->
+        <section class="fish-section section-pad" id="fish">
+            <div class="section-heading reveal">
+                <div>
+                    <span class="eyebrow">MEET THE RESIDENTS</span>
+                    <h2>Our fish <em>collection</em></h2>
+                </div>
+                <p>Every little swimmer has its own personality, temperament, and beauty. Explore our most cherished aquatic companions.</p>
+            </div>
+
+            <div class="fish-grid">
+                <!-- Betta Splendens -->
+                <article class="fish-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=900&q=85"
+                            alt="Betta splendens Siamese fighting fish" loading="lazy">
+                        <span class="image-index">01</span>
+                        <span class="care-level-badge">Easy Care</span>
+                    </div>
+                    <div class="fish-content">
+                        <div class="card-meta">
+                            <h3>Betta splendens</h3>
+                            <span class="species-badge">THE SHOWSTOPPER</span>
+                        </div>
+                        <p class="fish-desc">Graceful flowing fins, bold iridescent colours, and a distinct, inquisitive personality. Perfect for desktop nano aquariums.</p>
+                        <div class="fish-specs">
+                            <span><strong>Temp:</strong> 24–28°C</span>
+                            <span><strong>Tank:</strong> 20L+</span>
+                            <span><strong>Temperament:</strong> Solitary</span>
+                        </div>
+                        <div class="fish-action">
+                            <button class="btn btn-sm btn-outline fish-enquire-btn" data-fish="Betta splendens (The Showstopper)">
+                                Enquire via WhatsApp &nearr;
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Neon Tetra -->
+                <article class="fish-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=900&q=85"
+                            alt="Neon Tetra fish in planted aquarium" loading="lazy">
+                        <span class="image-index">02</span>
+                        <span class="care-level-badge">Schooling</span>
+                    </div>
+                    <div class="fish-content">
+                        <div class="card-meta">
+                            <h3>Neon Tetra</h3>
+                            <span class="species-badge">THE LITTLE SPARK</span>
+                        </div>
+                        <p class="fish-desc">An electric stripe of neon blue and scarlet red that glimmers together as they school peacefully across planted tanks.</p>
+                        <div class="fish-specs">
+                            <span><strong>Temp:</strong> 22–26°C</span>
+                            <span><strong>Tank:</strong> 40L+</span>
+                            <span><strong>Temperament:</strong> Peaceful</span>
+                        </div>
+                        <div class="fish-action">
+                            <button class="btn btn-sm btn-outline fish-enquire-btn" data-fish="Neon Tetra (The Little Spark)">
+                                Enquire via WhatsApp &nearr;
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Guppy -->
+                <article class="fish-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=85"
+                            alt="Fancy colourful guppy fish" loading="lazy">
+                        <span class="image-index">03</span>
+                        <span class="care-level-badge">Beginner</span>
+                    </div>
+                    <div class="fish-content">
+                        <div class="card-meta">
+                            <h3>Fancy Guppy</h3>
+                            <span class="species-badge">THE COLOURFUL ONE</span>
+                        </div>
+                        <p class="fish-desc">Lively, hardy, and available in endless vibrant patterns and fan-tail varieties. A timeless beginner favourite.</p>
+                        <div class="fish-specs">
+                            <span><strong>Temp:</strong> 22–28°C</span>
+                            <span><strong>Tank:</strong> 30L+</span>
+                            <span><strong>Temperament:</strong> Active</span>
+                        </div>
+                        <div class="fish-action">
+                            <button class="btn btn-sm btn-outline fish-enquire-btn" data-fish="Fancy Guppy (The Colourful One)">
+                                Enquire via WhatsApp &nearr;
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p class="small-note">Availability and care specifications may vary by seasonal breeding and tank water parameters. Enquire for custom orders.</p>
+        </section>
+
+        <!-- Feature Band: Aquascaping Art -->
+        <section class="feature-band">
+            <div class="feature-photo" role="img" aria-label="Planted aquarium aquascape with lush underwater moss and driftwood"></div>
+            <div class="feature-copy reveal">
+                <span class="eyebrow">THE ART OF AQUASCAPING</span>
+                <h2>Bring nature<br>into <em>your space.</em></h2>
+                <p>
+                    Natural aquascapes blend stone, driftwood, aquatic plants, and crystal clear water into living underwater gardens. Whether you desire a calming bedside nano cube or an imposing living-room centerpiece, we help you design, set up, and sustain it.
+                </p>
+                <div class="feature-buttons">
+                    <a href="#gallery" class="text-link">Explore the gallery <span>&rarr;</span></a>
+                    <a href="#contact" class="btn btn-primary">Custom Tank Consultation <span>&nearr;</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aquarium Gallery Section -->
+        <section class="gallery-section section-pad" id="gallery">
+            <div class="section-heading reveal">
+                <div>
+                    <span class="eyebrow">A GLIMPSE BELOW THE SURFACE</span>
+                    <h2>Underwater <em>moments</em></h2>
+                </div>
+                <p>A curated look into our favorite aquatic sceneries, planted setups, and vibrant underwater life.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <figure class="gallery-item gallery-tall reveal">
+                    <img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=1000&q=85"
+                        alt="Serene aquatic planted setup" loading="lazy">
+                    <figcaption>
+                        <span class="gallery-num">01</span>
+                        <span class="gallery-title">INTO THE DEEP BLUE &middot; FRESHWATER SANCTUARY</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=900&q=85"
+                        alt="Colourful tropical fish swimming through clear water" loading="lazy">
+                    <figcaption>
+                        <span class="gallery-num">02</span>
+                        <span class="gallery-title">COLOUR IN MOTION &middot; ACTIVE SCHOOLING</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=900&q=85"
+                        alt="Peaceful underwater plant scene" loading="lazy">
+                    <figcaption>
+                        <span class="gallery-num">03</span>
+                        <span class="gallery-title">QUIET HARMONY &middot; NATURAL BOTANICAL TANK</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=900&q=85"
+                        alt="Crystal clear aquarium with fine gravel and stones" loading="lazy">
+                    <figcaption>
+                        <span class="gallery-num">04</span>
+                        <span class="gallery-title">IWAGUMI STYLE &middot; MINIMALIST HARDSCAPE</span>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1520302519878-5a4f6b3f9c7d?auto=format&fit=crop&w=900&q=85"
+                        alt="Planted aquarium detail with floating leaves" loading="lazy">
+                    <figcaption>
+                        <span class="gallery-num">05</span>
+                        <span class="gallery-title">LUSH CANOPY &middot; BIO-ACTIVE ECOSYSTEM</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Online Shop Section -->
+        <section class="shop-section section-pad" id="shop">
+            <div class="section-heading reveal">
+                <div>
+                    <span class="eyebrow">THE AQUARIUM ESSENTIALS</span>
+                    <h2>Care for your <em>little world.</em></h2>
+                </div>
+                <p>Everything you need for clean water, healthy fish nutrition, and effortless tank maintenance.</p>
+            </div>
+
+            <!-- Shop Toolbar & Category Filters -->
+            <div class="shop-toolbar">
+                <div class="filter-tabs" id="filters">
+                    <button class="active" data-filter="all">All Items</button>
+                    <button data-filter="food">Fish Food</button>
+                    <button data-filter="equipment">Equipment</button>
+                    <button data-filter="care">Water Care</button>
+                </div>
+                <div class="shop-meta-info">
+                    <span class="shop-badge-live">Direct WhatsApp Orders & Inquiries</span>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Daily Fish Flakes -->
+                <article class="product-card" data-category="food">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=700&q=80"
+                            alt="Daily Fish Flakes nutrition pack" loading="lazy">
+                        <span class="product-category-tag">FOOD</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Daily Fish Flakes</h3>
+                        <p>Complete balanced nutrition formulated with spirulina and natural carotenoids for vibrant coloration.</p>
+                        <div class="product-bottom">
+                            <strong class="product-price">₹149</strong>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="flakes" title="Add to Bag">
+                                    Add to bag +
+                                </button>
+                                <button class="product-wa-btn" data-id="flakes" title="Enquire on WhatsApp">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                                    </svg>
+                                    WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Compact Air Pump -->
+                <article class="product-card" data-category="equipment">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1520302519878-5a4f6b3f9c7d?auto=format&fit=crop&w=700&q=80"
+                            alt="Compact Air Pump for aquariums" loading="lazy">
+                        <span class="product-category-tag">EQUIPMENT</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Compact Air Pump</h3>
+                        <p>Ultra-quiet, energy-efficient aerator ensuring steady dissolved oxygen for fish and beneficial bacteria.</p>
+                        <div class="product-bottom">
+                            <strong class="product-price">₹399</strong>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="pump" title="Add to Bag">
+                                    Add to bag +
+                                </button>
+                                <button class="product-wa-btn" data-id="pump" title="Enquire on WhatsApp">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                                    </svg>
+                                    WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Water Conditioner -->
+                <article class="product-card" data-category="care">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?auto=format&fit=crop&w=700&q=80"
+                            alt="Aquarium water conditioner bottle" loading="lazy">
+                        <span class="product-category-tag">CARE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Water Conditioner</h3>
+                        <p>Instant dechlorinator that neutralizes chlorine, chloramines, and binds heavy metals during water changes.</p>
+                        <div class="product-bottom">
+                            <strong class="product-price">₹199</strong>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="conditioner" title="Add to Bag">
+                                    Add to bag +
+                                </button>
+                                <button class="product-wa-btn" data-id="conditioner" title="Enquire on WhatsApp">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                                    </svg>
+                                    WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Submersible LED Tank Light -->
+                <article class="product-card" data-category="equipment">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=700&q=80"
+                            alt="Submersible LED aquarium light" loading="lazy">
+                        <span class="product-category-tag">EQUIPMENT</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Submersible Tank Light</h3>
+                        <p>Full-spectrum crisp illumination designed to simulate tropical daylight and enhance plant photosynthesis.</p>
+                        <div class="product-bottom">
+                            <strong class="product-price">₹649</strong>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="light" title="Add to Bag">
+                                    Add to bag +
+                                </button>
+                                <button class="product-wa-btn" data-id="light" title="Enquire on WhatsApp">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                                    </svg>
+                                    WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Liquid Plant Micronutrients -->
+                <article class="product-card" data-category="care">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=700&q=80"
+                            alt="Liquid aquatic plant fertilizer" loading="lazy">
+                        <span class="product-category-tag">CARE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Plant Micronutrients</h3>
+                        <p>Essential iron, potassium, and trace minerals for deep green foliage without encouraging stubborn algae.</p>
+                        <div class="product-bottom">
+                            <strong class="product-price">₹289</strong>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="plantcare" title="Add to Bag">
+                                    Add to bag +
+                                </button>
+                                <button class="product-wa-btn" data-id="plantcare" title="Enquire on WhatsApp">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                                    </svg>
+                                    WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- High-Protein Cichlid Pellets -->
+                <article class="product-card" data-category="food">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=700&q=80"
+                            alt="High protein fish food pellets" loading="lazy">
+                        <span class="product-category-tag">FOOD</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Tropical Mini Pellets</h3>
+                        <p>Slow-sinking bite-sized pellets packed with marine protein for mid-water and bottom-dwelling aquatic life.</p>
+                        <div class="product-bottom">
+                            <strong class="product-price">₹229</strong>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="pellets" title="Add to Bag">
+                                    Add to bag +
+                                </button>
+                                <button class="product-wa-btn" data-id="pellets" title="Enquire on WhatsApp">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                                    </svg>
+                                    WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p class="small-note">Prices in INR. Orders are confirmed directly on WhatsApp to ensure live stock and local delivery options.</p>
+        </section>
+
+        <!-- Care Banner Strip -->
+        <section class="care-strip">
+            <div class="care-icon" aria-hidden="true">✦</div>
+            <div class="care-content">
+                <span class="eyebrow">A HEALTHY AQUARIUM STARTS WITH CARE</span>
+                <h2>Happy fish. Healthy water. <em>Beautiful life.</em></h2>
+            </div>
+            <a href="#contact" class="btn btn-outline">Ask an Aquarist <span>&nearr;</span></a>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section-pad" id="contact">
+            <div class="contact-left reveal">
+                <span class="eyebrow">LET'S TALK AQUARIUMS</span>
+                <h2>Have a question?<br><em>We're here to help.</em></h2>
+                <p>
+                    Looking to set up your first aquarium, order rare fish species, or replenish your care essentials? Connect directly with us on WhatsApp or send an email inquiry.
+                </p>
+
+                <!-- Official Contact Cards -->
+                <div class="contact-card-list">
+                    <!-- WhatsApp Card -->
+                    <div class="contact-channel-card">
+                        <div class="channel-icon-wrap wa-icon-wrap">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                            </svg>
+                        </div>
+                        <div class="channel-details">
+                            <span class="channel-label">Official WhatsApp</span>
+                            <a href="https://wa.me/919980039294?text=Hi%20UR-World-Aqurium!%20I%20have%20an%20enquiry%20regarding%20your%20aquarium%20products." 
+                               class="channel-value" target="_blank" rel="noopener">
+                                +91 99800 39294
+                            </a>
+                            <small class="channel-sub">Instant chat & order confirmation</small>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="contact-channel-card">
+                        <div class="channel-icon-wrap email-icon-wrap">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="channel-details">
+                            <span class="channel-label">Direct Email</span>
+                            <a href="mailto:stk22446@gmail.com" class="channel-value">
+                                stk22446@gmail.com
+                            </a>
+                            <small class="channel-sub">For partnership & bulk queries</small>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="whatsapp-link" id="whatsappLink" href="https://wa.me/919980039294?text=Hi%20UR-World-Aqurium!%20I%20have%20an%20enquiry." target="_blank" rel="noopener">
+                    <span>Chat on WhatsApp &rarr;</span>
+                </a>
+            </div>
+
+            <!-- Contact Form with functional mailto fallback -->
+            <form class="contact-form reveal" id="contactForm" novalidate>
+                <div class="form-group">
+                    <label for="contactName">Your Name</label>
+                    <input id="contactName" name="name" type="text" required placeholder="Enter your full name" autocomplete="name" />
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email Address</label>
+                    <input id="contactEmail" type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+                </div>
+                <div class="form-group">
+                    <label for="contactTopic">Topic of Interest</label>
+                    <select id="contactTopic" name="topic">
+                        <option value="General Aquarium Query">General Aquarium Query</option>
+                        <option value="Fish Collection & Stock Availability">Fish Collection & Stock Availability</option>
+                        <option value="Aquascaping & Tank Setup">Aquascaping & Tank Setup</option>
+                        <option value="Product Orders & Equipment">Product Orders & Equipment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">What would you like to know?</label>
+                    <textarea id="contactMessage" name="message" rows="4" required placeholder="Tell us what's on your mind..."></textarea>
+                </div>
+
+                <div class="form-submit-row">
+                    <button class="btn btn-primary" type="submit" id="submitFormBtn">
+                        Send Message &nearr;
+                    </button>
+                    <a class="btn btn-outline" id="mailtoFallbackLink" href="mailto:stk22446@gmail.com?subject=Inquiry%20for%20UR-World-Aqurium" style="display:none;">
+                        Open Email App Directly &nearr;
+                    </a>
+                </div>
+
+                <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+                <p class="form-note" id="formNote">
+                    Sending will open your email application addressed to <strong>stk22446@gmail.com</strong> with your message prepared.
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <a class="brand footer-brand" href="#top" aria-label="UR-WORLD-AQURIUM Back to top">
+                <img class="brand-logo"
+                    src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                    alt="UR-WORLD-AQURIUM Official Logo" width="46" height="46" />
+                <span class="brand-text">
+                    <span class="brand-name">UR-WORLD<span class="brand-accent">-AQURIUM</span></span>
+                    <small class="brand-tagline">THE WORLD BENEATH</small>
+                </span>
+            </a>
+            <p class="footer-blurb">
+                Dedicated to the aquatic lifestyle, thriving freshwater pets, and pristine natural water habitats.
+            </p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#fish">Fish Collection</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#shop">Essentials Shop</a>
+                <a href="#contact">Contact</a>
+                <a href="https://wa.me/919980039294" target="_blank" rel="noopener">WhatsApp (+91 99800 39294)</a>
+                <a href="mailto:stk22446@gmail.com">stk22446@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; <span id="year">2026</span> UR-WORLD-AQURIUM. All Rights Reserved.</span>
+            <div class="footer-bottom-links">
+                <span>Passionate Aquatic Community</span>
+                <a href="#top" class="back-to-top">BACK TO TOP &uarr;</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Drawer & Backdrop -->
+    <div class="cart-backdrop" id="cartBackdrop" aria-hidden="true"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag Drawer" aria-hidden="true">
+        <div class="cart-head">
+            <div>
+                <span class="eyebrow">YOUR SELECTION</span>
+                <h2>Shopping Bag</h2>
+            </div>
+            <button id="cartClose" aria-label="Close Shopping Bag" title="Close bag">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <div class="empty-cart-icon">🫧</div>
+                <p>Your bag is waiting for something lovely.</p>
+                <a href="#shop" class="btn btn-outline btn-sm empty-shop-btn" id="emptyShopBtn">Browse Essentials</a>
+            </div>
+        </div>
+
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total">
+                <span>Subtotal</span>
+                <strong id="cartTotal">₹0</strong>
+            </div>
+            <button class="btn btn-primary checkout-button" id="checkoutButton">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                </svg>
+                <span>Enquire & Order on WhatsApp &rarr;</span>
+            </button>
+            <p class="cart-disclaimer">
+                Orders are reviewed and confirmed on WhatsApp (+91 99800 39294) to confirm stock and local doorstep delivery.
+            </p>
+        </div>
+    </aside>
+
+    <!-- Floating Quick WhatsApp Action Button -->
+    <a href="https://wa.me/919980039294?text=Hi%20UR-World-Aqurium!%20I%20have%20an%20enquiry%20about%20your%20aquariums%20and%20fish."
+        class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat with UR-WORLD-AQURIUM on WhatsApp (+91 99800 39294)"
+        title="Chat on WhatsApp (+91 99800 39294)">
+        <div class="whatsapp-ripple"></div>
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
