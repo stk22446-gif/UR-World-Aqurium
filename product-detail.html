@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" id="metaThemeColor" />
+    <meta name="description"
+        content="UR WORLD AQUARIUM & PET SHOP — Premium Pet Food, Accessories, Habitats, and Aquatic Essentials. Your One-Stop Destination for Pets & Pet Essentials." />
+    <meta property="og:title" id="ogTitle" content="Product Details | UR WORLD AQUARIUM &amp; PET SHOP" />
+    <meta property="og:image" id="ogImage"
+        content="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <title id="productPageTitle">Product Details | UR WORLD AQUARIUM &amp; PET SHOP</title>
+
+    <link rel="icon" type="image/png"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+    <link rel="apple-touch-icon"
+        href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Preload Official Loading GIF -->
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="collection-page product-detail-body">
+    <!-- Official Website Loading Screen -->
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR WORLD AQUARIUM &amp; PET SHOP">
+        <div class="loader-content">
+            <div class="loader-media-wrap">
+                <img src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" 
+                     alt="UR-WORLD-AQUARIUM Loading Animation" 
+                     class="loader-gif" 
+                     width="150" 
+                     height="150"
+                     onerror="this.style.display='none'; var fb=document.getElementById('loaderFallback'); if(fb) fb.style.display='inline-flex';" />
+                <div id="loaderFallback" class="loader-fallback" style="display:none;" aria-hidden="true">
+                    <span class="loader-paw-pulse">🐾</span>
+                </div>
+            </div>
+            <p class="loader-text">Finding your perfect companion...</p>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="site-header" id="top">
+        <a class="brand" href="index.html" aria-label="UR-WORLD-AQUARIUM Home">
+            <img class="brand-logo"
+                src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                alt="UR-WORLD-AQUARIUM Official Logo" width="46" height="46" />
+            <span class="brand-text">
+                <span class="brand-name">UR-WORLD<span class="brand-accent">-AQUARIUM</span></span>
+                <small class="brand-tagline">PETS &amp; AQUATIC LIFESTYLE</small>
+            </span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Main Navigation">
+            <a href="index.html#home" class="nav-link">Home</a>
+            <a href="index.html#animals" class="nav-link">All Collections</a>
+            <a href="index.html#shop" class="nav-link active">Pet Shop</a>
+            <a href="index.html#reviews" class="nav-link">Reviews</a>
+            <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- Theme Mode Toggle -->
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme mode"
+                title="Switch between Dark and Light mode">
+                <span class="theme-icon" aria-hidden="true">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="12" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </span>
+                <span class="theme-label" id="themeLabel">Dark</span>
+            </button>
+
+            <!-- Shopping Bag Pill Button -->
+            <a href="cart.html" class="cart-pill-button" id="cartOpen" aria-label="Shopping Bag" title="View your shopping bag">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#087F9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bag-pill-icon" aria-hidden="true">
+                    <path d="M6 7l2-4h8l2 4"></path>
+                    <rect x="4" y="7" width="16" height="14" rx="2"></rect>
+                    <path d="M9 11a3 3 0 0 0 6 0"></path>
+                </svg>
+                <span class="bag-pill-text">Bag</span>
+                <span class="bag-pill-badge" id="cartCount">0</span>
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Top Navigation Bar & Breadcrumbs -->
+        <div class="collection-topbar">
+            <a href="index.html#shop" class="back-link" id="productBackLink">
+                &larr; <span id="backLinkLabel">Back to Pet Shop</span>
+            </a>
+            <nav class="collection-breadcrumbs" aria-label="Breadcrumb" id="breadcrumbsNav">
+                <a href="index.html">Home</a> /
+                <a href="index.html#shop">Pet Shop</a> /
+                <span id="crumbCategory">Food &amp; Accessories</span> /
+                <span id="crumbProductName">Product Details</span>
+            </nav>
+        </div>
+
+        <!-- Product Detail Section -->
+        <section class="product-detail-container">
+            <div class="product-detail-layout">
+                <!-- LEFT COLUMN: Product Image Gallery -->
+                <div class="pet-gallery-column">
+                    <div class="pet-gallery-sticky">
+                        <div class="pet-main-image-wrapper" id="mainImageWrapper">
+                            <img id="productMainImage" src="" alt="Product Photograph" class="pet-main-image" />
+                            <div class="pet-zoom-lens" id="zoomLens"></div>
+                            <span class="pet-zoom-hint">🔍 Hover image to zoom</span>
+                        </div>
+                        <!-- Thumbnails Row -->
+                        <div class="pet-thumbnails-row" id="productThumbnailsRow" role="tablist" aria-label="Product Image Thumbnails">
+                            <!-- Thumbnails injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Product Details & Actions -->
+                <div class="pet-info-column">
+                    <div>
+                        <span class="product-category-crumb" id="productCategoryLabel">Pet Supplies</span>
+                        <h1 class="product-detail-title" id="productTitle">Product Name</h1>
+                    </div>
+
+                    <!-- Price Card -->
+                    <div class="product-price-box">
+                        <div class="product-price-main" id="productPriceAmount">₹0</div>
+                        <div class="product-tax-note">Inclusive of all applicable taxes &bull; 100% Genuine Pet Product</div>
+                    </div>
+
+                    <!-- Variant / Size Section -->
+                    <div class="product-variant-section" id="productVariantSection">
+                        <div class="product-section-label-row">
+                            <span class="product-section-label">SELECT VARIANT / SIZE</span>
+                            <span class="product-variant-current-label" id="currentVariantLabel"></span>
+                        </div>
+                        <div class="product-variants-grid" id="productVariantsContainer" role="radiogroup" aria-label="Select product variant or size">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Main Action -->
+                    <div class="product-actions-grid">
+                        <button type="button" class="btn-product-add-bag" id="btnProductAddToCart">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                            <span>ADD TO BAG</span>
+                        </button>
+                        <a href="https://wa.me/919980039294" class="btn-product-wa-action" id="btnProductWhatsApp" target="_blank" rel="noopener" aria-label="Enquire about this product on WhatsApp">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                            <span>ENQUIRE ON WHATSAPP</span>
+                        </a>
+                    </div>
+
+                    <!-- Verified Quality Highlights Card -->
+                    <div class="product-features-card">
+                        <h4 class="product-features-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            Verified Quality &amp; Store Standards
+                        </h4>
+                        <ul class="product-features-list">
+                            <li><span class="product-check-icon">&#10003;</span> 100% Genuine, Authenticated Pet &amp; Aquatic Supply</li>
+                            <li><span class="product-check-icon">&#10003;</span> Non-toxic, Pet-Safe Formulations &amp; Heavy-Duty Materials</li>
+                            <li><span class="product-check-icon">&#10003;</span> Doorstep City Delivery &amp; In-Store Collection from Bengaluru Shop</li>
+                        </ul>
+                    </div>
+
+                    <!-- Description Block -->
+                    <div class="product-desc-block">
+                        <h4 class="product-desc-title">Product Description</h4>
+                        <p class="product-desc-text" id="productDescription">Loading product description...</p>
+                    </div>
+
+                    <!-- Features & Benefits List -->
+                    <div class="product-desc-block" id="productFeaturesSection" style="display:none;">
+                        <h4 class="product-desc-title">Key Highlights &amp; Care Benefits</h4>
+                        <ul class="product-features-list" id="productFeaturesList">
+                            <!-- Injected dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RELATED PRODUCTS SECTION -->
+            <section class="recommended-products-section" id="relatedProductsSection" style="margin-top: 60px;">
+                <div class="section-title-wrap">
+                    <span class="eyebrow"><span class="eyebrow-line"></span>CURATED FOR YOUR PET</span>
+                    <h2>Related Products &amp; Essentials</h2>
+                    <p style="font-size:13px; color:var(--text-secondary); margin-top:4px;">
+                        Explore matching nutrition, accessories and supplies from UR WORLD AQUARIUM &amp; PET SHOP.
+                    </p>
+                </div>
+                <div class="recommended-products-grid" id="relatedProductsGrid">
+                    <!-- Related cards injected dynamically -->
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <!-- Col 1: Brand & Business Identity -->
+                <div class="footer-col footer-col-brand">
+                    <a class="brand footer-brand" href="#top" aria-label="UR-WORLD-AQUARIUM Back to top">
+                        <img class="brand-logo"
+                            src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793463492/UR_World_Aquarium_Nature_Badge_wjfdet.png"
+                            alt="UR-WORLD-AQUARIUM Official Badge Logo" width="48" height="48" loading="lazy" />
+                        <span class="brand-text">
+                            <span class="brand-name">UR-WORLD<span class="brand-accent">-AQUARIUM</span></span>
+                            <small class="brand-tagline">PETS &amp; AQUATIC LIFESTYLE</small>
+                        </span>
+                    </a>
+                    <h3 class="footer-company-name">UR WORLD AQUARIUM &amp; PET SHOP</h3>
+                    <p class="footer-tagline">Your One-Stop Destination for Pets &amp; Pet Essentials.</p>
+                    <p class="footer-desc">
+                        A comprehensive multi-pet store offering dogs &amp; puppies, cats &amp; kittens, birds, aquarium fish, hamsters, mice &amp; small pets, pet food, tanks, and accessories.
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-nav">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#animals">All Collections</a></li>
+                        <li><a href="index.html#shop">Pet Shop</a></li>
+                        <li><a href="index.html#reviews">Reviews</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Pet Collections -->
+                <div class="footer-col footer-col-collections">
+                    <h4 class="footer-title">Pet Collections</h4>
+                    <ul class="footer-nav">
+                        <li><a href="collections/dogs.html">Dogs &amp; Puppies</a></li>
+                        <li><a href="collections/cats.html">Cats &amp; Kittens</a></li>
+                        <li><a href="collections/birds.html">Birds</a></li>
+                        <li><a href="collections/aquarium-fish.html">Aquarium Fish</a></li>
+                        <li><a href="collections/small-pets.html">Hamsters, Mice &amp; Small Pets</a></li>
+                        <li><a href="collections/other-animals.html">Other Animals</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Information -->
+                <div class="footer-col footer-col-contact">
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <a class="footer-contact-link"
+                                href="https://wa.me/919980039294?text=Hi%20UR%20WORLD%20AQUARIUM%20%26%20PET%20SHOP!%20I%20have%20an%20enquiry."
+                                target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+                                <div class="footer-contact-icon">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                        <path
+                                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z" />
+                                    </svg>
+                                </div>
+                                <div class="footer-contact-details">
+                                    <span class="footer-contact-label">WhatsApp Helpline</span>
+                                    <span class="footer-contact-val">+91 99800 39294</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="footer-contact-link" href="tel:+919980039294" aria-label="Call Store Phone">
+                                <div class="footer-contact-icon">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="footer-contact-details">
+                                    <span class="footer-contact-label">Store Phone</span>
+                                    <span class="footer-contact-val">+91 99800 39294</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="footer-contact-link" href="mailto:urworldaquapets@gmail.com"
+                                aria-label="Send Email to urworldaquapets@gmail.com">
+                                <div class="footer-contact-icon">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                        </path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="footer-contact-details">
+                                    <span class="footer-contact-label">Email Support</span>
+                                    <span class="footer-contact-val">urworldaquapets@gmail.com</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <span class="footer-copyright">&copy; <span id="year">2026</span> UR WORLD AQUARIUM &amp; PET SHOP. All Rights Reserved.</span>
+                <a href="#top" class="back-to-top" aria-label="Scroll back to top">
+                    <span>BACK TO TOP</span>
+                    <span class="back-to-top-arrow">&uarr;</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="catalog-data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Individual Product Detail Page Controller
+        (function() {
+            // 1. Resolve Product ID from URL (?id=...)
+            const urlParams = new URLSearchParams(window.location.search);
+            let prodId = urlParams.get('id') || 'dog_kibble';
+            let product = window.getProductById ? window.getProductById(prodId) : null;
+
+            if (!product && window.PRODUCTS_CATALOG) {
+                product = window.PRODUCTS_CATALOG[prodId] || window.PRODUCTS_CATALOG['dog_kibble'];
+            }
+
+            if (!product) return;
+
+            // 2. Page Titles & Meta
+            document.title = `${product.name} | UR WORLD AQUARIUM & PET SHOP`;
+            const ogTitle = document.getElementById('ogTitle');
+            if (ogTitle) ogTitle.content = `${product.name} | UR WORLD AQUARIUM & PET SHOP`;
+            const ogImage = document.getElementById('ogImage');
+            if (ogImage && product.image) ogImage.content = product.image;
+
+            // 3. Populate Header & Breadcrumbs
+            const crumbCategory = document.getElementById('crumbCategory');
+            if (crumbCategory) crumbCategory.textContent = product.categoryName || 'Pet Supplies';
+            const crumbProductName = document.getElementById('crumbProductName');
+            if (crumbProductName) crumbProductName.textContent = product.name;
+
+            const categoryLabel = document.getElementById('productCategoryLabel');
+            if (categoryLabel) categoryLabel.textContent = product.categoryName || 'Pet Supplies';
+
+            const titleEl = document.getElementById('productTitle');
+            if (titleEl) titleEl.textContent = product.name;
+
+            const priceEl = document.getElementById('productPriceAmount');
+            if (priceEl) priceEl.textContent = `₹${Number(product.price).toLocaleString('en-IN')}`;
+
+            const descEl = document.getElementById('productDescription');
+            if (descEl) descEl.textContent = product.desc;
+
+            // 4. Interactive Variant / Size Selection System
+            const variantsContainer = document.getElementById('productVariantsContainer');
+            const currentVariantLabel = document.getElementById('currentVariantLabel');
+            const variantSection = document.getElementById('productVariantSection');
+
+            let variantsList = [];
+            if (Array.isArray(product.variants) && product.variants.length > 0) {
+                variantsList = product.variants;
+            } else if (product.variant) {
+                variantsList = [{ id: 'standard', name: product.variant, price: product.price, default: true }];
+            } else {
+                variantsList = [{ id: 'standard', name: 'Standard Size', price: product.price, default: true }];
+            }
+
+            let selectedVariant = variantsList.find(v => v.default) || variantsList[0];
+
+            function updateWhatsAppLink() {
+                const waBtn = document.getElementById('btnProductWhatsApp');
+                if (!waBtn) return;
+
+                const currentPrice = selectedVariant ? selectedVariant.price : product.price;
+                const formattedPrice = `₹${Number(currentPrice).toLocaleString('en-IN')}`;
+
+                let lines = [
+                    "Hello UR WORLD AQUARIUM & PET SHOP!",
+                    "",
+                    "I am interested in this product.",
+                    "",
+                    `Product: ${product.name}`
+                ];
+
+                const hasVariants = Array.isArray(product.variants) && product.variants.length > 0;
+                if (hasVariants && selectedVariant && selectedVariant.name) {
+                    lines.push(`Variant: ${selectedVariant.name}`);
+                }
+
+                lines.push(`Price: ${formattedPrice}`);
+
+                if (product.id) {
+                    lines.push(`Product ID: ${product.id}`);
+                }
+
+                lines.push("");
+                lines.push("Please share more details about availability and purchase.");
+
+                const message = lines.join("\n");
+                waBtn.href = `https://wa.me/919980039294?text=${encodeURIComponent(message)}`;
+            }
+
+            function updateVariantUI() {
+                if (!selectedVariant) return;
+
+                if (priceEl) {
+                    priceEl.textContent = `₹${Number(selectedVariant.price).toLocaleString('en-IN')}`;
+                }
+
+                if (currentVariantLabel) {
+                    currentVariantLabel.textContent = selectedVariant.name;
+                }
+
+                if (variantsContainer) {
+                    const cards = variantsContainer.querySelectorAll('.variant-option-card');
+                    cards.forEach(card => {
+                        const isMatch = card.dataset.variantId === String(selectedVariant.id);
+                        card.classList.toggle('active', isMatch);
+                        card.setAttribute('aria-checked', isMatch ? 'true' : 'false');
+                        const badge = card.querySelector('.variant-option-badge');
+                        if (badge) {
+                            badge.style.display = isMatch ? 'inline-block' : 'none';
+                        }
+                    });
+                }
+
+                updateWhatsAppLink();
+            }
+
+            if (variantsContainer && variantsList.length > 0) {
+                variantsContainer.innerHTML = variantsList.map(v => {
+                    const isSelected = selectedVariant && String(selectedVariant.id) === String(v.id);
+                    return `
+                        <button type="button" 
+                                class="variant-option-card ${isSelected ? 'active' : ''}" 
+                                role="radio" 
+                                aria-checked="${isSelected ? 'true' : 'false'}" 
+                                data-variant-id="${v.id}"
+                                title="Select ${v.name} &bull; ₹${Number(v.price).toLocaleString('en-IN')}">
+                            <span class="variant-option-name">${v.name}</span>
+                            <span class="variant-option-price">₹${Number(v.price).toLocaleString('en-IN')}</span>
+                            <span class="variant-option-badge" style="display:${isSelected ? 'inline-block' : 'none'};">Selected</span>
+                        </button>
+                    `;
+                }).join('');
+
+                variantsContainer.querySelectorAll('.variant-option-card').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const vId = btn.dataset.variantId;
+                        const found = variantsList.find(v => String(v.id) === String(vId));
+                        if (found) {
+                            selectedVariant = found;
+                            updateVariantUI();
+                        }
+                    });
+                });
+
+                updateVariantUI();
+                if (variantSection) variantSection.style.display = 'block';
+            } else {
+                if (variantSection) variantSection.style.display = 'none';
+                updateWhatsAppLink();
+            }
+
+            // 5. Features & Highlights List
+            const featuresSection = document.getElementById('productFeaturesSection');
+            const featuresList = document.getElementById('productFeaturesList');
+            if (Array.isArray(product.features) && product.features.length > 0 && featuresSection && featuresList) {
+                featuresList.innerHTML = product.features.map(f => `
+                    <li><span class="product-check-icon">&#10003;</span> ${f}</li>
+                `).join('');
+                featuresSection.style.display = 'block';
+            }
+
+            // 6. Gallery & Thumbnails
+            const mainImg = document.getElementById('productMainImage');
+            const thumbsRow = document.getElementById('productThumbnailsRow');
+            const gallery = Array.isArray(product.gallery) && product.gallery.length > 0
+                ? product.gallery
+                : [product.image];
+
+            if (mainImg) {
+                mainImg.src = gallery[0];
+                mainImg.alt = product.name;
+            }
+
+            if (thumbsRow && gallery.length > 1) {
+                thumbsRow.innerHTML = gallery.map((imgUrl, idx) => `
+                    <button type="button" class="pet-thumbnail-btn ${idx === 0 ? 'active' : ''}" 
+                            data-index="${idx}" aria-label="View photo ${idx + 1} of ${product.name}">
+                        <img src="${imgUrl}" alt="${product.name} angle ${idx + 1}" loading="lazy" />
+                    </button>
+                `).join('');
+
+                thumbsRow.querySelectorAll('.pet-thumbnail-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idx = parseInt(btn.dataset.index, 10);
+                        if (mainImg && gallery[idx]) {
+                            mainImg.src = gallery[idx];
+                            thumbsRow.querySelectorAll('.pet-thumbnail-btn').forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                        }
+                    });
+                });
+            } else if (thumbsRow) {
+                thumbsRow.style.display = 'none';
+            }
+
+            // 7. Add to Bag Action (With Selected Variant)
+            const addBagBtn = document.getElementById('btnProductAddToCart');
+            if (addBagBtn) {
+                addBagBtn.addEventListener('click', () => {
+                    if (variantsList.length > 0 && !selectedVariant) {
+                        alert('Please choose a variant or size option before adding to bag.');
+                        return;
+                    }
+                    if (typeof window.addToCart === 'function') {
+                        window.addToCart(product.id, 1, selectedVariant);
+                    }
+                    const origHtml = addBagBtn.innerHTML;
+                    addBagBtn.innerHTML = `
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>✓ ADDED TO BAG</span>
+                    `;
+                    addBagBtn.classList.add('added-success');
+                    setTimeout(() => {
+                        addBagBtn.innerHTML = origHtml;
+                        addBagBtn.classList.remove('added-success');
+                    }, 1500);
+                });
+            }
+
+            // 10. Related / Recommended Products
+            const relatedGrid = document.getElementById('relatedProductsGrid');
+            if (relatedGrid && window.PRODUCTS_CATALOG) {
+                let relatedIds = product.related || [];
+                if (!relatedIds || relatedIds.length === 0) {
+                    // Fallback to other items in catalog
+                    relatedIds = Object.keys(window.PRODUCTS_CATALOG).filter(id => id !== product.id).slice(0, 3);
+                }
+
+                relatedGrid.innerHTML = relatedIds.map(rId => {
+                    const rProd = window.PRODUCTS_CATALOG[rId];
+                    if (!rProd) return '';
+                    return `
+                        <article class="rec-card" data-category="${rProd.category}">
+                            <div class="rec-card-media">
+                                <img src="${rProd.image}" alt="${rProd.name}" loading="lazy" class="rec-card-img">
+                            </div>
+                            <div class="rec-card-body">
+                                <h3 class="rec-title">${rProd.name}</h3>
+                                <p class="rec-desc">${rProd.desc}</p>
+                                <div class="rec-meta">
+                                    <span class="rec-price">₹${Number(rProd.price).toLocaleString('en-IN')}</span>
+                                </div>
+                                <div class="rec-actions">
+                                    <button class="btn-rec-add" data-id="${rProd.id}" type="button">
+                                        ADD TO BAG
+                                    </button>
+                                    <a class="btn-rec-details" href="product-detail.html?id=${rProd.id}">
+                                        VIEW DETAILS &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                // Bind Add to Bag for related cards
+                relatedGrid.querySelectorAll('.btn-rec-add').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = btn.dataset.id;
+                        if (id && typeof window.addToCart === 'function') {
+                            window.addToCart(id, 1);
+                            const origText = btn.textContent;
+                            btn.textContent = '✓ ADDED';
+                            btn.classList.add('added-success');
+                            setTimeout(() => {
+                                btn.textContent = origText;
+                                btn.classList.remove('added-success');
+                            }, 1200);
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
+

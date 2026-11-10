@@ -48,7 +48,7 @@ UR-WORLD-AQUARIUM is a complete premium pet and aquatic lifestyle website cateri
    - Floating quick-chat WhatsApp button with pulse animation.
 
 6. **Email & Contact Section**
-   - **Official Email**: `stk22446@gmail.com`
+   - **Official Email**: `urworldaquapets@gmail.com`
    - Multi-topic inquiry form with functional `mailto:` fallback.
 
 ---
@@ -86,4 +86,4 @@ UR-World-Aquarium/
 
 ## 📞 Official Contacts
 - **WhatsApp**: [+91 99800 39294](https://wa.me/919980039294)
-- **Email**: [stk22446@gmail.com](mailto:stk22446@gmail.com)
+- **Email**: [urworldaquapets@gmail.com](mailto:urworldaquapets@gmail.com)

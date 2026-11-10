@@ -7,107 +7,455 @@
 const PRODUCTS_CATALOG = {
   dog_kibble: {
     id: "dog_kibble",
-    name: "Nutri-Balance Dog Food (1.2kg)",
+    name: "Nutri-Balance Dog Food",
     price: 499,
     category: "dog",
-    image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=700&q=80",
-    desc: "Wholesome daily kibble with real chicken, essential proteins, and omega fatty acids for a glossy coat."
+    categoryName: "Dog Food & Nutrition",
+    image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Complete daily kibble formulated with real chicken, wholesome grains, and omega fatty acids for a glossy coat and optimal canine digestion. Specifically balanced for puppies and adult companions.",
+    variant: "1kg",
+    variants: [
+      { id: "500g", name: "500g", price: 249 },
+      { id: "1kg", name: "1kg", price: 499, default: true },
+      { id: "3kg", name: "3kg", price: 1199 },
+      { id: "5kg", name: "5kg", price: 1899 }
+    ],
+    features: [
+      "Wholesome recipe formulated with real chicken and essential protein",
+      "Omega 3 & 6 fatty acids for healthy skin and glossy coat",
+      "Optimal digestive health with prebiotics and natural fiber",
+      "Complete daily nutrition for small, medium, and active breeds"
+    ],
+    related: ["dog_leash", "pet_bowl", "pet_brush"]
   },
   dog_leash: {
     id: "dog_leash",
     name: "Reflective Harness & Leash",
     price: 349,
     category: "dog",
-    image: "https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=700&q=80",
-    desc: "Ergonomic padded harness with high-visibility reflective stitching and zinc-alloy heavy-duty safety clip."
+    categoryName: "Dog Accessories & Walking Gear",
+    image: "https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Durable padded harness with high-visibility reflective stitching and secure zinc-alloy safety clasp. Breathable mesh inner lining prevents chafing during daily walks and outdoor exercise.",
+    variant: "Medium-Large",
+    variants: [
+      { id: "sm_med", name: "Small-Medium", price: 299 },
+      { id: "med_lg", name: "Medium-Large", price: 349, default: true }
+    ],
+    features: [
+      "High-visibility 3M reflective stitching for evening safety",
+      "Breathable padded mesh chest plate to prevent throat pressure",
+      "Heavy-duty zinc-alloy safety clasp with 360-degree swivel",
+      "Quick-release snap buckles for easy fitting and adjustment"
+    ],
+    related: ["dog_kibble", "pet_bowl", "pet_brush"]
   },
   cat_food: {
     id: "cat_food",
-    name: "Gourmet Ocean Cat Food (1kg)",
+    name: "Gourmet Ocean Cat Food",
     price: 389,
     category: "cat",
-    image: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=700&q=80",
-    desc: "Delicious salmon and tuna recipe loaded with taurine, omega-3, and hairball prevention nutrients."
+    categoryName: "Cat Food & Nutrition",
+    image: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Delicious salmon and tuna recipe enriched with essential taurine, vitamins, and minerals for feline vitality. Packed with omega-3 fatty acids to reduce hairball formation and maintain a silky fur coat.",
+    variant: "1kg",
+    variants: [
+      { id: "400g", name: "400g", price: 179 },
+      { id: "1kg", name: "1kg", price: 389, default: true },
+      { id: "2kg", name: "2kg", price: 729 }
+    ],
+    features: [
+      "Real ocean fish protein (salmon & wild tuna)",
+      "Fortified with essential taurine for heart and eye health",
+      "Natural fiber blend helping minimize hairball buildup",
+      "Zero artificial preservatives and wholesome ingredients"
+    ],
+    related: ["cat_scratch", "pet_bowl", "pet_brush"]
   },
   cat_scratch: {
     id: "cat_scratch",
     name: "Sisal Scratching Post Tower",
     price: 549,
     category: "cat",
-    image: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=700&q=80",
-    desc: "Durable natural sisal rope scratching column with weighted plush base and dangling teaser ball."
+    categoryName: "Cat Furniture & Accessories",
+    image: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1513360309081-38f076278f1e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Stable wooden base wrapped in natural sisal fibers with a dangling plush bell toy to satisfy scratching instincts and protect your home furniture. Suitable for kittens and adult felines.",
+    variant: "Standard Tower (45cm)",
+    variants: [
+      { id: "compact_30cm", name: "Compact (30cm)", price: 399 },
+      { id: "standard_45cm", name: "Standard Tower (45cm)", price: 549, default: true },
+      { id: "deluxe_60cm", name: "Deluxe Tower (60cm)", price: 799 }
+    ],
+    features: [
+      "100% natural biodegradable sisal rope wrapping",
+      "Solid heavy-weighted base prevents tipping during enthusiastic play",
+      "Interactive plush bell toy stimulates hunting instincts",
+      "Helps maintain healthy claw length while protecting home upholstery"
+    ],
+    related: ["cat_food", "pet_brush", "pet_bowl"]
   },
   bird_seed: {
     id: "bird_seed",
-    name: "Exotic Bird Seed Blend (1kg)",
+    name: "Exotic Bird Seed Blend",
     price: 249,
     category: "bird",
-    image: "https://images.unsplash.com/photo-1591154669695-5f2a8d20c089?auto=format&fit=crop&w=700&q=80",
-    desc: "Triple-cleaned millet, canary seed, niger, and dried fruits for vibrant plumage and cheerful song."
+    categoryName: "Bird Food & Seeds",
+    image: "https://images.unsplash.com/photo-1591154669695-5f2a8d20c089?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1591154669695-5f2a8d20c089?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1522858547137-f1dcec554f55?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Sun-cured yellow millet, canary seed, and sunflower kernels blended for budgies, finches, and pet birds. Quad-cleaned to eliminate dust and optimize song vitality and feather radiance.",
+    variant: "1kg",
+    variants: [
+      { id: "500g", name: "500g", price: 139 },
+      { id: "1kg", name: "1kg", price: 249, default: true }
+    ],
+    features: [
+      "Triple-cleaned seeds and grains ensuring zero dust or residue",
+      "Rich in natural oils, amino acids, and essential vitamins",
+      "Encourages natural foraging and bright vibrant feather growth",
+      "Formulated for budgerigars, lovebirds, finches, and songbirds"
+    ],
+    related: ["bird_cage", "smallpet_food", "pet_bowl"]
   },
   bird_cage: {
     id: "bird_cage",
     name: "Enamelled Bird Habitat Cage",
     price: 899,
     category: "bird",
-    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=700&q=80",
-    desc: "Non-toxic powder-coated wire habitat with pull-out debris tray, dual perches, and feeder cups."
+    categoryName: "Bird Cages & Accessories",
+    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1522858547137-f1dcec554f55?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1591154669695-5f2a8d20c089?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Safe narrow wire spacing with twin feeding cups, wooden perches, and a slide-out tray for easy hygiene. Non-toxic powder-coated enamel resists rust and beak wear.",
+    variant: "Standard Duo-Perch",
+    variants: [
+      { id: "standard_duo", name: "Standard Duo-Perch", price: 899, default: true },
+      { id: "deluxe_habitat", name: "Spacious Deluxe Habitat", price: 1499 }
+    ],
+    features: [
+      "Non-toxic baked enamel finish completely safe for curious beaks",
+      "Slide-out bottom debris tray for quick, hygienic cage cleaning",
+      "Includes two natural wood perches and two clear seed/water cups",
+      "Top carry handle and safety door latch preventing accidental escapes"
+    ],
+    related: ["bird_seed", "pet_bowl", "smallpet_wheel"]
   },
   smallpet_food: {
     id: "smallpet_food",
-    name: "Hamster Gourmet Mix (800g)",
+    name: "Hamster Gourmet Mix",
     price: 219,
     category: "smallpet",
-    image: "https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=700&q=80",
-    desc: "Forage-rich blend of seeds, nuts, extruded pellets, and Timothy hay bites for small pocket pets."
+    categoryName: "Small Pets Food & Mix",
+    image: "https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1520087619250-584c0ebd4ec1?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Wholesome blend of seeds, dehydrated vegetables, extruded grains, and vitamins for active little foragers. Formulated specifically for Syrian hamsters, dwarf hamsters, and fancy mice.",
+    variant: "800g",
+    variants: [
+      { id: "400g", name: "400g", price: 129 },
+      { id: "800g", name: "800g", price: 219, default: true }
+    ],
+    features: [
+      "Varied texture stimulates natural cheek pouching and foraging behavior",
+      "Encourages healthy incisor dental wear through crunchable extrudates",
+      "Enriched with vitamins A, D3, and E for bright eyes and soft coats",
+      "Suitable for dwarf hamsters, Syrian hamsters, mice, and gerbils"
+    ],
+    related: ["smallpet_wheel", "pet_bowl", "bird_seed"]
   },
   smallpet_wheel: {
     id: "smallpet_wheel",
     name: "Silent Exercise Running Wheel",
     price: 299,
     category: "smallpet",
-    image: "https://images.unsplash.com/photo-1520087619250-584c0ebd4ec1?auto=format&fit=crop&w=700&q=80",
-    desc: "Ultra-quiet ball-bearing running wheel preventing spine curvature with solid, safe running track."
+    categoryName: "Small Pets Care & Accessories",
+    image: "https://images.unsplash.com/photo-1520087619250-584c0ebd4ec1?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1520087619250-584c0ebd4ec1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Smooth dual-ball-bearing mechanism ensuring quiet nocturnal running with a tail-safe solid running surface. Stand-mounted or cage-attachable for maximum flexibility.",
+    variant: "18cm Silent Track",
+    variants: [
+      { id: "14cm_medium", name: "14cm Medium", price: 219 },
+      { id: "18cm_silent", name: "18cm Silent Track", price: 299, default: true }
+    ],
+    features: [
+      "Ultra-quiet dual ball-bearing spin: whisper silent for night runs",
+      "Continuous solid running surface with zero pinch points or gaps",
+      "Gentle curvature promotes correct spinal posture during sprint sessions",
+      "Can be placed on cage floors via stable stand or mounted to wire bars"
+    ],
+    related: ["smallpet_food", "pet_bowl", "bird_cage"]
   },
   fish_flakes: {
     id: "fish_flakes",
     name: "Daily Tropical Fish Flakes",
     price: 149,
     category: "aquarium",
-    image: "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=700&q=80",
-    desc: "Color-enhancing premium flake formula with spirulina and shrimp meal; zero tank clouding."
+    categoryName: "Aquarium Fish Food",
+    image: "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Complete balanced nutrition formulated with natural spirulina and carotenoids for healthy immune systems and luminous scale coloration. High digestibility prevents aquarium water clouding.",
+    variant: "100g",
+    variants: [
+      { id: "50g", name: "50g", price: 89 },
+      { id: "100g", name: "100g", price: 149, default: true },
+      { id: "250g", name: "250g", price: 329 }
+    ],
+    features: [
+      "Rich in natural spirulina and Atlantic shrimp meal for vibrant colors",
+      "Easily digestible formula keeping water crystal clear and low-waste",
+      "Slow-sinking flakes accessible for top, middle, and bottom feeders",
+      "Essential vitamins and bio-active trace minerals boosting immunity"
+    ],
+    related: ["air_pump", "water_cond", "pet_bowl"]
   },
   air_pump: {
     id: "air_pump",
     name: "Compact Quiet Air Pump",
     price: 399,
     category: "aquarium",
-    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=700&q=80",
-    desc: "Whisper-quiet diaphragm air aerator with high dissolved oxygen output and anti-vibration feet."
+    categoryName: "Aquarium Equipment & Aeration",
+    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Energy-efficient aerator maintaining steady dissolved oxygen for fish and beneficial biological filtration. Rubber shock-absorbing feet dampen motor vibration for quiet operation.",
+    variant: "Single Outlet (Up to 60L)",
+    variants: [
+      { id: "single_outlet", name: "Single Outlet (Up to 60L)", price: 399, default: true },
+      { id: "dual_outlet", name: "Dual Outlet (Up to 120L)", price: 599 }
+    ],
+    features: [
+      "High-efficiency diaphragm motor producing steady micro-bubbles",
+      "Soft silicone isolation feet significantly dampening operational sound",
+      "Consumes low power while maintaining continuous oxygenation",
+      "Universal nozzle compatible with standard airline tubing and air stones"
+    ],
+    related: ["water_cond", "fish_flakes", "pet_bowl"]
   },
   water_cond: {
     id: "water_cond",
     name: "Water Conditioner & Detoxifier",
     price: 199,
     category: "aquarium",
-    image: "https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=700&q=80",
-    desc: "Instantly neutralizes chlorine, chloramines, and binds toxic heavy metals during aquarium water changes."
+    categoryName: "Aquarium Water Care",
+    image: "https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Instantly neutralizes tap water chlorine, chloramines, and binds harmful heavy metals during tank maintenance. Protects delicate fish gills and supports natural slime coat regeneration.",
+    variant: "250ml",
+    variants: [
+      { id: "100ml", name: "100ml", price: 119 },
+      { id: "250ml", name: "250ml", price: 199, default: true },
+      { id: "500ml", name: "500ml", price: 349 }
+    ],
+    features: [
+      "Instantly renders tap water safe for freshwater fish and aquatic plants",
+      "Neutralizes aggressive chlorine, chloramines, and toxic heavy metals",
+      "Aloe vera extract and colloidal polymers shield delicate gill membranes",
+      "Concentrated formula: 5ml treats up to 40 litres of fresh tap water"
+    ],
+    related: ["fish_flakes", "air_pump", "pet_bowl"]
   },
   pet_bowl: {
     id: "pet_bowl",
     name: "Non-Slip Stainless Dual Bowl",
     price: 249,
     category: "accessories",
-    image: "https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=700&q=80",
-    desc: "Removable food-grade stainless bowls encased in a heavy weighted non-slip silicone base."
+    categoryName: "Pet Feeding Accessories",
+    image: "https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Rust-proof, hygienic stainless steel food and water bowls set inside a non-skid silicone base. Removable dish inserts are dishwasher-safe and spill-resistant for dogs, cats, and small companions.",
+    variant: "Dual Medium (2 × 350ml)",
+    variants: [
+      { id: "dual_small", name: "Dual Small (2 × 250ml)", price: 199 },
+      { id: "dual_medium", name: "Dual Medium (2 × 350ml)", price: 249, default: true },
+      { id: "dual_large", name: "Dual Large (2 × 500ml)", price: 349 }
+    ],
+    features: [
+      "Food-grade corrosion-resistant stainless steel dishes",
+      "Heavy non-skid silicone base prevents bowl sliding and floor scratches",
+      "Wide raised lip catches accidental water splashes and food spills",
+      "Removable inserts for effortless daily hand washing or dishwasher cleaning"
+    ],
+    related: ["pet_brush", "dog_kibble", "cat_food"]
   },
   pet_brush: {
     id: "pet_brush",
     name: "Self-Cleaning Deshedding Brush",
     price: 229,
     category: "accessories",
-    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=700&q=80",
-    desc: "One-click retractable bristle brush gently untangling loose undercoat without scratching sensitive skin."
+    categoryName: "Pet Grooming & Care",
+    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Gentle curved bristle design removes loose fur and tangles for dogs, cats, and small pets with one-click fur release. Ergonomic soft-grip silicone handle ensures comfortable grooming sessions.",
+    variant: "Standard Retractable",
+    variants: [
+      { id: "standard_retract", name: "Standard Retractable", price: 229, default: true },
+      { id: "large_retract", name: "Large Retractable", price: 299 }
+    ],
+    features: [
+      "One-click retractable bristle button cleans trapped fur in one second",
+      "Fine bent wire bristles with rounded comfort tips to protect skin",
+      "Gently removes dead undercoat, mats, and knots without pulling",
+      "Ergonomic slip-resistant silicone grip handle reduces hand fatigue"
+    ],
+    related: ["pet_bowl", "dog_kibble", "cat_scratch"]
+  },
+  fish_bowl: {
+    id: "fish_bowl",
+    name: "Ultra-Clear Glass Fish Bowl",
+    price: 499,
+    category: "aquarium",
+    categoryName: "Aquarium Fish Bowls",
+    image: "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Classic spherical fish bowl hand-blown from crystal-clear, distortion-free thick glass. Ideal for small coldwater or betta fish setups, aquatic plants, and decorative tabletop aquascaping.",
+    variant: "10 inch",
+    variants: [
+      { id: "8inch", name: "8 inch", price: 299 },
+      { id: "10inch", name: "10 inch", price: 499, default: true },
+      { id: "12inch", name: "12 inch", price: 699 }
+    ],
+    features: [
+      "High-transmission automotive-grade crystal clear glass",
+      "Thickened rim and flat heavy base for maximum stability",
+      "Smooth polished edges ensuring safe handling and easy cleaning",
+      "Versatile design suitable for bettas, aquatic marimo balls, and planted bowls"
+    ],
+    related: ["fish_flakes", "water_cond", "air_pump"]
+  },
+  fish_tank: {
+    id: "fish_tank",
+    name: "Rimless Float-Glass Aquarium Tank",
+    price: 1799,
+    category: "aquarium",
+    categoryName: "Fish Tanks & Aquariums",
+    image: "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Modern rimless glass aquarium with diamond-polished beveled edges and high-clarity silicone joints. Engineered for tropical freshwater species, planted aquascapes, and community fish.",
+    variant: "2ft",
+    variants: [
+      { id: "1ft", name: "1ft", price: 899 },
+      { id: "2ft", name: "2ft", price: 1799, default: true },
+      { id: "3ft", name: "3ft", price: 3499 }
+    ],
+    features: [
+      "Ultra-clear low-iron float glass with over 91% optical clarity",
+      "Minimalist German silicone bonding for unobstructed panoramic view",
+      "Includes protective leveling foam mat to safeguard base pane",
+      "Standard dimensions optimized for canister filters and LED light fixtures"
+    ],
+    related: ["air_pump", "water_cond", "fish_flakes"]
+  },
+  imported_tank: {
+    id: "imported_tank",
+    name: "Imported Curved-Glass Nano Aquarium",
+    price: 2999,
+    category: "aquarium",
+    categoryName: "Imported Aquarium Systems",
+    image: "https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Seamless curved front glass corner technology offering a panoramic, distortion-free viewing experience. Fitted with integrated back filtration compartment and energy-efficient full-spectrum LED lighting.",
+    variant: "Medium",
+    variants: [
+      { id: "small", name: "Small", price: 1499 },
+      { id: "medium", name: "Medium", price: 2999, default: true },
+      { id: "large", name: "Large", price: 5499 }
+    ],
+    features: [
+      "Seamless one-piece curved front glass without silicone edge seams",
+      "Hidden multi-stage bio-filtration system concealed behind sleek partition",
+      "Touch-sensitive dual-mode LED lighting (daylight white & night-blue)",
+      "Compact plug-and-play setup perfect for modern homes and office desks"
+    ],
+    related: ["fish_tank", "fish_flakes", "water_cond"]
+  },
+  wall_tank: {
+    id: "wall_tank",
+    name: "Panoramic Wall-Mounted Aquarium",
+    price: 2499,
+    category: "aquarium",
+    categoryName: "Wall Aquarium Systems",
+    image: "https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800&q=80"
+    ],
+    desc: "Contemporary slim-profile wall aquarium that transforms living spaces into tranquil living art. Features robust brushed aluminum mounting bracket and hidden maintenance access.",
+    variant: "2ft Panoramic",
+    variants: [
+      { id: "2ft", name: "2ft Panoramic", price: 2499, default: true },
+      { id: "3ft", name: "3ft Executive", price: 4999 }
+    ],
+    features: [
+      "Heavy-duty marine-grade aluminum frame and reinforced load brackets",
+      "Ultra-slim space-saving wall profile with hidden cable channels",
+      "Internal hidden power filter and LED lighting system",
+      "Complete mounting template and masonry hardware included"
+    ],
+    related: ["fish_tank", "air_pump", "water_cond"]
   }
 };
 
@@ -218,7 +566,7 @@ const PET_BREEDS_CATALOG = {
     reservationDeposit: 2000,
     availability: "Available for Reservation • In-Store Handover",
     age: "3 Months",
-    ageOptions: ["10 Weeks", "3 Months", "4 Months"],
+    ageOptions: ["Puppy", "Adult"],
     genderOptions: ["Male", "Female"],
     defaultGender: "Male",
     healthInfo: "Dewormed, 1st 7-in-1 Vaccination Administered, Vet Health Checked & Microchipped",

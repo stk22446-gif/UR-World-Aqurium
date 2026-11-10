@@ -9,7 +9,7 @@
 // -----------------------------------------------------------------------------
 const CONFIG = {
   WHATSAPP_NUMBER: "919980039294", // Official WhatsApp: +91 99800 39294
-  CONTACT_EMAIL: "stk22446@gmail.com", // Official Contact Email
+  CONTACT_EMAIL: "urworldaquapets@gmail.com", // Official Contact Email
   THEME_STORAGE_KEY: "ur_world_theme",
   CART_STORAGE_KEY: "ur_world_cart"
 };
@@ -39,7 +39,13 @@ const products = {
 
   // Accessories
   pet_bowl: { name: "Non-Slip Stainless Dual Bowl", price: 249, category: "accessories" },
-  pet_brush: { name: "Self-Cleaning Deshedding Brush", price: 229, category: "accessories" }
+  pet_brush: { name: "Self-Cleaning Deshedding Brush", price: 229, category: "accessories" },
+
+  // Tanks & Bowls
+  fish_bowl: { name: "Ultra-Clear Glass Fish Bowl", price: 499, category: "aquarium" },
+  fish_tank: { name: "Rimless Float-Glass Aquarium Tank", price: 1799, category: "aquarium" },
+  imported_tank: { name: "Imported Curved-Glass Nano Aquarium", price: 2999, category: "aquarium" },
+  wall_tank: { name: "Panoramic Wall-Mounted Aquarium", price: 2499, category: "aquarium" }
 };
 
 // Utilities
@@ -138,23 +144,152 @@ if (menuToggle && nav) {
 }
 
 // -----------------------------------------------------------------------------
-// 4. Shop Category Filtering
+// 4. Shop Category Filtering & Combined Search System
 // -----------------------------------------------------------------------------
-const filterButtons = $$("#filters button");
+const searchInput = $("#shopSearchInput");
+const searchClearBtn = $("#shopSearchClear");
+const resetAllBtn = $("#shopResetAll");
+const filterChips = $$("#filters .filter-chip, #filters button");
 const productCards = $$(".product-card");
+const emptyState = $("#shopEmptyState");
+const emptyTitle = $("#shopEmptyTitle");
+const emptyDesc = $("#shopEmptyDesc");
+const resultsCountEl = $("#shopResultsCount");
+const clearFiltersInline = $("#btnClearFiltersInline");
+const btnResetEmpty = $("#btnResetEmpty");
+const btnEmptyWhatsApp = $("#btnEmptyWhatsApp");
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
-    button.classList.add("active");
+let currentCategory = "all";
 
-    const selectedFilter = button.dataset.filter || "all";
-    productCards.forEach((card) => {
-      const match = selectedFilter === "all" || card.dataset.category === selectedFilter;
-      card.style.display = match ? "flex" : "none";
-    });
+function applyProductFilters() {
+  const query = (searchInput ? searchInput.value : "").trim().toLowerCase();
+
+  // Toggle clear search cross button
+  if (searchClearBtn) {
+    searchClearBtn.style.display = query.length > 0 ? "inline-flex" : "none";
+  }
+
+  let visibleCount = 0;
+
+  productCards.forEach((card) => {
+    const rawCategories = (card.dataset.category || "").toLowerCase();
+    const categoriesList = rawCategories.split(/\s+/);
+
+    // Check category match
+    const matchesCategory = currentCategory === "all" || categoriesList.includes(currentCategory);
+
+    // Check search match against product title, description, category terms, and text
+    const categoryTerms = rawCategories.replace(/-/g, " ");
+    const cardText = `${card.textContent} ${categoryTerms}`.toLowerCase();
+    const matchesSearch = !query || cardText.includes(query);
+
+    const isVisible = matchesCategory && matchesSearch;
+    card.style.display = isVisible ? "flex" : "none";
+    if (isVisible) {
+      visibleCount++;
+    }
+  });
+
+  // Get active category human name
+  const activeChip = $(`#filters .filter-chip[data-filter="${currentCategory}"], #filters button[data-filter="${currentCategory}"]`);
+  const categoryName = activeChip ? activeChip.textContent.trim() : "All Items";
+
+  // Update dynamic count
+  if (resultsCountEl) {
+    if (currentCategory === "all" && !query) {
+      resultsCountEl.textContent = `Showing all ${visibleCount} products`;
+    } else if (query && currentCategory !== "all") {
+      resultsCountEl.textContent = `Found ${visibleCount} product${visibleCount === 1 ? "" : "s"} in "${categoryName}" for "${query}"`;
+    } else if (query) {
+      resultsCountEl.textContent = `Found ${visibleCount} product${visibleCount === 1 ? "" : "s"} matching "${query}"`;
+    } else {
+      resultsCountEl.textContent = `Showing ${visibleCount} product${visibleCount === 1 ? "" : "s"} in ${categoryName}`;
+    }
+  }
+
+  // Toggle inline clear button
+  if (clearFiltersInline) {
+    const hasFilter = currentCategory !== "all" || query.length > 0;
+    clearFiltersInline.style.display = hasFilter ? "inline-flex" : "none";
+  }
+
+  // Handle empty state
+  if (emptyState) {
+    if (visibleCount === 0) {
+      emptyState.style.display = "flex";
+
+      if (query && currentCategory !== "all") {
+        if (emptyTitle) emptyTitle.textContent = `No products found`;
+        if (emptyDesc) emptyDesc.textContent = `No products match "${query}" within ${categoryName}. Try clearing search or exploring all categories.`;
+      } else if (query) {
+        if (emptyTitle) emptyTitle.textContent = `No products found`;
+        if (emptyDesc) emptyDesc.textContent = `We couldn't find any products matching "${query}". Try checking your spelling or reset filters to browse all items.`;
+      } else {
+        if (emptyTitle) emptyTitle.textContent = `No products in ${categoryName} currently`;
+        if (emptyDesc) emptyDesc.textContent = `Fresh shipments are arriving soon! UR WORLD AQUARIUM & PET SHOP also provides custom orders for ${categoryName}. Connect with us on WhatsApp for availability.`;
+        if (btnEmptyWhatsApp) {
+          btnEmptyWhatsApp.href = `https://wa.me/919980039294?text=Hi%20UR%20WORLD%20AQUARIUM%20%26%20PET%20SHOP!%20I%20am%20enquiring%20about%20availability%20for%20${encodeURIComponent(categoryName)}.`;
+        }
+      }
+    } else {
+      emptyState.style.display = "none";
+    }
+  }
+}
+
+// Category chip click listeners
+filterChips.forEach((chip) => {
+  chip.addEventListener("click", () => {
+    filterChips.forEach((btn) => btn.classList.remove("active"));
+    chip.classList.add("active");
+    currentCategory = chip.dataset.filter || "all";
+    applyProductFilters();
   });
 });
+
+// Search input event (instant live search)
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    applyProductFilters();
+  });
+}
+
+// Clear search button
+if (searchClearBtn) {
+  searchClearBtn.addEventListener("click", () => {
+    if (searchInput) {
+      searchInput.value = "";
+      searchInput.focus();
+    }
+    applyProductFilters();
+  });
+}
+
+// Reset all function (resets both search and category to All Items)
+function resetAllShopFilters() {
+  if (searchInput) {
+    searchInput.value = "";
+  }
+  currentCategory = "all";
+  filterChips.forEach((btn) => {
+    if (btn.dataset.filter === "all") {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+  applyProductFilters();
+}
+
+if (resetAllBtn) {
+  resetAllBtn.addEventListener("click", resetAllShopFilters);
+}
+if (clearFiltersInline) {
+  clearFiltersInline.addEventListener("click", resetAllShopFilters);
+}
+if (btnResetEmpty) {
+  btnResetEmpty.addEventListener("click", resetAllShopFilters);
+}
 
 // -----------------------------------------------------------------------------
 // 5. Shopping Bag State & Operations
@@ -247,14 +382,17 @@ function renderCart() {
           `;
         }
 
-        const prod = products[item.id] || (window.PRODUCTS_CATALOG && window.PRODUCTS_CATALOG[item.id]);
-        const name = prod ? prod.name : item.name;
-        const price = prod ? prod.price : (item.price || 0);
+        const baseId = item.productId || (item.id && item.id.includes('__') ? item.id.split('__')[0] : item.id);
+        const prod = products[baseId] || (window.PRODUCTS_CATALOG && window.PRODUCTS_CATALOG[baseId]);
+        const name = item.name || (prod ? prod.name : "Pet Essential");
+        const price = item.price !== undefined ? item.price : (prod ? prod.price : 0);
+        const variantHtml = item.variant ? `<span class="cart-pet-meta" style="color:var(--cyan, #06b6d4); font-size:11px; margin-top:2px; display:block;">Option: <strong>${item.variant}</strong></span>` : '';
 
         return `
           <div class="cart-row">
             <div class="cart-item-details">
               <strong>${name}</strong>
+              ${variantHtml}
               <span class="cart-item-price">${formatINR(price)} each</span>
               <div class="cart-qty-controls">
                 <button class="qty-btn" data-action="decrease" data-id="${item.id}" aria-label="Decrease quantity for ${name}">-</button>
@@ -278,18 +416,51 @@ function renderCart() {
   }
 }
 
-function addToCart(productId) {
-  const prod = products[productId] || (window.PRODUCTS_CATALOG && window.PRODUCTS_CATALOG[productId]);
+function addToCart(productId, quantity = 1, variant = null) {
+  const baseId = (productId && productId.includes('__')) ? productId.split('__')[0] : productId;
+  const prod = products[baseId] || (window.PRODUCTS_CATALOG && window.PRODUCTS_CATALOG[baseId]);
   if (!prod) return;
-  const existing = cart.find((item) => item.id === productId);
+  const qtyToAdd = Math.max(1, parseInt(quantity, 10) || 1);
+
+  let cartItemId = productId;
+  let itemPrice = prod.price;
+  let variantName = "";
+
+  if (variant) {
+    if (typeof variant === "object") {
+      const varId = variant.id || variant.name;
+      cartItemId = `${baseId}__${varId}`;
+      itemPrice = variant.price !== undefined ? variant.price : prod.price;
+      variantName = variant.name || variant.label || "";
+    } else if (typeof variant === "string") {
+      cartItemId = `${baseId}__${variant}`;
+      variantName = variant;
+    }
+  }
+
+  const existing = cart.find((item) => item.id === cartItemId);
   if (existing) {
-    existing.qty += 1;
+    existing.qty += qtyToAdd;
+    if (variantName && !existing.variant) existing.variant = variantName;
+    if (itemPrice !== undefined) existing.price = itemPrice;
   } else {
-    cart.push({ id: productId, name: prod.name, price: prod.price, qty: 1 });
+    cart.push({
+      id: cartItemId,
+      productId: baseId,
+      name: prod.name,
+      variant: variantName,
+      price: itemPrice,
+      qty: qtyToAdd,
+      image: prod.image || ""
+    });
   }
   saveCart();
   renderCart();
   openCart();
+}
+
+if (typeof window !== "undefined") {
+  window.addToCart = addToCart;
 }
 
 function addLiveAnimalToCart(petData) {
@@ -439,7 +610,7 @@ document.addEventListener("click", (e) => {
   const prod = products[id] || (window.PRODUCTS_CATALOG && window.PRODUCTS_CATALOG[id]);
   if (!prod) return;
 
-  const message = `Hi UR-WORLD-AQUARIUM! I would like to enquire about:
+  const message = `Hi UR WORLD AQUARIUM & PET SHOP! I would like to enquire about:
 • Product: ${prod.name}
 • Price: ${formatINR(prod.price)}
 • Category: ${prod.category.toUpperCase()}
@@ -453,7 +624,7 @@ Please let me know if this is currently available in stock for store pickup or d
 $$(".animal-enquire-btn").forEach((button) => {
   button.addEventListener("click", () => {
     const animalName = button.dataset.animal || "Pet Companion";
-    const message = `Hi UR-WORLD-AQUARIUM! I am interested in inquiring about ${animalName}. Could you please share details on current availability, dietary care, and guidance?`;
+    const message = `Hi UR WORLD AQUARIUM & PET SHOP! I am interested in inquiring about ${animalName}. Could you please share details on current availability, dietary care, and guidance?`;
     openWhatsApp(message);
   });
 });
@@ -484,7 +655,7 @@ if (checkoutButton) {
       return sum + price * item.qty;
     }, 0);
 
-    const message = `Hi UR-WORLD-AQUARIUM! I would like to place an order / reservation enquiry for the items in my bag:
+    const message = `Hi UR WORLD AQUARIUM & PET SHOP! I would like to place an order / reservation enquiry for the items in my bag:
 
 ${itemLines}
 
@@ -509,60 +680,111 @@ if (typeof window !== "undefined") {
 }
 
 // -----------------------------------------------------------------------------
-// 8. Email Integration (stk22446@gmail.com) with Mailto Fallback
+// 8. Quick Inquiry Form (Direct WhatsApp Redirection)
 // -----------------------------------------------------------------------------
 const contactForm = $("#contactForm");
 const formFeedback = $("#formFeedback");
-const mailtoFallbackLink = $("#mailtoFallbackLink");
+const waFallbackLink = $("#waFallbackLink");
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const formData = new FormData(contactForm);
-    const name = (formData.get("name") || "").toString().trim();
-    const email = (formData.get("email") || "").toString().trim();
-    const topic = (formData.get("topic") || "Pet & Aquatic Inquiry").toString().trim();
-    const message = (formData.get("message") || "").toString().trim();
+    const nameInput = $("#contactName") || contactForm.elements["name"];
+    const phoneInput = $("#contactPhone") || contactForm.elements["phone"];
+    const categoryInput = $("#contactCategory") || contactForm.elements["category"];
+    const messageInput = $("#contactMessage") || contactForm.elements["message"];
+    const fallbackLink = $("#waFallbackLink");
+    const feedbackEl = $("#formFeedback");
 
-    if (!name || !email || !message) {
-      if (formFeedback) {
-        formFeedback.className = "form-feedback error";
-        formFeedback.textContent = "Please fill in all required fields.";
+    const name = nameInput ? nameInput.value.trim() : "";
+    const phone = phoneInput ? phoneInput.value.trim() : "";
+    const category = categoryInput ? categoryInput.value.trim() : "";
+    const message = messageInput ? messageInput.value.trim() : "";
+
+    // Clear previous inline errors
+    [nameInput, phoneInput, categoryInput, messageInput].forEach((el) => {
+      if (el) el.classList.remove("field-error");
+    });
+
+    // Validation
+    const errors = [];
+    if (!name || name.length < 2) {
+      errors.push("Please enter your name.");
+      if (nameInput) nameInput.classList.add("field-error");
+    }
+
+    const digitsOnly = phone.replace(/\D/g, "");
+    if (!phone || digitsOnly.length < 7 || !/^[0-9+()\- ]{7,20}$/.test(phone)) {
+      errors.push("Please enter a valid phone number (at least 7 to 10 digits).");
+      if (phoneInput) phoneInput.classList.add("field-error");
+    }
+
+    if (!category) {
+      errors.push("Please select an inquiry category.");
+      if (categoryInput) categoryInput.classList.add("field-error");
+    }
+
+    if (!message || message.length < 3) {
+      errors.push("Please enter your message or question.");
+      if (messageInput) messageInput.classList.add("field-error");
+    }
+
+    if (errors.length > 0) {
+      if (feedbackEl) {
+        feedbackEl.className = "form-feedback error";
+        feedbackEl.innerHTML = errors.map((err) => `<div>• ${err}</div>`).join("");
       }
       return;
     }
 
-    const subject = `[UR-WORLD-AQUARIUM Inquiry] ${topic} from ${name}`;
-    const body = `Hello UR-WORLD-AQUARIUM Team,
+    // Format WhatsApp message containing Customer Name, Phone, Category, and Message
+    const messageLines = [
+      "Hello UR WORLD AQUARIUM & PET SHOP,",
+      "",
+      "I would like to make a Quick Inquiry:",
+      `• Customer Name: ${name}`,
+      `• Phone Number: ${phone}`,
+      `• Inquiry Category: ${category}`,
+      "",
+      "Message:",
+      message,
+      "",
+      "---",
+      "Sent via UR WORLD AQUARIUM & PET SHOP Website"
+    ];
+    const fullText = messageLines.join("\n");
+    const encodedMessage = encodeURIComponent(fullText);
 
-Name: ${name}
-Email: ${email}
-Topic: ${topic}
+    // WhatsApp recipient must always be +91 99800 39294 (never customer's phone)
+    const targetRecipient = "919980039294";
+    const waUrl = `https://wa.me/${targetRecipient}?text=${encodedMessage}`;
 
-Message:
-${message}
-
----
-Sent via UR-WORLD-AQUARIUM Website Contact Form`;
-
-    const mailtoUrl = `mailto:${CONFIG.CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    // Update fallback link and display helpful instructions
-    if (mailtoFallbackLink) {
-      mailtoFallbackLink.href = mailtoUrl;
-      mailtoFallbackLink.style.display = "inline-flex";
+    // Provide fallback link if popup blocker stops auto-opening
+    if (fallbackLink) {
+      fallbackLink.href = waUrl;
+      fallbackLink.style.display = "inline-flex";
     }
 
-    if (formFeedback) {
-      formFeedback.className = "form-feedback success";
-      formFeedback.innerHTML = `Your email client is opening with your prepared message addressed to <strong>${CONFIG.CONTACT_EMAIL}</strong>. If it didn't open automatically, <a href="${mailtoUrl}" style="text-decoration: underline; font-weight: 700; color: inherit;">click here to send directly</a>.`;
+    if (feedbackEl) {
+      feedbackEl.className = "form-feedback info";
+      feedbackEl.innerHTML = `Opening WhatsApp with your pre-filled inquiry... Please review and press <strong>Send</strong> in WhatsApp. If it didn't open automatically, <a href="${waUrl}" target="_blank" rel="noopener" style="text-decoration: underline; font-weight: 700; color: inherit;">click here to launch WhatsApp</a>.`;
     }
 
-    // Trigger the mailto client
-    window.location.href = mailtoUrl;
+    // Attempt to open WhatsApp in a new tab/window
+    let waWindow = null;
+    try {
+      waWindow = window.open(waUrl, "_blank", "noopener,noreferrer");
+    } catch (err) {
+      waWindow = null;
+    }
+
+    // Fallback if window.open was blocked by the browser
+    if (!waWindow || waWindow.closed || typeof waWindow.closed === "undefined") {
+      setTimeout(() => {
+        window.location.href = waUrl;
+      }, 350);
+    }
   });
 }
 
