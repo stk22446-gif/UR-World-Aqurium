@@ -42,7 +42,8 @@
 
 <body>
     <!-- Official Website Loading Screen -->
-    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR WORLD AQUARIUM &amp; PET SHOP">
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR WORLD AQUARIUM &amp; PET SHOP"
+        style="position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; display: flex; align-items: center; justify-content: center; background-color: #000000; margin: 0; padding: 0; overflow: hidden; pointer-events: auto;">
         <div class="loader-content">
             <div class="loader-media-wrap">
                 <img src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif"
@@ -55,6 +56,27 @@
             <p class="loader-text">Finding your perfect companion...</p>
         </div>
     </div>
+    <script>
+        (function() {
+            function hideLoader() {
+                var l = document.getElementById('pageLoader');
+                if (l) {
+                    l.classList.add('loaded');
+                    l.style.opacity = '0';
+                    l.style.pointerEvents = 'none';
+                    l.style.visibility = 'hidden';
+                    setTimeout(function() { if (l) l.style.display = 'none'; }, 300);
+                }
+            }
+            if (document.readyState === 'interactive' || document.readyState === 'complete') {
+                setTimeout(hideLoader, 150);
+            } else {
+                document.addEventListener('DOMContentLoaded', function() { setTimeout(hideLoader, 150); });
+                window.addEventListener('load', function() { setTimeout(hideLoader, 100); });
+            }
+            setTimeout(hideLoader, 1000);
+        })();
+    </script>
 
     <!-- Navigation Header -->
     <header class="site-header" id="top">
@@ -213,9 +235,9 @@
                     diet, and care advice.</p>
             </div>
 
-            <div class="animal-grid">
+            <div class="animal-grid" id="animalGrid">
                 <!-- 1. Dogs -->
-                <article class="animal-card reveal">
+                <article class="animal-card visible">
                     <div class="card-image">
                         <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=900&q=85"
                             alt="Playful companion dog outdoors" loading="lazy">
@@ -242,7 +264,7 @@
                 </article>
 
                 <!-- 2. Cats -->
-                <article class="animal-card reveal">
+                <article class="animal-card visible">
                     <div class="card-image">
                         <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=85"
                             alt="Graceful domestic cat looking attentively" loading="lazy">
@@ -269,7 +291,7 @@
                 </article>
 
                 <!-- 3. Birds -->
-                <article class="animal-card reveal">
+                <article class="animal-card visible">
                     <div class="card-image">
                         <img src="https://images.unsplash.com/photo-1522858547137-f1dcec554f55?auto=format&fit=crop&w=900&q=85"
                             alt="Colourful pet bird perched comfortably" loading="lazy">
@@ -296,7 +318,7 @@
                 </article>
 
                 <!-- 4. Mice -->
-                <article class="animal-card reveal">
+                <article class="animal-card visible">
                     <div class="card-image">
                         <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=900&q=85"
                             alt="Curious pet fancy mouse" loading="lazy">
@@ -323,7 +345,7 @@
                 </article>
 
                 <!-- 5. Hamsters & Small Pets -->
-                <article class="animal-card reveal">
+                <article class="animal-card visible">
                     <div class="card-image">
                         <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=900&q=85"
                             alt="Adorable dwarf hamster eating food" loading="lazy">
@@ -350,7 +372,7 @@
                 </article>
 
                 <!-- 6. Aquarium Fish -->
-                <article class="animal-card reveal">
+                <article class="animal-card visible">
                     <div class="card-image">
                         <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=900&q=85"
                             alt="Betta splendens Siamese fighting fish in clear water" loading="lazy">
@@ -377,7 +399,7 @@
                 </article>
 
                 <!-- 7. Other Animals -->
-                <article class="animal-card reveal">
+                <article class="animal-card visible">
                     <div class="card-image">
                         <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=900&q=85"
                             alt="Gentle companion rabbit resting peacefully" loading="lazy">
@@ -409,15 +431,6 @@
 
         <!-- Online Shop Section -->
         <section class="shop-section section-pad" id="shop">
-            <div class="section-heading reveal">
-                <div>
-                    <span class="eyebrow">ESSENTIAL SUPPLIES</span>
-                    <h2>Recommended Food &amp; Accessories</h2>
-                </div>
-                <p>Everything your companion needs for a healthy, happy and comfortable life — carefully curated by UR
-                    WORLD AQUARIUM &amp; PET SHOP.</p>
-            </div>
-
             <!-- Shop Toolbar, Search & Category Filters -->
             <div class="shop-controls-wrap">
                 <!-- Full-Width Prominent Search Bar -->
@@ -473,7 +486,7 @@
 
                 <!-- Results Status Bar with Accessible Reset Control -->
                 <div class="shop-status-bar">
-                    <span class="shop-results-count" id="shopResultsCount">Showing all 13 products</span>
+                    <span class="shop-results-count" id="shopResultsCount">Showing all 17 products</span>
                     <button type="button" id="shopResetAll" class="shop-reset-btn" title="Reset search and categories">
                         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor"
                             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -642,6 +655,8 @@
                             <div class="product-btn-group">
                                 <button class="add-button" data-id="smallpet_food" title="Add to Bag">ADD TO
                                     BAG</button>
+                                <button class="add-button" data-id="smallpet_food" title="Add to Bag">ADD TO
+                                    BAG</button>
                                 <a class="btn-product-details" href="product-detail.html?id=smallpet_food"
                                     title="View Details">VIEW DETAILS &rarr;</a>
                             </div>
@@ -664,6 +679,8 @@
                                 <strong class="product-price">₹299</strong>
                             </div>
                             <div class="product-btn-group">
+                                <button class="add-button" data-id="smallpet_wheel" title="Add to Bag">ADD TO
+                                    BAG</button>
                                 <button class="add-button" data-id="smallpet_wheel" title="Add to Bag">ADD TO
                                     BAG</button>
                                 <a class="btn-product-details" href="product-detail.html?id=smallpet_wheel"
@@ -790,54 +807,132 @@
                     </div>
                 </article>
 
-                <!-- 13. General: Grooming Brush -->
-                <article class="product-card" data-category="dog-accessories cat-accessories small-pets-accessories"
-                    data-id="pet_brush">
+                <!-- 14. Aquarium: Glass Fish Bowl -->
+                <article class="product-card" data-category="fish-bowl" data-id="fish_bowl">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=700&q=80"
-                            alt="Self-cleaning pet grooming brush" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=700&q=80"
+                            alt="Ultra-Clear Glass Fish Bowl" loading="lazy">
                     </div>
                     <div class="product-info">
-                        <h3>Self-Cleaning Deshedding Brush</h3>
-                        <p>Gentle curved bristle design removes loose fur and tangles for dogs, cats, and small pets
-                            with one-click fur release.</p>
+                        <h3>Ultra-Clear Glass Fish Bowl</h3>
+                        <p>Classic spherical fish bowl hand-blown from crystal-clear, distortion-free thick glass. Ideal
+                            for small coldwater or betta fish setups.</p>
                         <div class="product-bottom">
                             <div class="product-meta-row">
-                                <strong class="product-price">₹229</strong>
+                                <strong class="product-price">₹499</strong>
                             </div>
                             <div class="product-btn-group">
-                                <button class="add-button" data-id="pet_brush" title="Add to Bag">ADD TO BAG</button>
-                                <a class="btn-product-details" href="product-detail.html?id=pet_brush"
+                                <button class="add-button" data-id="fish_bowl" title="Add to Bag">ADD TO BAG</button>
+                                <a class="btn-product-details" href="product-detail.html?id=fish_bowl"
                                     title="View Details">VIEW DETAILS &rarr;</a>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Clean Empty State for 0 Search / Category Results -->
-                <div class="shop-empty-state" id="shopEmptyState" style="display: none;">
-                    <div class="shop-empty-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            <line x1="8" y1="11" x2="14" y2="11"></line>
-                        </svg>
+                <!-- 15. Aquarium: Rimless Float-Glass Aquarium Tank -->
+                <article class="product-card" data-category="fish-tank" data-id="fish_tank">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=700&q=80"
+                            alt="Rimless Float-Glass Aquarium Tank" loading="lazy">
                     </div>
-                    <h3 class="shop-empty-title" id="shopEmptyTitle">No products found</h3>
-                    <p class="shop-empty-desc" id="shopEmptyDesc">We couldn't find any items matching your criteria.</p>
-                    <div class="shop-empty-actions">
-                        <button type="button" class="btn btn-primary" id="btnResetEmpty">
-                            Reset Filters &amp; View All
-                        </button>
-                        <a class="btn btn-outline" id="btnEmptyWhatsApp"
-                            href="https://wa.me/919980039294?text=Hi%20UR%20WORLD%20AQUARIUM%20%26%20PET%20SHOP!%20I%20am%20enquiring%20about%20custom%20tank%20and%20supplies%20availability."
-                            target="_blank" rel="noopener">
-                            Enquire on WhatsApp &nearr;
-                        </a>
+                    <div class="product-info">
+                        <h3>Rimless Float-Glass Aquarium Tank</h3>
+                        <p>Modern rimless glass aquarium with diamond-polished beveled edges and high-clarity silicone
+                            joints. Engineered for tropical freshwater species.</p>
+                        <div class="product-bottom">
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹1,799</strong>
+                            </div>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="fish_tank" title="Add to Bag">ADD TO BAG</button>
+                                <a class="btn-product-details" href="product-detail.html?id=fish_tank"
+                                    title="View Details">VIEW DETAILS &rarr;</a>
+                            </div>
+                        </div>
                     </div>
+                </article>
+
+                <!-- 16. Aquarium: Imported Curved-Glass Nano Aquarium -->
+                <article class="product-card" data-category="imported-tank" data-id="imported_tank">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=700&q=80"
+                            alt="Imported Curved-Glass Nano Aquarium" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Imported Curved-Glass Nano Aquarium</h3>
+                        <p>Seamless curved front glass corner technology offering a panoramic, distortion-free viewing
+                            experience with integrated filtration.</p>
+                        <div class="product-bottom">
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹2,999</strong>
+                            </div>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="imported_tank" title="Add to Bag">ADD TO
+                                    BAG</button>
+                                <a class="btn-product-details" href="product-detail.html?id=imported_tank"
+                                    title="View Details">VIEW DETAILS &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 17. Aquarium: Panoramic Wall-Mounted Aquarium -->
+                <article class="product-card" data-category="wall-tank" data-id="wall_tank">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=700&q=80"
+                            alt="Panoramic Wall-Mounted Aquarium" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Panoramic Wall-Mounted Aquarium</h3>
+                        <p>Contemporary slim-profile wall aquarium that transforms living spaces into tranquil living
+                            art. Features robust brushed aluminum mounting bracket.</p>
+                        <div class="product-bottom">
+                            <div class="product-meta-row">
+                                <strong class="product-price">₹2,499</strong>
+                            </div>
+                            <div class="product-btn-group">
+                                <button class="add-button" data-id="wall_tank" title="Add to Bag">ADD TO BAG</button>
+                                <a class="btn-product-details" href="product-detail.html?id=wall_tank"
+                                    title="View Details">VIEW DETAILS &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Clean Empty State for 0 Search / Category Results -->
+            <div class="shop-empty-state" id="shopEmptyState" style="display: none;">
+                <div class="shop-empty-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                </div>
+                <h3 class="shop-empty-title" id="shopEmptyTitle">No products found</h3>
+                <p class="shop-empty-desc" id="shopEmptyDesc">We couldn't find any items matching your criteria.</p>
+                <div class="shop-empty-actions">
+                    <button type="button" class="btn btn-primary" id="btnResetEmpty">
+                        Reset Filters &amp; View All
+                    </button>
+                    <a class="btn btn-outline" id="btnEmptyWhatsApp"
+                        href="https://wa.me/919980039294?text=Hi%20UR%20WORLD%20AQUARIUM%20%26%20PET%20SHOP!%20I%20am%20enquiring%20about%20custom%20tank%20and%20supplies%20availability."
+                        target="_blank" rel="noopener">
+                        Enquire on WhatsApp &nearr;
+                    </a>
                 </div>
             </div>
+
+            <!-- Shop Pagination Controls (Load More / Show Less) -->
+            <div class="shop-pagination-wrap" id="shopPaginationWrap">
+                <button type="button" class="btn-shop-load-more" id="btnShopLoadMore">
+                    LOAD MORE PRODUCTS &darr;
+                </button>
+                <button type="button" class="btn-shop-show-less" id="btnShopShowLess" style="display: none;">
+                    SHOW LESS &uarr;
+                </button>
             </div>
             <p class="small-note">Prices in INR. Orders are confirmed directly on WhatsApp to ensure availability and
                 personalized local delivery.</p>
@@ -1190,6 +1285,7 @@
     </a>
 
     <!-- Scripts -->
+    <script src="catalog-data.js"></script>
     <script src="script.js"></script>
 </body>
 

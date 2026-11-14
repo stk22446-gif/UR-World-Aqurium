@@ -31,7 +31,8 @@
 
 <body class="collection-page product-detail-body">
     <!-- Official Website Loading Screen -->
-    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR WORLD AQUARIUM &amp; PET SHOP">
+    <div id="pageLoader" class="page-loader" aria-live="polite" aria-label="Loading UR WORLD AQUARIUM &amp; PET SHOP"
+        style="position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 999999; display: flex; align-items: center; justify-content: center; background-color: #000000; margin: 0; padding: 0; overflow: hidden; pointer-events: auto;">
         <div class="loader-content">
             <div class="loader-media-wrap">
                 <img src="https://res.cloudinary.com/dfzk4sfkw/image/upload/v1793484316/Slipper_lgrerr.gif" 
@@ -213,20 +214,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- RELATED PRODUCTS SECTION -->
-            <section class="recommended-products-section" id="relatedProductsSection" style="margin-top: 60px;">
-                <div class="section-title-wrap">
-                    <span class="eyebrow"><span class="eyebrow-line"></span>CURATED FOR YOUR PET</span>
-                    <h2>Related Products &amp; Essentials</h2>
-                    <p style="font-size:13px; color:var(--text-secondary); margin-top:4px;">
-                        Explore matching nutrition, accessories and supplies from UR WORLD AQUARIUM &amp; PET SHOP.
-                    </p>
-                </div>
-                <div class="recommended-products-grid" id="relatedProductsGrid">
-                    <!-- Related cards injected dynamically -->
-                </div>
-            </section>
         </section>
     </main>
 
@@ -566,60 +553,6 @@
                         addBagBtn.innerHTML = origHtml;
                         addBagBtn.classList.remove('added-success');
                     }, 1500);
-                });
-            }
-
-            // 10. Related / Recommended Products
-            const relatedGrid = document.getElementById('relatedProductsGrid');
-            if (relatedGrid && window.PRODUCTS_CATALOG) {
-                let relatedIds = product.related || [];
-                if (!relatedIds || relatedIds.length === 0) {
-                    // Fallback to other items in catalog
-                    relatedIds = Object.keys(window.PRODUCTS_CATALOG).filter(id => id !== product.id).slice(0, 3);
-                }
-
-                relatedGrid.innerHTML = relatedIds.map(rId => {
-                    const rProd = window.PRODUCTS_CATALOG[rId];
-                    if (!rProd) return '';
-                    return `
-                        <article class="rec-card" data-category="${rProd.category}">
-                            <div class="rec-card-media">
-                                <img src="${rProd.image}" alt="${rProd.name}" loading="lazy" class="rec-card-img">
-                            </div>
-                            <div class="rec-card-body">
-                                <h3 class="rec-title">${rProd.name}</h3>
-                                <p class="rec-desc">${rProd.desc}</p>
-                                <div class="rec-meta">
-                                    <span class="rec-price">₹${Number(rProd.price).toLocaleString('en-IN')}</span>
-                                </div>
-                                <div class="rec-actions">
-                                    <button class="btn-rec-add" data-id="${rProd.id}" type="button">
-                                        ADD TO BAG
-                                    </button>
-                                    <a class="btn-rec-details" href="product-detail.html?id=${rProd.id}">
-                                        VIEW DETAILS &rarr;
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                    `;
-                }).join('');
-
-                // Bind Add to Bag for related cards
-                relatedGrid.querySelectorAll('.btn-rec-add').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const id = btn.dataset.id;
-                        if (id && typeof window.addToCart === 'function') {
-                            window.addToCart(id, 1);
-                            const origText = btn.textContent;
-                            btn.textContent = '✓ ADDED';
-                            btn.classList.add('added-success');
-                            setTimeout(() => {
-                                btn.textContent = origText;
-                                btn.classList.remove('added-success');
-                            }, 1200);
-                        }
-                    });
                 });
             }
         })();

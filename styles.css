@@ -51,6 +51,16 @@
     --wa-green: #25D366;
     --wa-green-hover: #1ebd5a;
 
+    /* Verified Health & Care Standards Card (Dark Mode Default) */
+    --health-card-bg: rgba(6, 27, 44, 0.7);
+    --health-card-border: rgba(85, 221, 235, 0.25);
+    --health-card-border-hover: rgba(85, 221, 235, 0.45);
+    --health-card-heading: #55DDEB;
+    --health-card-text: #C5DCE5;
+    --health-card-icon: #55DDEB;
+    --health-card-shadow: none;
+    --health-card-shadow-hover: 0 4px 18px rgba(0, 0, 0, 0.35);
+
     --color-scheme: dark;
 }
 
@@ -100,6 +110,16 @@
 
     --wa-green: #128C7E;
     --wa-green-hover: #075E54;
+
+    /* Verified Health & Care Standards Card (Light Mode Theme) */
+    --health-card-bg: #FFFFFF;
+    --health-card-border: #D5EAF0;
+    --health-card-border-hover: #087F9E;
+    --health-card-heading: #087F9E;
+    --health-card-text: #12394D;
+    --health-card-icon: #087F9E;
+    --health-card-shadow: 0 4px 16px rgba(18, 57, 77, 0.05);
+    --health-card-shadow-hover: 0 6px 20px rgba(8, 127, 158, 0.12);
 
     --color-scheme: light;
 }
@@ -846,6 +866,8 @@ img {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .animal-card:hover,
@@ -1469,6 +1491,7 @@ img {
 .shop-section {
     background-color: var(--bg-secondary);
     transition: background-color 0.35s ease;
+    padding-top: 60px;
 }
 
 .shop-controls-wrap {
@@ -1735,6 +1758,8 @@ img {
     border: 1px dashed rgba(85, 221, 235, 0.3);
     border-radius: 16px;
     margin: 10px 0 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 [data-theme="light"] .shop-empty-state {
@@ -1987,6 +2012,127 @@ img {
     color: #FFFFFF;
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(8, 127, 158, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Shop Pagination: Load More & Show Less System
+   -------------------------------------------------------------------------- */
+.shop-pagination-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.btn-shop-load-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 34px;
+    background: #087F9E;
+    color: #FFFFFF;
+    border: 1px solid #087F9E;
+    border-radius: 6px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(8, 127, 158, 0.35);
+    transition: all 0.25s ease;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.btn-shop-load-more:hover {
+    background: #38BDF8;
+    border-color: #38BDF8;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(56, 189, 248, 0.45);
+}
+
+.btn-shop-load-more:active {
+    transform: translateY(0);
+}
+
+.btn-shop-show-less {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 30px;
+    background: rgba(6, 27, 44, 0.6);
+    color: #55DDEB;
+    border: 1.5px solid rgba(85, 221, 235, 0.5);
+    border-radius: 6px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.btn-shop-show-less:hover {
+    background: rgba(8, 127, 158, 0.25);
+    border-color: #55DDEB;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(85, 221, 235, 0.25);
+}
+
+.btn-shop-show-less:active {
+    transform: translateY(0);
+}
+
+[data-theme="light"] .btn-shop-load-more {
+    background: #087F9E;
+    border-color: #087F9E;
+    color: #FFFFFF;
+}
+
+[data-theme="light"] .btn-shop-load-more:hover {
+    background: #0284C7;
+    border-color: #0284C7;
+}
+
+[data-theme="light"] .btn-shop-show-less {
+    background: #F0F9FF;
+    color: #087F9E;
+    border-color: #087F9E;
+}
+
+[data-theme="light"] .btn-shop-show-less:hover {
+    background: #087F9E;
+    color: #FFFFFF;
+}
+
+@media (max-width: 600px) {
+    .shop-pagination-wrap {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 26px;
+        width: 100%;
+    }
+
+    .btn-shop-load-more,
+    .btn-shop-show-less {
+        width: 100%;
+        min-height: 44px;
+        padding: 13px 20px;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -3332,8 +3478,21 @@ body.cart-open .cart-drawer {
         display: none !important;
     }
 
+    .section-pad {
+        padding: 48px 5vw;
+    }
+
+    .intro.section-pad {
+        padding: 48px 5vw 40px;
+    }
+
     .animals-section {
+        padding-top: 36px;
         padding-bottom: 40px;
+    }
+
+    .shop-section {
+        padding-top: 36px;
     }
 
     .animal-grid,
@@ -3342,23 +3501,29 @@ body.cart-open .cart-drawer {
         grid-template-columns: 1fr;
     }
 
-    /* Recommended Food & Accessories: Mobile Layout Overhaul */
+    /* Section Headings: Mobile Layout Overhaul (Animal Collections & Shop) */
+    .section-heading,
+    #animals .section-heading,
     #shop .section-heading,
     .shop-section .section-heading {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
-        gap: 10px;
+        gap: 12px;
         margin-bottom: 24px;
         width: 100%;
     }
 
+    .section-heading > div,
+    #animals .section-heading > div,
     #shop .section-heading > div,
     .shop-section .section-heading > div {
         width: 100%;
     }
 
+    .section-heading .eyebrow,
+    #animals .section-heading .eyebrow,
     #shop .section-heading .eyebrow,
     .shop-section .section-heading .eyebrow {
         margin: 0 0 6px;
@@ -3367,6 +3532,8 @@ body.cart-open .cart-drawer {
         letter-spacing: 1.6px;
     }
 
+    .section-heading h2,
+    #animals .section-heading h2,
     #shop .section-heading h2,
     .shop-section .section-heading h2 {
         font-size: clamp(26px, 7vw, 32px);
@@ -3379,12 +3546,16 @@ body.cart-open .cart-drawer {
         width: 100%;
     }
 
+    .section-heading p,
+    .section-heading > p,
+    #animals .section-heading p,
     #shop .section-heading p,
     .shop-section .section-heading p {
         font-size: 13.5px;
         line-height: 1.55;
         color: var(--text-muted);
         max-width: 100%;
+        width: 100%;
         margin: 0;
         text-align: left;
     }
@@ -3573,28 +3744,48 @@ body.cart-open .cart-drawer {
         font-weight: 800;
     }
 
-    .product-btn-group {
-        display: flex;
-        gap: 5px;
+    /* Mobile Action Buttons: Vertically Stacked, Full Width */
+    .product-btn-group,
+    .rec-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 8px !important;
+        margin-top: auto !important;
     }
 
     .product-btn-group .add-button,
-    .product-btn-group .product-wa-btn {
-        flex: 1 1 50%;
-        min-width: 0;
-        height: 32px;
-        line-height: 32px;
-        padding: 0 4px;
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.2px;
-        white-space: nowrap;
-        text-align: center;
-        border-radius: 4px;
-        box-sizing: border-box;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+    .product-btn-group .btn-product-details,
+    .rec-actions .btn-rec-add,
+    .rec-actions .btn-rec-details {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: none !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        padding: 0 10px !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.5px !important;
+        border-radius: 6px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        text-decoration: none !important;
+    }
+
+    .product-btn-group .add-button,
+    .rec-actions .btn-rec-add {
+        order: 1 !important;
+    }
+
+    .product-btn-group .btn-product-details,
+    .rec-actions .btn-rec-details {
+        order: 2 !important;
     }
 
     .collection-topbar {
@@ -3740,9 +3931,12 @@ body.cart-open .cart-drawer {
     }
 
     .product-btn-group .add-button,
-    .product-btn-group .product-wa-btn {
-        height: 36px;
-        font-size: 10px;
+    .product-btn-group .btn-product-details,
+    .rec-actions .btn-rec-add,
+    .rec-actions .btn-rec-details {
+        height: 36px !important;
+        min-height: 36px !important;
+        font-size: 10px !important;
     }
 }
 
@@ -3994,12 +4188,19 @@ body.cart-open .cart-drawer {
     box-shadow: 0 0 14px rgba(85, 221, 235, 0.35);
 }
 
-/* Health Box */
+/* Health Box (Verified Health & Care Standards) */
 .pet-health-card {
-    background: rgba(6, 27, 44, 0.7);
-    border: 1px solid rgba(85, 221, 235, 0.25);
+    background: var(--health-card-bg, rgba(6, 27, 44, 0.7));
+    border: 1px solid var(--health-card-border, rgba(85, 221, 235, 0.25));
     border-radius: 8px;
     padding: 16px 20px;
+    box-shadow: var(--health-card-shadow, none);
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pet-health-card:hover {
+    border-color: var(--health-card-border-hover, rgba(85, 221, 235, 0.45));
+    box-shadow: var(--health-card-shadow-hover, 0 4px 18px rgba(0, 0, 0, 0.35));
 }
 
 .pet-health-title {
@@ -4009,8 +4210,14 @@ body.cart-open .cart-drawer {
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.8px;
-    color: var(--bright-cyan);
+    color: var(--health-card-heading, var(--bright-cyan));
     margin: 0 0 10px;
+}
+
+.pet-health-title svg {
+    color: var(--health-card-icon, var(--bright-cyan));
+    stroke: var(--health-card-icon, var(--bright-cyan));
+    flex-shrink: 0;
 }
 
 .pet-health-list {
@@ -4024,17 +4231,53 @@ body.cart-open .cart-drawer {
 
 .pet-health-list li {
     font-size: 13px;
-    color: var(--text-secondary);
+    color: var(--health-card-text, var(--text-secondary));
     display: flex;
     align-items: baseline;
     gap: 10px;
     line-height: 1.4;
 }
 
+.pet-health-list li span {
+    color: var(--health-card-text, var(--text-secondary));
+}
+
 .check-icon {
-    color: var(--bright-cyan);
+    color: var(--health-card-icon, var(--bright-cyan));
     font-weight: 800;
     font-size: 13px;
+    flex-shrink: 0;
+}
+
+/* Light Mode Overrides for Verified Health & Care Standards */
+[data-theme="light"] .pet-health-card {
+    background: #FFFFFF;
+    border-color: #D5EAF0;
+    box-shadow: 0 4px 16px rgba(18, 57, 77, 0.05);
+}
+
+[data-theme="light"] .pet-health-card:hover {
+    border-color: #087F9E;
+    box-shadow: 0 6px 20px rgba(8, 127, 158, 0.12);
+}
+
+[data-theme="light"] .pet-health-title {
+    color: #087F9E;
+}
+
+[data-theme="light"] .pet-health-title svg {
+    color: #087F9E;
+    stroke: #087F9E;
+}
+
+[data-theme="light"] .pet-health-list li,
+[data-theme="light"] .pet-health-list li span {
+    color: #12394D;
+}
+
+[data-theme="light"] .check-icon,
+[data-theme="light"] .pet-health-card .check-icon {
+    color: #087F9E;
 }
 
 /* TWO MAIN CUSTOMER ACTIONS */
@@ -4164,14 +4407,9 @@ body.cart-open .cart-drawer {
    ============================================================================= */
 
 .recommended-products-section {
-    margin-top: 70px;
-    padding-top: 50px;
+    margin-top: 48px;
+    padding-top: 36px;
     border-top: 1px solid var(--card-border);
-}
-
-.recommended-products-section .section-title-wrap {
-    text-align: left;
-    margin-bottom: 30px;
 }
 
 .recommended-products-section .eyebrow {
@@ -4685,11 +4923,18 @@ body.cart-open .cart-drawer {
 }
 
 .product-features-card {
-    background: var(--bg-glass-card);
-    border: 1px solid var(--card-border);
+    background: var(--health-card-bg, var(--bg-glass-card));
+    border: 1px solid var(--health-card-border, var(--card-border));
     border-radius: 10px;
     padding: 22px;
     margin-bottom: 24px;
+    box-shadow: var(--health-card-shadow, none);
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-features-card:hover {
+    border-color: var(--health-card-border-hover, var(--card-border-hover));
+    box-shadow: var(--health-card-shadow-hover, 0 4px 18px rgba(0, 0, 0, 0.35));
 }
 
 .product-features-title {
@@ -4697,11 +4942,17 @@ body.cart-open .cart-drawer {
     font-weight: 700;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: var(--text-primary);
+    color: var(--health-card-heading, var(--text-primary));
     margin: 0 0 14px;
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.product-features-title svg {
+    color: var(--health-card-icon, currentColor);
+    stroke: var(--health-card-icon, currentColor);
+    flex-shrink: 0;
 }
 
 .product-features-list {
@@ -4718,14 +4969,38 @@ body.cart-open .cart-drawer {
     align-items: flex-start;
     gap: 10px;
     font-size: 13px;
-    color: var(--text-secondary);
+    color: var(--health-card-text, var(--text-secondary));
     line-height: 1.5;
 }
 
 .product-check-icon {
-    color: #55DDEB;
+    color: var(--health-card-icon, #55DDEB);
     font-weight: 700;
     flex-shrink: 0;
+}
+
+[data-theme="light"] .product-features-card {
+    background: #FFFFFF;
+    border-color: #D5EAF0;
+    box-shadow: 0 4px 16px rgba(18, 57, 77, 0.05);
+}
+
+[data-theme="light"] .product-features-card:hover {
+    border-color: #087F9E;
+    box-shadow: 0 6px 20px rgba(8, 127, 158, 0.12);
+}
+
+[data-theme="light"] .product-features-title {
+    color: #087F9E;
+}
+
+[data-theme="light"] .product-features-title svg {
+    color: #087F9E;
+    stroke: #087F9E;
+}
+
+[data-theme="light"] .product-features-list li {
+    color: #12394D;
 }
 
 [data-theme="light"] .product-check-icon {
@@ -4852,7 +5127,7 @@ body.cart-open .cart-drawer {
         font-size: 16px;
     }
     .btn-rec-add,
-    .btn-rec-enquire {
+    .btn-rec-details {
         font-size: 10px;
         height: 34px;
         padding: 0 4px;
@@ -4876,7 +5151,7 @@ body.cart-open .cart-drawer {
         min-height: auto;
     }
     .btn-rec-add,
-    .btn-rec-enquire {
+    .btn-rec-details {
         font-size: 11px;
         height: 38px;
         padding: 0 8px;
@@ -4888,25 +5163,36 @@ body.cart-open .cart-drawer {
    Website Loading Screen (Official Custom Animated GIF)
    -------------------------------------------------------------------------- */
 .page-loader {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #000000;
+    position: fixed !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #000000 !important;
     transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     pointer-events: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
 }
 
 [data-theme="light"] .page-loader {
-    background-color: #F4FAFC;
+    background-color: #F4FAFC !important;
 }
 
 .page-loader.loaded {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    display: none !important;
 }
 
 .loader-content {

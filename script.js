@@ -14,39 +14,10 @@ const CONFIG = {
   CART_STORAGE_KEY: "ur_world_cart"
 };
 
-// Official Product Catalogue across Dogs, Cats, Birds, Small Pets, Aquatics & Accessories
-const products = {
-  // Dogs
-  dog_kibble: { name: "Nutri-Balance Dog Food (1.2kg)", price: 499, category: "dog" },
-  dog_leash: { name: "Reflective Harness & Leash", price: 349, category: "dog" },
-
-  // Cats
-  cat_food: { name: "Gourmet Ocean Cat Food (1kg)", price: 389, category: "cat" },
-  cat_scratch: { name: "Sisal Scratching Post Tower", price: 549, category: "cat" },
-
-  // Birds
-  bird_seed: { name: "Exotic Bird Seed Blend (1kg)", price: 249, category: "bird" },
-  bird_cage: { name: "Enamelled Bird Habitat Cage", price: 899, category: "bird" },
-
-  // Small Pets
-  smallpet_food: { name: "Hamster Gourmet Mix (800g)", price: 219, category: "smallpet" },
-  smallpet_wheel: { name: "Silent Exercise Running Wheel", price: 299, category: "smallpet" },
-
-  // Aquarium
-  fish_flakes: { name: "Daily Tropical Fish Flakes", price: 149, category: "aquarium" },
-  air_pump: { name: "Compact Quiet Air Pump", price: 399, category: "aquarium" },
-  water_cond: { name: "Water Conditioner & Detoxifier", price: 199, category: "aquarium" },
-
-  // Accessories
-  pet_bowl: { name: "Non-Slip Stainless Dual Bowl", price: 249, category: "accessories" },
-  pet_brush: { name: "Self-Cleaning Deshedding Brush", price: 229, category: "accessories" },
-
-  // Tanks & Bowls
-  fish_bowl: { name: "Ultra-Clear Glass Fish Bowl", price: 499, category: "aquarium" },
-  fish_tank: { name: "Rimless Float-Glass Aquarium Tank", price: 1799, category: "aquarium" },
-  imported_tank: { name: "Imported Curved-Glass Nano Aquarium", price: 2999, category: "aquarium" },
-  wall_tank: { name: "Panoramic Wall-Mounted Aquarium", price: 2499, category: "aquarium" }
-};
+// Master Product Catalog sourced directly from central catalog-data.js (Single Source of Truth)
+const products = (typeof window !== "undefined" && window.PRODUCTS_CATALOG)
+  ? window.PRODUCTS_CATALOG
+  : (typeof PRODUCTS_CATALOG !== "undefined" ? PRODUCTS_CATALOG : {});
 
 // Utilities
 const $ = (selector) => document.querySelector(selector);
@@ -144,13 +115,168 @@ if (menuToggle && nav) {
 }
 
 // -----------------------------------------------------------------------------
-// 4. Shop Category Filtering & Combined Search System
+// 4. Dynamic Catalog Rendering (Single Source of Truth: catalog-data.js)
+// -----------------------------------------------------------------------------
+function renderShopProducts() {
+  const grid = document.getElementById("productGrid");
+  if (!grid) return;
+
+  const catalogProducts = (typeof window !== "undefined" && typeof window.getAllProducts === "function")
+    ? window.getAllProducts()
+    : ((typeof PRODUCTS_CATALOG !== "undefined") ? Object.values(PRODUCTS_CATALOG) : Object.values(products));
+
+  if (!catalogProducts || catalogProducts.length === 0) return;
+
+  grid.innerHTML = catalogProducts.map((p) => {
+    const filterCat = p.filterCategory || p.category || "";
+    return `
+      <article class="product-card" data-category="${filterCat}" data-id="${p.id}">
+        <div class="product-image">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
+        </div>
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <div class="product-bottom">
+            <div class="product-meta-row">
+              <strong class="product-price">${formatINR(p.price)}</strong>
+            </div>
+            <div class="product-btn-group">
+              <button class="add-button" data-id="${p.id}" title="Add to Bag">ADD TO BAG</button>
+              <a class="btn-product-details" href="product-detail.html?id=${p.id}" title="View Details">VIEW DETAILS &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  applyProductFilters();
+}
+
+function renderAnimalCollections() {
+  const grid = document.getElementById("animalGrid") || document.querySelector(".animal-grid");
+  if (!grid || !document.getElementById("animals")) return;
+
+  // If grid already contains all animal collection cards in HTML, ensure they are visible
+  const existingCards = (typeof grid.querySelectorAll === "function") ? grid.querySelectorAll(".animal-card") : [];
+  if (existingCards && existingCards.length >= 6) {
+    existingCards.forEach((card) => {
+      card.classList.add("visible");
+      card.style.opacity = "1";
+      card.style.visibility = "visible";
+      card.style.display = "flex";
+    });
+    return;
+  }
+
+  const categories = (typeof window !== "undefined" && typeof window.getAllCategories === "function")
+    ? window.getAllCategories()
+    : ((typeof CATEGORIES_METADATA !== "undefined") ? Object.values(CATEGORIES_METADATA) : []);
+
+  if (!categories || categories.length === 0) return;
+
+  grid.innerHTML = categories.map((cat) => {
+    const specsHtml = (cat.specs || []).map(s => `<span><strong>${s.label}:</strong> ${s.val}</span>`).join("\n                            ");
+    return `
+      <article class="animal-card visible">
+        <div class="card-image">
+          <img src="${cat.image}" alt="${cat.cardTitle || cat.name}" loading="lazy">
+          <span class="image-index">${cat.index}</span>
+        </div>
+        <div class="animal-content">
+          <div class="card-meta">
+            <h3>${cat.cardTitle || cat.name}</h3>
+            <span class="species-badge">${cat.badge}</span>
+          </div>
+          <p class="animal-desc">${cat.cardDesc || cat.subheading}</p>
+          <div class="animal-specs">
+            ${specsHtml}
+          </div>
+          <div class="animal-action">
+            <a class="btn-explore-collection" href="${cat.collectionUrl}">
+              VIEW COLLECTION <span>&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderCollectionGrid() {
+  const grid = document.getElementById("collectionGrid") || document.querySelector(".collection-grid");
+  if (!grid) return;
+
+  let catId = grid.dataset.category;
+  if (!catId) {
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes("dogs")) catId = "dogs";
+    else if (path.includes("cats")) catId = "cats";
+    else if (path.includes("birds")) catId = "birds";
+    else if (path.includes("mice")) catId = "mice";
+    else if (path.includes("small-pets")) catId = "small-pets";
+    else if (path.includes("aquarium-fish")) catId = "aquarium-fish";
+    else if (path.includes("other-animals")) catId = "other-animals";
+  }
+
+  if (!catId) return;
+
+  const pets = (typeof window !== "undefined" && typeof window.getPetsByCategory === "function")
+    ? window.getPetsByCategory(catId)
+    : ((typeof getPetsByCategory === "function") ? getPetsByCategory(catId) : []);
+
+  if (!pets || pets.length === 0) return;
+
+  const isCollectionsDir = window.location.pathname.includes("/collections/") || window.location.pathname.includes("\\collections\\");
+  const petDetailHrefPrefix = isCollectionsDir ? "../pet-detail.html?id=" : "pet-detail.html?id=";
+
+  grid.innerHTML = pets.map((pet) => {
+    const chars = pet.characteristics || {};
+    const specs = [];
+    if (chars.energy || chars.energyLevel) specs.push(`<span><strong>Energy:</strong> ${chars.energy || chars.energyLevel}</span>`);
+    if (chars.lifespan) specs.push(`<span><strong>Lifespan:</strong> ${chars.lifespan}</span>`);
+    if (chars.diet) specs.push(`<span><strong>Diet:</strong> ${chars.diet}</span>`);
+    if (chars.coat) specs.push(`<span><strong>Coat:</strong> ${chars.coat}</span>`);
+    if (chars.temperament && specs.length < 3) specs.push(`<span><strong>Nature:</strong> ${chars.temperament}</span>`);
+    if (chars.tankSize) specs.push(`<span><strong>Tank:</strong> ${chars.tankSize}</span>`);
+    if (chars.waterTemp) specs.push(`<span><strong>Temp:</strong> ${chars.waterTemp}</span>`);
+    if (chars.housing) specs.push(`<span><strong>Housing:</strong> ${chars.housing}</span>`);
+    const displaySpecs = specs.slice(0, 3).join("\n                            ");
+
+    const badgeLabel = pet.badge || (chars.temperament ? chars.temperament.split(",")[0].trim().toUpperCase() : "FAMILY COMPANION");
+
+    return `
+      <article class="animal-detail-card">
+        <div class="card-image">
+          <img src="${(pet.gallery && pet.gallery[0]) ? pet.gallery[0] : ''}" alt="${pet.name}" loading="lazy">
+          <span class="care-level-badge">${pet.badge || "Family Favourite"}</span>
+        </div>
+        <div class="animal-content">
+          <div class="card-meta">
+            <h3>${pet.name}</h3>
+            <span class="species-badge">${badgeLabel.toUpperCase()}</span>
+          </div>
+          <p class="animal-desc">${pet.tagline || pet.description}</p>
+          <div class="animal-specs">
+            ${displaySpecs}
+          </div>
+          <a href="${petDetailHrefPrefix}${pet.id}" class="btn-view-details">
+            VIEW DETAILS <span>&rarr;</span>
+          </a>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+// -----------------------------------------------------------------------------
+// 4b. Shop Category Filtering, Combined Search & Load More Pagination System
 // -----------------------------------------------------------------------------
 const searchInput = $("#shopSearchInput");
 const searchClearBtn = $("#shopSearchClear");
 const resetAllBtn = $("#shopResetAll");
 const filterChips = $$("#filters .filter-chip, #filters button");
-const productCards = $$(".product-card");
 const emptyState = $("#shopEmptyState");
 const emptyTitle = $("#shopEmptyTitle");
 const emptyDesc = $("#shopEmptyDesc");
@@ -159,19 +285,54 @@ const clearFiltersInline = $("#btnClearFiltersInline");
 const btnResetEmpty = $("#btnResetEmpty");
 const btnEmptyWhatsApp = $("#btnEmptyWhatsApp");
 
+const PRODUCTS_PER_PAGE = 8;
+let visibleProductLimit = PRODUCTS_PER_PAGE;
 let currentCategory = "all";
 
+function updatePaginationControls(totalMatching, currentlyShown) {
+  const paginationWrap = document.getElementById("shopPaginationWrap");
+  const btnLoadMore = document.getElementById("btnShopLoadMore");
+  const btnShowLess = document.getElementById("btnShopShowLess");
+
+  if (!paginationWrap || !btnLoadMore || !btnShowLess) return;
+
+  // Requirement 5: Do not show the button when 8 or fewer matching products exist.
+  if (totalMatching <= PRODUCTS_PER_PAGE) {
+    paginationWrap.style.display = "none";
+    btnLoadMore.style.display = "none";
+    btnShowLess.style.display = "none";
+    return;
+  }
+
+  paginationWrap.style.display = "flex";
+
+  // Requirement 2 & 5: Automatically hide Load More when all matching products are displayed.
+  if (currentlyShown < totalMatching) {
+    btnLoadMore.style.display = "inline-flex";
+  } else {
+    btnLoadMore.style.display = "none";
+  }
+
+  // Requirement 3: Once additional products are displayed, show a "SHOW LESS ↑" option.
+  if (visibleProductLimit > PRODUCTS_PER_PAGE) {
+    btnShowLess.style.display = "inline-flex";
+  } else {
+    btnShowLess.style.display = "none";
+  }
+}
+
 function applyProductFilters() {
-  const query = (searchInput ? searchInput.value : "").trim().toLowerCase();
+  const query = (searchInput && searchInput.value ? searchInput.value : "").trim().toLowerCase();
 
   // Toggle clear search cross button
   if (searchClearBtn) {
     searchClearBtn.style.display = query.length > 0 ? "inline-flex" : "none";
   }
 
-  let visibleCount = 0;
+  const cards = Array.from(document.querySelectorAll("#productGrid .product-card"));
+  const matchingCards = [];
 
-  productCards.forEach((card) => {
+  cards.forEach((card) => {
     const rawCategories = (card.dataset.category || "").toLowerCase();
     const categoriesList = rawCategories.split(/\s+/);
 
@@ -183,27 +344,53 @@ function applyProductFilters() {
     const cardText = `${card.textContent} ${categoryTerms}`.toLowerCase();
     const matchesSearch = !query || cardText.includes(query);
 
-    const isVisible = matchesCategory && matchesSearch;
-    card.style.display = isVisible ? "flex" : "none";
-    if (isVisible) {
-      visibleCount++;
+    if (matchesCategory && matchesSearch) {
+      matchingCards.push(card);
     }
   });
 
+  const totalMatching = matchingCards.length;
+
+  // Display only up to visibleProductLimit matching cards, hide the rest
+  cards.forEach((card) => {
+    const matchIndex = matchingCards.indexOf(card);
+    if (matchIndex !== -1 && matchIndex < visibleProductLimit) {
+      card.style.display = "flex";
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  const currentlyShown = Math.min(visibleProductLimit, totalMatching);
+
   // Get active category human name
   const activeChip = $(`#filters .filter-chip[data-filter="${currentCategory}"], #filters button[data-filter="${currentCategory}"]`);
-  const categoryName = activeChip ? activeChip.textContent.trim() : "All Items";
+  const categoryName = (activeChip && activeChip.textContent) ? activeChip.textContent.trim() : "All Items";
 
   // Update dynamic count
   if (resultsCountEl) {
-    if (currentCategory === "all" && !query) {
-      resultsCountEl.textContent = `Showing all ${visibleCount} products`;
-    } else if (query && currentCategory !== "all") {
-      resultsCountEl.textContent = `Found ${visibleCount} product${visibleCount === 1 ? "" : "s"} in "${categoryName}" for "${query}"`;
-    } else if (query) {
-      resultsCountEl.textContent = `Found ${visibleCount} product${visibleCount === 1 ? "" : "s"} matching "${query}"`;
+    if (totalMatching === 0) {
+      resultsCountEl.textContent = `0 products found`;
+    } else if (totalMatching <= PRODUCTS_PER_PAGE) {
+      if (currentCategory === "all" && !query) {
+        resultsCountEl.textContent = `Showing all ${totalMatching} products`;
+      } else if (query && currentCategory !== "all") {
+        resultsCountEl.textContent = `Found ${totalMatching} product${totalMatching === 1 ? "" : "s"} in "${categoryName}" for "${query}"`;
+      } else if (query) {
+        resultsCountEl.textContent = `Found ${totalMatching} product${totalMatching === 1 ? "" : "s"} matching "${query}"`;
+      } else {
+        resultsCountEl.textContent = `Showing ${totalMatching} product${totalMatching === 1 ? "" : "s"} in ${categoryName}`;
+      }
     } else {
-      resultsCountEl.textContent = `Showing ${visibleCount} product${visibleCount === 1 ? "" : "s"} in ${categoryName}`;
+      if (currentCategory === "all" && !query) {
+        resultsCountEl.textContent = `Showing ${currentlyShown} of ${totalMatching} products`;
+      } else if (query && currentCategory !== "all") {
+        resultsCountEl.textContent = `Showing ${currentlyShown} of ${totalMatching} products in "${categoryName}" for "${query}"`;
+      } else if (query) {
+        resultsCountEl.textContent = `Showing ${currentlyShown} of ${totalMatching} products matching "${query}"`;
+      } else {
+        resultsCountEl.textContent = `Showing ${currentlyShown} of ${totalMatching} products in ${categoryName}`;
+      }
     }
   }
 
@@ -214,9 +401,10 @@ function applyProductFilters() {
   }
 
   // Handle empty state
-  if (emptyState) {
-    if (visibleCount === 0) {
-      emptyState.style.display = "flex";
+  const curEmptyState = document.getElementById("shopEmptyState") || emptyState;
+  if (curEmptyState) {
+    if (totalMatching === 0) {
+      curEmptyState.style.display = "flex";
 
       if (query && currentCategory !== "all") {
         if (emptyTitle) emptyTitle.textContent = `No products found`;
@@ -232,24 +420,31 @@ function applyProductFilters() {
         }
       }
     } else {
-      emptyState.style.display = "none";
+      curEmptyState.style.display = "none";
     }
   }
+
+  // Update Pagination Controls
+  updatePaginationControls(totalMatching, currentlyShown);
 }
 
 // Category chip click listeners
-filterChips.forEach((chip) => {
-  chip.addEventListener("click", () => {
-    filterChips.forEach((btn) => btn.classList.remove("active"));
-    chip.classList.add("active");
-    currentCategory = chip.dataset.filter || "all";
-    applyProductFilters();
+if (filterChips && typeof filterChips.forEach === "function") {
+  filterChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      filterChips.forEach((btn) => btn.classList.remove("active"));
+      chip.classList.add("active");
+      currentCategory = chip.dataset.filter || "all";
+      visibleProductLimit = PRODUCTS_PER_PAGE;
+      applyProductFilters();
+    });
   });
-});
+}
 
 // Search input event (instant live search)
 if (searchInput) {
   searchInput.addEventListener("input", () => {
+    visibleProductLimit = PRODUCTS_PER_PAGE;
     applyProductFilters();
   });
 }
@@ -261,6 +456,7 @@ if (searchClearBtn) {
       searchInput.value = "";
       searchInput.focus();
     }
+    visibleProductLimit = PRODUCTS_PER_PAGE;
     applyProductFilters();
   });
 }
@@ -271,13 +467,16 @@ function resetAllShopFilters() {
     searchInput.value = "";
   }
   currentCategory = "all";
-  filterChips.forEach((btn) => {
-    if (btn.dataset.filter === "all") {
-      btn.classList.add("active");
-    } else {
-      btn.classList.remove("active");
-    }
-  });
+  if (filterChips && typeof filterChips.forEach === "function") {
+    filterChips.forEach((btn) => {
+      if (btn.dataset.filter === "all") {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+  }
+  visibleProductLimit = PRODUCTS_PER_PAGE;
   applyProductFilters();
 }
 
@@ -289,6 +488,28 @@ if (clearFiltersInline) {
 }
 if (btnResetEmpty) {
   btnResetEmpty.addEventListener("click", resetAllShopFilters);
+}
+
+// Shop Load More & Show Less Buttons
+const btnShopLoadMore = document.getElementById("btnShopLoadMore");
+const btnShopShowLess = document.getElementById("btnShopShowLess");
+
+if (btnShopLoadMore) {
+  btnShopLoadMore.addEventListener("click", () => {
+    visibleProductLimit += PRODUCTS_PER_PAGE;
+    applyProductFilters();
+  });
+}
+
+if (btnShopShowLess) {
+  btnShopShowLess.addEventListener("click", () => {
+    visibleProductLimit = PRODUCTS_PER_PAGE;
+    applyProductFilters();
+    const shopEl = document.getElementById("shop");
+    if (shopEl) {
+      shopEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
 }
 
 // -----------------------------------------------------------------------------
@@ -809,15 +1030,17 @@ $$(".reveal").forEach((el) => revealObserver.observe(el));
 // 10. Hero Video Autoplay Assurance
 // -----------------------------------------------------------------------------
 const heroVideo = $("#heroVideo");
-if (heroVideo) {
+if (heroVideo && typeof heroVideo.play === "function") {
   heroVideo.muted = true;
   heroVideo.defaultMuted = true;
 
   const playPromise = heroVideo.play();
-  if (playPromise !== undefined) {
+  if (playPromise !== undefined && typeof playPromise.catch === "function") {
     playPromise.catch(() => {
       const startVideoOnInteraction = () => {
-        heroVideo.play().catch(() => {});
+        if (heroVideo && typeof heroVideo.play === "function") {
+          heroVideo.play().catch(() => {});
+        }
         window.removeEventListener("touchstart", startVideoOnInteraction);
         window.removeEventListener("scroll", startVideoOnInteraction);
         window.removeEventListener("click", startVideoOnInteraction);
@@ -1023,6 +1246,9 @@ function initGoogleReviewsSlider() {
 // -----------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
+  renderShopProducts();
+  renderAnimalCollections();
+  renderCollectionGrid();
   renderCart();
   initGoogleReviewsSlider();
 
@@ -1041,23 +1267,33 @@ function dismissPageLoader() {
   if (!loader.classList.contains("loaded")) {
     loader.classList.add("loaded");
   }
+  loader.style.opacity = "0";
+  loader.style.pointerEvents = "none";
+  loader.style.visibility = "hidden";
+  setTimeout(() => {
+    if (loader) {
+      loader.style.display = "none";
+    }
+  }, 350);
 }
 
-// Automatically dismiss as soon as the page finishes loading
-if (document.readyState === "complete") {
-  dismissPageLoader();
+// Automatically dismiss as soon as the DOM is interactive; do not wait on heavy video buffer
+if (document.readyState === "interactive" || document.readyState === "complete") {
+  setTimeout(dismissPageLoader, 150);
 } else {
-  window.addEventListener("load", dismissPageLoader);
   document.addEventListener("DOMContentLoaded", () => {
-    // Fast dismissal if assets are already cached
-    setTimeout(dismissPageLoader, 200);
+    setTimeout(dismissPageLoader, 150);
   });
+  window.addEventListener("load", dismissPageLoader);
 }
 
-// Safety fallback timeout: never block interaction if an external asset is slow
-setTimeout(dismissPageLoader, 3500);
+// Safety fallback timeout: never block interaction or remain stuck
+setTimeout(dismissPageLoader, 1200);
 
-// Run theme and cart setup immediately in case DOM is already parsed
+// Run theme, dynamic catalog renders, and cart setup immediately in case DOM is already parsed
 initTheme();
+renderShopProducts();
+renderAnimalCollections();
+renderCollectionGrid();
 renderCart();
 initGoogleReviewsSlider();
