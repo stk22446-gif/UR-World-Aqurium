@@ -159,6 +159,16 @@
                         </div>
                     </div>
 
+                    <!-- Options: Variant / Size / Strain Selection -->
+                    <div class="pet-option-group" id="variantSelectionGroup" style="display:none;">
+                        <label class="pet-option-label">
+                            SELECT VARIANT / SIZE <span class="verified-tag">&#10003; Selected</span>
+                        </label>
+                        <div class="pet-pill-options" id="variantPillContainer">
+                            <!-- Variant pills dynamically injected -->
+                        </div>
+                    </div>
+
                     <!-- Options: Gender Selection -->
                     <div class="pet-option-group" id="genderSelectionGroup">
                         <label class="pet-option-label">
@@ -419,10 +429,43 @@
             // 4. Fill Header & Meta
             document.getElementById('petName').textContent = pet.name;
             document.getElementById('petBreed').textContent = pet.breed;
-            document.getElementById('petPrice').textContent = `₹${Number(pet.price).toLocaleString('en-IN')}`;
-            document.getElementById('petDeposit').innerHTML = `Reservation Deposit: <strong>₹${Number(pet.reservationDeposit || 2000).toLocaleString('en-IN')}</strong> to reserve this companion.`;
             document.getElementById('petDescription').textContent = pet.description;
             document.getElementById('petHealthDetail').textContent = pet.healthInfo || 'Dewormed & Core Vaccinations Administered';
+
+            const isEnquiry = pet.isEnquiry || pet.price === 0;
+            const priceEl = document.getElementById('petPrice');
+            const depositEl = document.getElementById('petDeposit');
+            const btnAddToBag = document.getElementById('btnAddToBag');
+            const btnWhatsApp = document.getElementById('btnWhatsAppEnquiry');
+
+            let selectedVariant = null;
+            if (Array.isArray(pet.variants) && pet.variants.length > 0) {
+                selectedVariant = pet.variants.find(v => v.default) || pet.variants[0];
+            }
+
+            function updatePricingDisplay() {
+                if (isEnquiry) {
+                    if (priceEl) priceEl.textContent = 'Enquire for Price';
+                    if (depositEl) depositEl.style.display = 'none';
+                    if (btnAddToBag) btnAddToBag.style.display = 'none';
+                    if (btnWhatsApp) {
+                        btnWhatsApp.style.flex = '1 1 100%';
+                        btnWhatsApp.style.justifyContent = 'center';
+                    }
+                } else {
+                    const currentPrice = selectedVariant ? selectedVariant.price : pet.price;
+                    const unitSuffix = pet.unit ? ` (${pet.unit})` : '';
+                    if (priceEl) priceEl.textContent = `₹${Number(currentPrice).toLocaleString('en-IN')}${unitSuffix}`;
+                    
+                    const depositVal = pet.reservationDeposit || Math.round(currentPrice * 0.2) || 1000;
+                    if (depositEl) {
+                        depositEl.style.display = 'block';
+                        depositEl.innerHTML = `Reservation Deposit: <strong>₹${Number(depositVal).toLocaleString('en-IN')}</strong> to reserve this companion pending in-store handover.`;
+                    }
+                    if (btnAddToBag) btnAddToBag.style.display = 'inline-flex';
+                }
+            }
+            updatePricingDisplay();
 
             // 5. Image Gallery & Zoom
             const mainImg = document.getElementById('petMainImage');
@@ -466,7 +509,38 @@
                 });
             }
 
-            // 6. Interactive Gender Selection
+            // 6. Interactive Variant / Size Selection
+            const variantGroup = document.getElementById('variantSelectionGroup');
+            const variantContainer = document.getElementById('variantPillContainer');
+            if (Array.isArray(pet.variants) && pet.variants.length > 0 && variantGroup && variantContainer) {
+                variantGroup.style.display = 'block';
+                variantContainer.innerHTML = pet.variants.map((v) => {
+                    const isActive = selectedVariant && String(selectedVariant.id) === String(v.id);
+                    return `
+                        <button type="button" class="pet-option-pill ${isActive ? 'active' : ''}" data-variant-id="${v.id}">
+                            ${v.name} &bull; ₹${Number(v.price).toLocaleString('en-IN')}
+                        </button>
+                    `;
+                }).join('');
+
+                variantContainer.querySelectorAll('.pet-option-pill').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const vId = btn.dataset.variantId;
+                        const found = pet.variants.find(v => String(v.id) === String(vId));
+                        if (found) {
+                            selectedVariant = found;
+                            variantContainer.querySelectorAll('.pet-option-pill').forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            updatePricingDisplay();
+                            updateWhatsAppMessage();
+                        }
+                    });
+                });
+            } else if (variantGroup) {
+                variantGroup.style.display = 'none';
+            }
+
+            // 7. Interactive Gender Selection
             let selectedGender = pet.defaultGender || (pet.genderOptions && pet.genderOptions[0]) || 'Male';
             const genderContainer = document.getElementById('genderPillContainer');
             if (pet.genderOptions && pet.genderOptions.length > 0) {
@@ -488,7 +562,7 @@
                 document.getElementById('genderSelectionGroup').style.display = 'none';
             }
 
-            // 7. Age Selection
+            // 8. Age Selection
             let selectedAge = pet.age || '3 Months';
             const ageContainer = document.getElementById('agePillContainer');
             const ageOptions = pet.ageOptions || [pet.age];
@@ -507,7 +581,7 @@
                 });
             });
 
-            // 8. Key Specs Grid
+            // 9. Key Specs Grid
             const specsGrid = document.getElementById('petSpecsGrid');
             if (pet.characteristics) {
                 specsGrid.innerHTML = Object.entries(pet.characteristics).map(([key, val]) => `
@@ -518,40 +592,60 @@
                 `).join('');
             }
 
-            // 9. Two Main Customer Actions: WhatsApp Enquiry & Add to Bag
-            const btnWhatsApp = document.getElementById('btnWhatsAppEnquiry');
+            // 10. WhatsApp Enquiry Message Generator
             function updateWhatsAppMessage() {
-                const message = `Hi UR WORLD AQUARIUM & PET SHOP! I would like to inquire about reserving:
-• Companion: ${pet.name}
-• Breed / Species: ${pet.breed}
-• Selected Gender: ${selectedGender}
-• Age: ${selectedAge}
-• Price / Reservation: ₹${Number(pet.price).toLocaleString('en-IN')}
-
-Could you please confirm current availability, vaccination documentation, and the handover / adoption procedure? Thank you!`;
+                let message = `Hi UR WORLD AQUARIUM & PET SHOP! I would like to inquire about reserving:\n`;
+                message += `• Companion: ${pet.name}\n`;
+                message += `• Breed / Species: ${pet.breed}\n`;
+                if (selectedVariant && selectedVariant.name) {
+                    message += `• Selected Variant / Size: ${selectedVariant.name}\n`;
+                }
+                if (pet.genderOptions && pet.genderOptions.length > 0) {
+                    message += `• Selected Gender: ${selectedGender}\n`;
+                }
+                if (pet.ageOptions && pet.ageOptions.length > 0) {
+                    message += `• Age / Stage: ${selectedAge}\n`;
+                }
+                if (isEnquiry) {
+                    message += `• Pricing: Enquire for Price / Live Availability\n\n`;
+                    message += `Could you please confirm current availability, pricing, health records, and store handover procedure? Thank you!`;
+                } else {
+                    const currentPrice = selectedVariant ? selectedVariant.price : pet.price;
+                    message += `• Price: ₹${Number(currentPrice).toLocaleString('en-IN')}${pet.unit ? ` (${pet.unit})` : ''}\n\n`;
+                    message += `Could you please confirm current availability, vaccination/health records, and store handover / adoption procedure? Thank you!`;
+                }
                 btnWhatsApp.href = `https://wa.me/919980039294?text=${encodeURIComponent(message)}`;
             }
             updateWhatsAppMessage();
 
-            // Action 1: Add to Bag
-            const btnAddToBag = document.getElementById('btnAddToBag');
-            btnAddToBag.addEventListener('click', function() {
-                if (typeof window.addLiveAnimalToCart === 'function') {
-                    window.addLiveAnimalToCart({
-                        id: `live_${pet.id}_${selectedGender.toLowerCase().replace(/\s+/g, '_')}`,
-                        petId: pet.id,
-                        name: `${pet.name} (${selectedGender}, ${selectedAge})`,
-                        breed: pet.breed,
-                        category: pet.category,
-                        gender: selectedGender,
-                        age: selectedAge,
-                        price: pet.price,
-                        deposit: pet.reservationDeposit || 2000,
-                        isLiveAnimal: true,
-                        image: pet.gallery ? pet.gallery[0] : ''
-                    });
-                }
-            });
+            // 11. Add to Bag (Only for priced items)
+            if (btnAddToBag) {
+                btnAddToBag.addEventListener('click', function() {
+                    if (isEnquiry) {
+                        alert('This companion is available via WhatsApp enquiry. Please click "ENQUIRE ON WHATSAPP" to check availability and pricing.');
+                        return;
+                    }
+                    if (typeof window.addLiveAnimalToCart === 'function') {
+                        const currentPrice = selectedVariant ? selectedVariant.price : pet.price;
+                        const depositVal = pet.reservationDeposit || Math.round(currentPrice * 0.2) || 1000;
+                        const variantSuffix = selectedVariant ? ` - ${selectedVariant.name}` : '';
+                        window.addLiveAnimalToCart({
+                            id: `live_${pet.id}_${(selectedVariant ? selectedVariant.id : 'std')}_${selectedGender.toLowerCase().replace(/\s+/g, '_')}`,
+                            petId: pet.id,
+                            name: `${pet.name}${variantSuffix}`,
+                            breed: pet.breed,
+                            category: pet.category,
+                            gender: selectedGender,
+                            age: selectedAge,
+                            variant: selectedVariant ? selectedVariant.name : '',
+                            price: currentPrice,
+                            deposit: depositVal,
+                            isLiveAnimal: true,
+                            image: pet.gallery ? pet.gallery[0] : ''
+                        });
+                    }
+                });
+            }
 
             // 10. Recommended Food & Accessories
             const recGrid = document.getElementById('recommendedProductsGrid');

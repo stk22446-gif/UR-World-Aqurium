@@ -363,6 +363,8 @@
             const crumbProductName = document.getElementById('crumbProductName');
             if (crumbProductName) crumbProductName.textContent = product.name;
 
+            const isEnquiry = product.isEnquiry || product.price === 0;
+
             const categoryLabel = document.getElementById('productCategoryLabel');
             if (categoryLabel) categoryLabel.textContent = product.categoryName || 'Pet Supplies';
 
@@ -370,7 +372,17 @@
             if (titleEl) titleEl.textContent = product.name;
 
             const priceEl = document.getElementById('productPriceAmount');
-            if (priceEl) priceEl.textContent = `₹${Number(product.price).toLocaleString('en-IN')}`;
+            function renderMainPrice(currentPrice) {
+                if (!priceEl) return;
+                if (isEnquiry) {
+                    priceEl.textContent = 'Enquire for Price';
+                } else if (product.mrp && product.mrp > currentPrice) {
+                    priceEl.innerHTML = `<span class="product-mrp-strike" style="text-decoration: line-through; opacity: 0.65; margin-right: 10px; font-size: 0.8em; font-weight: 500;">MRP ₹${Number(product.mrp).toLocaleString('en-IN')}</span><span>₹${Number(currentPrice).toLocaleString('en-IN')}</span>`;
+                } else {
+                    priceEl.textContent = `₹${Number(currentPrice).toLocaleString('en-IN')}`;
+                }
+            }
+            renderMainPrice(product.price);
 
             const descEl = document.getElementById('productDescription');
             if (descEl) descEl.textContent = product.desc;
@@ -403,15 +415,20 @@
                     "",
                     "I am interested in this product.",
                     "",
-                    `Product: ${product.name}`
+                    `Product: ${product.name}`,
+                    `Category: ${product.categoryName || 'Pet Supplies'}`
                 ];
 
                 const hasVariants = Array.isArray(product.variants) && product.variants.length > 0;
                 if (hasVariants && selectedVariant && selectedVariant.name) {
-                    lines.push(`Variant: ${selectedVariant.name}`);
+                    lines.push(`Variant / Size: ${selectedVariant.name}`);
                 }
 
-                lines.push(`Price: ${formattedPrice}`);
+                if (isEnquiry) {
+                    lines.push(`Status: Enquiry for Price / Custom Quantity`);
+                } else {
+                    lines.push(`Price: ${formattedPrice}`);
+                }
 
                 if (product.id) {
                     lines.push(`Product ID: ${product.id}`);
@@ -427,9 +444,7 @@
             function updateVariantUI() {
                 if (!selectedVariant) return;
 
-                if (priceEl) {
-                    priceEl.textContent = `₹${Number(selectedVariant.price).toLocaleString('en-IN')}`;
-                }
+                renderMainPrice(selectedVariant.price);
 
                 if (currentVariantLabel) {
                     currentVariantLabel.textContent = selectedVariant.name;
@@ -451,7 +466,7 @@
                 updateWhatsAppLink();
             }
 
-            if (variantsContainer && variantsList.length > 0) {
+            if (variantsContainer && variantsList.length > 0 && !isEnquiry) {
                 variantsContainer.innerHTML = variantsList.map(v => {
                     const isSelected = selectedVariant && String(selectedVariant.id) === String(v.id);
                     return `
@@ -530,9 +545,17 @@
                 thumbsRow.style.display = 'none';
             }
 
-            // 7. Add to Bag Action (With Selected Variant)
+            // 7. Add to Bag Action (With Selected Variant) & WhatsApp styling
             const addBagBtn = document.getElementById('btnProductAddToCart');
-            if (addBagBtn) {
+            const waActionBtn = document.getElementById('btnProductWhatsApp');
+
+            if (isEnquiry) {
+                if (addBagBtn) addBagBtn.style.display = 'none';
+                if (waActionBtn) {
+                    waActionBtn.style.flex = '1 1 100%';
+                    waActionBtn.style.justifyContent = 'center';
+                }
+            } else if (addBagBtn) {
                 addBagBtn.addEventListener('click', () => {
                     if (variantsList.length > 0 && !selectedVariant) {
                         alert('Please choose a variant or size option before adding to bag.');

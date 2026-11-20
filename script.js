@@ -129,6 +129,31 @@ function renderShopProducts() {
 
   grid.innerHTML = catalogProducts.map((p) => {
     const filterCat = p.filterCategory || p.category || "";
+    const isEnquiry = p.isEnquiry || p.price === 0;
+
+    let priceHtml = "";
+    if (isEnquiry) {
+      priceHtml = `<strong class="product-price">Enquire for Price</strong>`;
+    } else if (p.mrp && p.mrp > p.price) {
+      priceHtml = `<span class="product-mrp-strike">MRP ₹${p.mrp}</span><strong class="product-price">${formatINR(p.price)}</strong>`;
+    } else {
+      priceHtml = `<strong class="product-price">${formatINR(p.price)}</strong>`;
+    }
+
+    let actionButtonsHtml = "";
+    if (isEnquiry) {
+      const waEnquiryText = encodeURIComponent(`Hi UR WORLD AQUARIUM & PET SHOP! I would like to enquire about: ${p.name}. Could you please share pricing and availability?`);
+      actionButtonsHtml = `
+        <a class="btn-shop-enquire" href="https://wa.me/919980039294?text=${waEnquiryText}" target="_blank" rel="noopener" title="Enquire on WhatsApp">ENQUIRE</a>
+        <a class="btn-product-details" href="product-detail.html?id=${p.id}" title="View Details">VIEW DETAILS &rarr;</a>
+      `;
+    } else {
+      actionButtonsHtml = `
+        <button class="add-button" data-id="${p.id}" title="Add to Bag">ADD TO BAG</button>
+        <a class="btn-product-details" href="product-detail.html?id=${p.id}" title="View Details">VIEW DETAILS &rarr;</a>
+      `;
+    }
+
     return `
       <article class="product-card" data-category="${filterCat}" data-id="${p.id}">
         <div class="product-image">
@@ -139,11 +164,10 @@ function renderShopProducts() {
           <p>${p.desc}</p>
           <div class="product-bottom">
             <div class="product-meta-row">
-              <strong class="product-price">${formatINR(p.price)}</strong>
+              ${priceHtml}
             </div>
             <div class="product-btn-group">
-              <button class="add-button" data-id="${p.id}" title="Add to Bag">ADD TO BAG</button>
-              <a class="btn-product-details" href="product-detail.html?id=${p.id}" title="View Details">VIEW DETAILS &rarr;</a>
+              ${actionButtonsHtml}
             </div>
           </div>
         </div>
@@ -246,6 +270,18 @@ function renderCollectionGrid() {
 
     const badgeLabel = pet.badge || (chars.temperament ? chars.temperament.split(",")[0].trim().toUpperCase() : "FAMILY COMPANION");
 
+    let priceSnippet = "";
+    if (pet.isEnquiry || pet.price === 0) {
+      priceSnippet = `<div class="animal-card-price"><span class="price-val">Enquire for Price</span></div>`;
+    } else if (pet.variants && pet.variants.length > 1) {
+      const minPrice = Math.min(...pet.variants.map(v => v.price));
+      const unitText = pet.unit ? ` (${pet.unit})` : '';
+      priceSnippet = `<div class="animal-card-price"><span class="price-prefix">From</span> <span class="price-val">₹${minPrice.toLocaleString('en-IN')}</span> <span class="price-unit">${unitText}</span></div>`;
+    } else {
+      const unitText = pet.unit ? ` (${pet.unit})` : '';
+      priceSnippet = `<div class="animal-card-price"><span class="price-val">₹${Number(pet.price).toLocaleString('en-IN')}</span> <span class="price-unit">${unitText}</span></div>`;
+    }
+
     return `
       <article class="animal-detail-card">
         <div class="card-image">
@@ -261,6 +297,7 @@ function renderCollectionGrid() {
           <div class="animal-specs">
             ${displaySpecs}
           </div>
+          ${priceSnippet}
           <a href="${petDetailHrefPrefix}${pet.id}" class="btn-view-details">
             VIEW DETAILS <span>&rarr;</span>
           </a>
@@ -641,6 +678,13 @@ function addToCart(productId, quantity = 1, variant = null) {
   const baseId = (productId && productId.includes('__')) ? productId.split('__')[0] : productId;
   const prod = products[baseId] || (window.PRODUCTS_CATALOG && window.PRODUCTS_CATALOG[baseId]);
   if (!prod) return;
+
+  if (prod.isEnquiry || prod.price === 0) {
+    const waText = encodeURIComponent(`Hi UR WORLD AQUARIUM & PET SHOP! I would like to enquire about: ${prod.name}. Could you please share pricing and availability?`);
+    window.open(`https://wa.me/919980039294?text=${waText}`, '_blank', 'noopener,noreferrer');
+    return;
+  }
+
   const qtyToAdd = Math.max(1, parseInt(quantity, 10) || 1);
 
   let cartItemId = productId;
@@ -686,6 +730,13 @@ if (typeof window !== "undefined") {
 
 function addLiveAnimalToCart(petData) {
   if (!petData) return;
+
+  if (petData.isEnquiry || petData.price === 0) {
+    const waText = encodeURIComponent(`Hi UR WORLD AQUARIUM & PET SHOP! I would like to enquire about reserving: ${petData.name}. Could you please confirm pricing and availability?`);
+    window.open(`https://wa.me/919980039294?text=${waText}`, '_blank', 'noopener,noreferrer');
+    return;
+  }
+
   const existing = cart.find((item) => item.id === petData.id);
   if (existing) {
     existing.qty += 1;
@@ -698,6 +749,7 @@ function addLiveAnimalToCart(petData) {
       category: petData.category,
       gender: petData.gender,
       age: petData.age,
+      variant: petData.variant || '',
       price: petData.price,
       deposit: petData.deposit || 2000,
       isLiveAnimal: true,

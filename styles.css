@@ -1943,6 +1943,70 @@ img {
     color: #061B2C !important;
 }
 
+.btn-shop-enquire {
+    background: #087F9E;
+    border: 1px solid #087F9E;
+    color: #FFFFFF;
+    padding: 9px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-shop-enquire:hover {
+    background: #38BDF8;
+    border-color: #38BDF8;
+    color: #061B2C;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+}
+
+.product-mrp-strike {
+    text-decoration: line-through;
+    opacity: 0.65;
+    font-size: 0.82em;
+    font-weight: 500;
+    margin-right: 6px;
+    color: var(--text-muted);
+}
+
+.animal-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.animal-card-price .price-prefix {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.animal-card-price .price-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--cyan);
+}
+
+.animal-card-price .price-unit {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
 /* Secondary Button on Product Cards: VIEW DETAILS */
 .btn-product-details {
     display: inline-flex;

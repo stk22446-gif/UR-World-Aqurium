@@ -542,7 +542,8 @@
                     const deposit = item.deposit ? ` (Deposit: ₹${item.deposit.toLocaleString('en-IN')})` : '';
                     msg += `${index + 1}. *${item.name}*\n`;
                     if (item.breed) msg += `   • Breed / Species: ${item.breed}\n`;
-                    msg += `   • Selected: Gender: ${item.gender} | Age: ${item.age}\n`;
+                    if (item.variant) msg += `   • Selected Variant: ${item.variant}\n`;
+                    if (item.gender || item.age) msg += `   • Selected: Gender: ${item.gender || 'Standard'} | Age: ${item.age || 'Standard'}\n`;
                     msg += `   • Valuation: ₹${price.toLocaleString('en-IN')}${deposit}\n`;
                 });
                 msg += `\n_Live Animal Note: Companion availability, health & vaccination documents, reservation confirmation, and physical handover must be confirmed directly with UR WORLD AQUARIUM & PET SHOP._\n\n`;
@@ -553,7 +554,9 @@
                 supplies.forEach((item, index) => {
                     const subtotal = item.price * item.qty;
                     totalSuppliesVal += subtotal;
-                    msg += `${index + 1}. *${item.name}* [${item.category}] — Qty: ${item.qty} × ₹${item.price.toLocaleString('en-IN')} = ₹${subtotal.toLocaleString('en-IN')}\n`;
+                    const catLabel = item.category ? ` [${item.category}]` : '';
+                    const varLabel = item.variant ? ` (${item.variant})` : '';
+                    msg += `${index + 1}. *${item.name}*${varLabel}${catLabel} — Qty: ${item.qty} × ₹${item.price.toLocaleString('en-IN')} = ₹${subtotal.toLocaleString('en-IN')}\n`;
                 });
                 msg += `\n`;
             }
