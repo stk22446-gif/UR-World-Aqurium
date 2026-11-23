@@ -3,7 +3,7 @@
 > **A World Full of Life & Companionship**  
 > Discover amazing pets, aquatic life and everything they need.
 
-UR-WORLD-AQUARIUM is a complete premium pet and aquatic lifestyle website catering to beloved companion animals—**Dogs, Cats, Birds, Mice, Hamsters & Small Pets, Aquarium Fish, and Other Animals**—paired with wholesome foods, housing, and essential care supplies.
+UR-WORLD-AQUARIUM is a complete premium pet and aquatic lifestyle website catering to beloved companion animals—**Dogs, Cats, Birds, Hamsters & Small Pets, Rabbits, and Aquarium Fish**—paired with wholesome foods, housing, and essential care supplies.
 
 ---
 
@@ -16,14 +16,13 @@ UR-WORLD-AQUARIUM is a complete premium pet and aquatic lifestyle website cateri
    - Updated headline: *"A World Full of Life & Companionship"*
    - Subtitle: *"Discover amazing pets, aquatic life and everything they need."*
 
-2. **Dedicated Animal Collections (7 Categories)**
+2. **Dedicated Animal Collections (6 Categories)**
    - **Dogs & Puppies**: Loyal companions, training, and canine nutrition.
    - **Cats & Kittens**: Indoor tranquility, enrichment, and feline care.
    - **Pet & Songbirds**: Melodic wonders, bird seeds, and spacious cages.
-   - **Fancy Mice**: Active, clean, and curious micro-pets.
    - **Hamsters & Small Pets**: Syrian and dwarf hamsters, guinea pigs, running wheels, and muesli mixes.
+   - **Rabbits**: Gentle, soft-furred companions and indoor bunny pens.
    - **Aquarium Fish**: Showstopper Bettas, schooling tetras, and living underwater art.
-   - **Other Animals**: Companion rabbits, tortoises, and specialty inquiry services.
    - Each card features real photography, care badges, specifications, and a direct WhatsApp inquiry button.
 
 3. **Organized Pet Shop (6 Main Categories)**

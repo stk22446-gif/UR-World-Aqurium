@@ -4226,6 +4226,17 @@ body.cart-open .cart-drawer {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.pet-pill-options .pill-divider {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-muted);
+    opacity: 0.35;
+    padding: 0 4px;
+    font-weight: 300;
+    user-select: none;
 }
 
 .pet-option-pill {

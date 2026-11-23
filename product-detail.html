@@ -235,7 +235,7 @@
                     <h3 class="footer-company-name">UR WORLD AQUARIUM &amp; PET SHOP</h3>
                     <p class="footer-tagline">Your One-Stop Destination for Pets &amp; Pet Essentials.</p>
                     <p class="footer-desc">
-                        A comprehensive multi-pet store offering dogs &amp; puppies, cats &amp; kittens, birds, aquarium fish, hamsters, mice &amp; small pets, pet food, tanks, and accessories.
+                        A comprehensive multi-pet store offering dogs &amp; puppies, cats &amp; kittens, birds, aquarium fish, hamsters &amp; small pets, rabbits, pet food, tanks, and accessories.
                     </p>
                 </div>
 
@@ -259,8 +259,8 @@
                         <li><a href="collections/cats.html">Cats &amp; Kittens</a></li>
                         <li><a href="collections/birds.html">Birds</a></li>
                         <li><a href="collections/aquarium-fish.html">Aquarium Fish</a></li>
-                        <li><a href="collections/small-pets.html">Hamsters, Mice &amp; Small Pets</a></li>
-                        <li><a href="collections/other-animals.html">Other Animals</a></li>
+                        <li><a href="collections/small-pets.html">Hamsters &amp; Small Pets</a></li>
+                        <li><a href="collections/rabbits.html">Rabbits</a></li>
                     </ul>
                 </div>
 
@@ -341,14 +341,34 @@
         (function() {
             // 1. Resolve Product ID from URL (?id=...)
             const urlParams = new URLSearchParams(window.location.search);
-            let prodId = urlParams.get('id') || 'dog_kibble';
-            let product = window.getProductById ? window.getProductById(prodId) : null;
+            let prodId = urlParams.get('id');
+            let product = prodId && window.getProductById ? window.getProductById(prodId) : null;
 
-            if (!product && window.PRODUCTS_CATALOG) {
-                product = window.PRODUCTS_CATALOG[prodId] || window.PRODUCTS_CATALOG['dog_kibble'];
+            if (!product && !prodId && window.PRODUCTS_CATALOG) {
+                const keys = Object.keys(window.PRODUCTS_CATALOG);
+                if (keys.length > 0) {
+                    prodId = keys[0];
+                    product = window.PRODUCTS_CATALOG[prodId];
+                }
             }
 
-            if (!product) return;
+            if (!product) {
+                document.title = "Product No Longer Listed | UR WORLD AQUARIUM & PET SHOP";
+                const mainEl = document.getElementById('main');
+                if (mainEl) {
+                    mainEl.innerHTML = `
+                        <div class="collection-topbar">
+                            <a href="index.html#shop" class="back-link">&larr; Back to Pet Shop</a>
+                        </div>
+                        <div style="text-align:center; padding: 100px 20px; max-width: 600px; margin: 0 auto;">
+                            <h2 style="font-family:'Manrope',sans-serif; color:var(--text-primary); margin-bottom:16px;">This product is no longer listed</h2>
+                            <p style="color:var(--text-muted); line-height:1.7; margin-bottom:28px;">The product you are looking for is no longer in our active catalogue. Please browse our updated Pet Shop collection or reach out to us on WhatsApp for assistance.</p>
+                            <a href="index.html#shop" class="btn-primary-action" style="display:inline-flex; text-decoration:none; padding:14px 28px; border-radius:6px; background:#087F9E; color:#fff; font-weight:700;">BROWSE PET SHOP &rarr;</a>
+                        </div>
+                    `;
+                }
+                return;
+            }
 
             // 2. Page Titles & Meta
             document.title = `${product.name} | UR WORLD AQUARIUM & PET SHOP`;

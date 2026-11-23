@@ -184,7 +184,7 @@ function renderAnimalCollections() {
 
   // If grid already contains all animal collection cards in HTML, ensure they are visible
   const existingCards = (typeof grid.querySelectorAll === "function") ? grid.querySelectorAll(".animal-card") : [];
-  if (existingCards && existingCards.length >= 6) {
+  if (existingCards && existingCards.length >= 1) {
     existingCards.forEach((card) => {
       card.classList.add("visible");
       card.style.opacity = "1";
@@ -238,10 +238,9 @@ function renderCollectionGrid() {
     if (path.includes("dogs")) catId = "dogs";
     else if (path.includes("cats")) catId = "cats";
     else if (path.includes("birds")) catId = "birds";
-    else if (path.includes("mice")) catId = "mice";
     else if (path.includes("small-pets")) catId = "small-pets";
     else if (path.includes("aquarium-fish")) catId = "aquarium-fish";
-    else if (path.includes("other-animals")) catId = "other-animals";
+    else if (path.includes("rabbits")) catId = "rabbits";
   }
 
   if (!catId) return;
@@ -250,7 +249,16 @@ function renderCollectionGrid() {
     ? window.getPetsByCategory(catId)
     : ((typeof getPetsByCategory === "function") ? getPetsByCategory(catId) : []);
 
-  if (!pets || pets.length === 0) return;
+  if (!pets || pets.length === 0) {
+    grid.innerHTML = `
+      <div class="collection-empty-box" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-glass-card); border: 1px solid var(--card-border); border-radius: 8px;">
+        <h3 style="font-family: 'Manrope', sans-serif; font-size: 20px; color: var(--text-primary); margin-bottom: 12px;">New Varieties Coming Soon</h3>
+        <p style="font-size: 14px; color: var(--text-muted); max-width: 520px; margin: 0 auto 24px; line-height: 1.6;">We are currently refreshing our lineup for this collection. Please check back soon or enquire with our store team directly on WhatsApp for live availability.</p>
+        <a href="https://wa.me/919980039294?text=Hi%20UR%20WORLD%20AQUARIUM%20%26%20PET%20SHOP!%20I%20have%20an%20enquiry%20regarding%20companion%20availability." class="animal-wa-btn" style="display: inline-flex; width: auto; padding: 12px 28px; text-decoration: none;" target="_blank" rel="noopener">ENQUIRE ON WHATSAPP</a>
+      </div>
+    `;
+    return;
+  }
 
   const isCollectionsDir = window.location.pathname.includes("/collections/") || window.location.pathname.includes("\\collections\\");
   const petDetailHrefPrefix = isCollectionsDir ? "../pet-detail.html?id=" : "pet-detail.html?id=";
@@ -629,7 +637,7 @@ function renderCart() {
               <div class="cart-item-details">
                 <strong>${item.name}</strong>
                 <span class="cart-pet-badge">Live Companion Reservation</span>
-                <span class="cart-pet-meta">Gender: ${item.gender || (item.options && item.options.gender) || 'Verified'} &bull; Age: ${item.age || (item.options && item.options.age) || 'Young'}</span>
+                <span class="cart-pet-meta">Gender: ${item.gender || (item.options && item.options.gender) || 'Verified'} &bull; Age/Stage: ${item.age || (item.options && item.options.age) || 'Standard'} &bull; Qty Type: ${item.quantityType || (item.options && item.options.quantityType) || 'Single'}</span>
                 <span class="cart-item-price">${formatINR(itemPrice)} (Deposit: ${formatINR(item.deposit || 2000)})</span>
               </div>
               <div class="cart-item-actions">
@@ -749,6 +757,7 @@ function addLiveAnimalToCart(petData) {
       category: petData.category,
       gender: petData.gender,
       age: petData.age,
+      quantityType: petData.quantityType || 'Single',
       variant: petData.variant || '',
       price: petData.price,
       deposit: petData.deposit || 2000,
@@ -756,7 +765,8 @@ function addLiveAnimalToCart(petData) {
       image: petData.image || '',
       options: {
         gender: petData.gender,
-        age: petData.age
+        age: petData.age,
+        quantityType: petData.quantityType || 'Single'
       },
       qty: 1
     });
@@ -914,7 +924,15 @@ if (checkoutButton) {
     const itemLines = cart
       .map((item) => {
         if (item.isLiveAnimal) {
-          return `• [LIVE COMPANION RESERVATION] ${item.name} — ${formatINR(item.price)} (Deposit: ${formatINR(item.deposit || 2000)}) [Subject to Availability & Handover]`;
+          const optGender = item.gender || (item.options && item.options.gender) || '';
+          const optAge = item.age || (item.options && item.options.age) || '';
+          const optQty = item.quantityType || (item.options && item.options.quantityType) || '';
+          const metaParts = [];
+          if (optGender) metaParts.push(`Gender: ${optGender}`);
+          if (optAge) metaParts.push(`Age/Stage: ${optAge}`);
+          if (optQty) metaParts.push(`Quantity: ${optQty}`);
+          const metaStr = metaParts.length > 0 ? ` [${metaParts.join(' • ')}]` : '';
+          return `• [LIVE COMPANION RESERVATION] ${item.name}${metaStr} — ${formatINR(item.price)} (Deposit: ${formatINR(item.deposit || 2000)}) [Subject to Availability & Handover]`;
         }
         const prod = products[item.id] || (window.PRODUCTS_CATALOG && window.PRODUCTS_CATALOG[item.id]);
         const name = prod ? prod.name : item.name;

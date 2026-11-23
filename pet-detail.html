@@ -119,8 +119,8 @@
             <nav class="collection-breadcrumbs" aria-label="Breadcrumb" id="breadcrumbsNav">
                 <a href="index.html">Home</a> /
                 <a href="index.html#animals">Animal Collections</a> /
-                <a href="collections/dogs.html" id="crumbCategory">Dogs &amp; Puppies</a> /
-                <span id="crumbPetName">Golden Retriever</span>
+                <a href="index.html#animals" id="crumbCategory">Animals</a> /
+                <span id="crumbPetName">Companion</span>
             </nav>
         </div>
 
@@ -145,45 +145,47 @@
                 <!-- RIGHT COLUMN: Pet Information & Customer Actions -->
                 <div class="pet-info-column">
                     <!-- Pet Titles -->
-                    <h1 class="pet-detail-title" id="petName">Golden Retriever Puppy</h1>
-                    <div class="pet-detail-subtitle" id="petBreed">Purebred Canine &bull; Golden Retriever</div>
+                    <h1 class="pet-detail-title" id="petName">Companion Details</h1>
+                    <div class="pet-detail-subtitle" id="petBreed">UR WORLD AQUARIUM &amp; PET SHOP</div>
 
                     <!-- Pricing & Reservation Info -->
                     <div class="pet-pricing-card">
                         <div class="pet-price-row">
-                            <span class="pet-price-amount" id="petPrice">₹24,999</span>
+                            <span class="pet-price-amount" id="petPrice">--</span>
                             <span class="pet-price-note">All taxes included</span>
                         </div>
                         <div class="pet-deposit-note" id="petDeposit">
-                            Reservation Deposit: <strong>₹2,000</strong> to hold puppy pending in-store health check &amp; handover.
+                            Reservation Deposit pending in-store health check &amp; handover.
                         </div>
                     </div>
 
-                    <!-- Options: Variant / Size / Strain Selection -->
+                    <!-- Options: Current Age & Stage Selection (Required across all 5 live pet categories) -->
+                    <div class="pet-option-group" id="ageStageSelectionGroup">
+                        <label class="pet-option-label" id="ageStageOptionLabel">
+                            CURRENT AGE &amp; STAGE <span class="verified-tag">&#10003; Selected</span>
+                        </label>
+                        <div class="pet-pill-options" id="ageStagePillContainer">
+                            <!-- Dynamically injected: Gender + Age / Stage pills -->
+                        </div>
+                    </div>
+
+                    <!-- Options: Quantity Type Selection (Single / Pair) -->
+                    <div class="pet-option-group" id="quantityTypeSelectionGroup">
+                        <label class="pet-option-label" id="quantityTypeOptionLabel">
+                            QUANTITY TYPE <span class="verified-tag">&#10003; Selected</span>
+                        </label>
+                        <div class="pet-pill-options" id="quantityTypePillContainer">
+                            <!-- Dynamically injected: Single / Pair pills -->
+                        </div>
+                    </div>
+
+                    <!-- Optional Extra Variant / Color / Strain Selection (e.g., Lovebirds) -->
                     <div class="pet-option-group" id="variantSelectionGroup" style="display:none;">
-                        <label class="pet-option-label">
-                            SELECT VARIANT / SIZE <span class="verified-tag">&#10003; Selected</span>
+                        <label class="pet-option-label" id="variantSelectionLabel">
+                            SELECT VARIANT / STRAIN <span class="verified-tag">&#10003; Selected</span>
                         </label>
                         <div class="pet-pill-options" id="variantPillContainer">
-                            <!-- Variant pills dynamically injected -->
-                        </div>
-                    </div>
-
-                    <!-- Options: Gender Selection -->
-                    <div class="pet-option-group" id="genderSelectionGroup">
-                        <label class="pet-option-label">
-                            SELECT GENDER <span class="verified-tag">&#10003; Verified</span>
-                        </label>
-                        <div class="pet-pill-options" id="genderPillContainer">
-                            <!-- Gender pills dynamically injected -->
-                        </div>
-                    </div>
-
-                    <!-- Options: Age & Life Stage -->
-                    <div class="pet-option-group" id="ageSelectionGroup">
-                        <label class="pet-option-label">CURRENT AGE &amp; STAGE</label>
-                        <div class="pet-pill-options" id="agePillContainer">
-                            <!-- Age pill dynamically injected -->
+                            <!-- Extra variant pills dynamically injected -->
                         </div>
                     </div>
 
@@ -301,7 +303,7 @@
                         <h3 class="footer-company-name">UR WORLD AQUARIUM &amp; PET SHOP</h3>
                         <p class="footer-tagline">Your One-Stop Destination for Pets &amp; Pet Essentials.</p>
                         <p class="footer-desc">
-                            A comprehensive multi-pet store offering dogs, cats, birds, aquarium fish, hamsters, mice, small pets, pet food and accessories.
+                            A comprehensive multi-pet store offering dogs, cats, birds, aquarium fish, hamsters, small pets, rabbits, pet food and accessories.
                         </p>
                     </div>
                 </div>
@@ -326,8 +328,8 @@
                         <li><a href="collections/cats.html">Cats &amp; Kittens</a></li>
                         <li><a href="collections/birds.html">Birds</a></li>
                         <li><a href="collections/aquarium-fish.html">Aquarium Fish</a></li>
-                        <li><a href="collections/small-pets.html">Hamsters, Mice &amp; Small Pets</a></li>
-                        <li><a href="collections/other-animals.html">Other Animals</a></li>
+                        <li><a href="collections/small-pets.html">Hamsters &amp; Small Pets</a></li>
+                        <li><a href="collections/rabbits.html">Rabbits</a></li>
                     </ul>
                 </div>
 
@@ -385,11 +387,11 @@
         (function() {
             // 1. Resolve Pet ID from URL Query String (?id=...)
             const urlParams = new URLSearchParams(window.location.search);
-            let petId = urlParams.get('id') || 'golden-retriever';
-            let pet = window.getPetById ? window.getPetById(petId) : null;
+            let petId = urlParams.get('id');
+            let pet = petId && window.getPetById ? window.getPetById(petId) : null;
 
-            if (!pet && window.PET_BREEDS_CATALOG) {
-                // Fallback to first available pet if ID not found
+            if (!pet && !petId && window.PET_BREEDS_CATALOG) {
+                // Fallback default when no query parameter is supplied
                 const keys = Object.keys(window.PET_BREEDS_CATALOG);
                 if (keys.length > 0) {
                     petId = keys[0];
@@ -397,7 +399,23 @@
                 }
             }
 
-            if (!pet) return;
+            if (!pet) {
+                document.title = "Companion No Longer Listed | UR WORLD AQUARIUM & PET SHOP";
+                const mainEl = document.getElementById('main');
+                if (mainEl) {
+                    mainEl.innerHTML = `
+                        <div class="collection-topbar">
+                            <a href="index.html#animals" class="back-link">&larr; Back to Animal Collections</a>
+                        </div>
+                        <div style="text-align:center; padding: 100px 20px; max-width: 600px; margin: 0 auto;">
+                            <h2 style="font-family:'Manrope',sans-serif; color:var(--text-primary); margin-bottom:16px;">This companion is no longer listed</h2>
+                            <p style="color:var(--text-muted); line-height:1.7; margin-bottom:28px;">The companion you are looking for is no longer in our active catalogue. Please explore our updated animal collections or contact us directly on WhatsApp.</p>
+                            <a href="index.html#animals" class="btn-primary-action" style="display:inline-flex; text-decoration:none; padding:14px 28px; border-radius:6px; background:#087F9E; color:#fff; font-weight:700;">EXPLORE ACTIVE COLLECTIONS &rarr;</a>
+                        </div>
+                    `;
+                }
+                return;
+            }
 
             // 2. Resolve Category Meta
             const categoryMeta = window.getCategoryMeta ? window.getCategoryMeta(pet.category) : null;
@@ -438,9 +456,109 @@
             const btnAddToBag = document.getElementById('btnAddToBag');
             const btnWhatsApp = document.getElementById('btnWhatsAppEnquiry');
 
+            // 5 Target Live Pet Categories:
+            // 1. Dogs & Puppies ('dogs')
+            // 2. Cats & Kittens ('cats')
+            // 3. Hamsters & Small Pets ('small-pets')
+            // 4. Rabbits ('rabbits')
+            // 5. Pet & Songbirds ('birds')
+            const TARGET_CATEGORIES = ['dogs', 'cats', 'small-pets', 'rabbits', 'birds'];
+            const isLiveTargetPet = TARGET_CATEGORIES.includes(pet.category);
+
+            // Determine Available Age / Life Stages per Category Requirements:
+            // Dogs & Puppies: Male, Female, Puppy, Adult
+            // Cats & Kittens: Male, Female, Kitten, Adult
+            // Hamsters & Small Pets: Male, Female, Baby, Adult
+            // Rabbits: Male, Female, Baby, Young, Adult
+            // Pet & Songbirds: Male, Female, Baby, Young, Adult
+            let availableStages = [];
+            let availableGenders = ['Male', 'Female'];
+
+            if (pet.category === 'dogs') {
+                availableStages = ['Puppy', 'Adult'];
+            } else if (pet.category === 'cats') {
+                if (Array.isArray(pet.variants) && pet.variants.length > 0) {
+                    const hasBaby = pet.variants.some(v => (v.id || '').toLowerCase().includes('baby') || (v.name || '').toLowerCase().includes('baby') || (v.name || '').toLowerCase().includes('kitten'));
+                    const hasAdult = pet.variants.some(v => (v.id || '').toLowerCase().includes('adult') || (v.name || '').toLowerCase().includes('adult'));
+                    if (hasBaby) availableStages.push('Kitten');
+                    if (hasAdult) availableStages.push('Adult');
+                }
+                if (availableStages.length === 0) {
+                    availableStages = ['Kitten', 'Adult'];
+                }
+            } else if (pet.category === 'small-pets') {
+                availableStages = ['Baby', 'Adult'];
+            } else if (pet.category === 'rabbits') {
+                if (Array.isArray(pet.variants) && pet.variants.length > 0) {
+                    const hasBaby = pet.variants.some(v => (v.id || '').toLowerCase().includes('baby') || (v.name || '').toLowerCase().includes('baby'));
+                    const hasYoung = pet.variants.some(v => (v.id || '').toLowerCase().includes('young') || (v.name || '').toLowerCase().includes('young'));
+                    const hasAdult = pet.variants.some(v => (v.id || '').toLowerCase().includes('adult') || (v.name || '').toLowerCase().includes('adult'));
+                    if (hasBaby) availableStages.push('Baby');
+                    if (hasYoung) availableStages.push('Young');
+                    if (hasAdult) availableStages.push('Adult');
+                }
+                if (availableStages.length === 0) {
+                    availableStages = ['Baby', 'Young', 'Adult'];
+                }
+            } else if (pet.category === 'birds') {
+                if (Array.isArray(pet.variants) && pet.variants.length > 0) {
+                    const hasBaby = pet.variants.some(v => (v.id || '').toLowerCase().includes('baby') || (v.name || '').toLowerCase().includes('baby'));
+                    const hasYoung = pet.variants.some(v => (v.id || '').toLowerCase().includes('young') || (v.name || '').toLowerCase().includes('young'));
+                    const hasAdult = pet.variants.some(v => (v.id || '').toLowerCase().includes('adult') || (v.name || '').toLowerCase().includes('adult'));
+                    if (hasBaby) availableStages.push('Baby');
+                    if (hasYoung) availableStages.push('Young');
+                    if (hasAdult) availableStages.push('Adult');
+                }
+                if (availableStages.length === 0) {
+                    availableStages = ['Baby', 'Young', 'Adult'];
+                }
+            } else {
+                availableStages = pet.ageOptions || ['Standard'];
+                availableGenders = pet.genderOptions || ['Standard'];
+            }
+
+            // Determine Quantity Types: Single, Pair
+            let availableQuantityTypes = ['Single', 'Pair'];
+            let selectedQuantityType = (pet.unit && pet.unit.toLowerCase().includes('pair')) ? 'Pair' : 'Single';
+            if (pet.category === 'dogs') {
+                selectedQuantityType = 'Single';
+            }
+
+            let selectedGender = availableGenders[0] || 'Male';
+            let selectedStage = availableStages[0] || 'Baby';
+
+            // Find matching variant if exists
             let selectedVariant = null;
-            if (Array.isArray(pet.variants) && pet.variants.length > 0) {
-                selectedVariant = pet.variants.find(v => v.default) || pet.variants[0];
+            function findMatchingVariant() {
+                if (!Array.isArray(pet.variants) || pet.variants.length === 0) return null;
+                const stageLower = (selectedStage || '').toLowerCase();
+                const targetKey = stageLower === 'kitten' ? 'baby' : stageLower;
+                const found = pet.variants.find(v => {
+                    const vId = (v.id || '').toLowerCase();
+                    const vName = (v.name || '').toLowerCase();
+                    return vId.includes(targetKey) || vName.includes(targetKey);
+                });
+                return found || pet.variants.find(v => v.default) || pet.variants[0];
+            }
+            selectedVariant = findMatchingVariant();
+
+            // Dynamic Price Calculation
+            function calculateCurrentPrice() {
+                if (isEnquiry) return 0;
+                let basePrice = selectedVariant ? selectedVariant.price : pet.price;
+                const isBasePair = (pet.unit && pet.unit.toLowerCase().includes('pair'));
+
+                if (isBasePair) {
+                    if (selectedQuantityType === 'Single') {
+                        return Math.round(basePrice / 2);
+                    }
+                    return basePrice;
+                } else {
+                    if (selectedQuantityType === 'Pair') {
+                        return basePrice * 2;
+                    }
+                    return basePrice;
+                }
             }
 
             function updatePricingDisplay() {
@@ -453,9 +571,9 @@
                         btnWhatsApp.style.justifyContent = 'center';
                     }
                 } else {
-                    const currentPrice = selectedVariant ? selectedVariant.price : pet.price;
-                    const unitSuffix = pet.unit ? ` (${pet.unit})` : '';
-                    if (priceEl) priceEl.textContent = `₹${Number(currentPrice).toLocaleString('en-IN')}${unitSuffix}`;
+                    const currentPrice = calculateCurrentPrice();
+                    const qtyUnitSuffix = ` (${selectedQuantityType})`;
+                    if (priceEl) priceEl.textContent = `₹${Number(currentPrice).toLocaleString('en-IN')}${qtyUnitSuffix}`;
                     
                     const depositVal = pet.reservationDeposit || Math.round(currentPrice * 0.2) || 1000;
                     if (depositEl) {
@@ -509,10 +627,86 @@
                 });
             }
 
-            // 6. Interactive Variant / Size Selection
+            // 6. CURRENT AGE & STAGE Selector Rendering
+            const ageStageGroup = document.getElementById('ageStageSelectionGroup');
+            const ageStageContainer = document.getElementById('ageStagePillContainer');
+
+            function renderAgeStagePills() {
+                if (!ageStageContainer) return;
+                let html = '';
+
+                // Gender chips (Male / Female)
+                availableGenders.forEach(g => {
+                    const isActive = g === selectedGender;
+                    html += `<button type="button" class="pet-option-pill ${isActive ? 'active' : ''}" data-type="gender" data-val="${g}">${g}</button>`;
+                });
+
+                if (availableGenders.length > 0 && availableStages.length > 0) {
+                    html += `<span class="pill-divider" style="display:inline-flex; align-items:center; color:var(--text-muted); opacity:0.35; padding:0 4px; font-weight:300;">|</span>`;
+                }
+
+                // Stage chips (Puppy, Adult / Kitten, Adult / Baby, Young, Adult)
+                availableStages.forEach(s => {
+                    const isActive = s === selectedStage;
+                    html += `<button type="button" class="pet-option-pill ${isActive ? 'active' : ''}" data-type="stage" data-val="${s}">${s}</button>`;
+                });
+
+                ageStageContainer.innerHTML = html;
+
+                // Event Listeners for Gender & Stage selection
+                ageStageContainer.querySelectorAll('.pet-option-pill').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const type = btn.dataset.type;
+                        const val = btn.dataset.val;
+                        if (type === 'gender') {
+                            selectedGender = val;
+                        } else if (type === 'stage') {
+                            selectedStage = val;
+                            selectedVariant = findMatchingVariant();
+                        }
+                        renderAgeStagePills();
+                        updatePricingDisplay();
+                        updateWhatsAppMessage();
+                    });
+                });
+            }
+            renderAgeStagePills();
+
+            // 7. QUANTITY TYPE Selector Rendering (Single / Pair)
+            const qtyTypeGroup = document.getElementById('quantityTypeSelectionGroup');
+            const qtyTypeContainer = document.getElementById('quantityTypePillContainer');
+
+            function renderQuantityTypePills() {
+                if (!qtyTypeContainer) return;
+                qtyTypeContainer.innerHTML = availableQuantityTypes.map(qtyType => {
+                    const isActive = qtyType === selectedQuantityType;
+                    return `
+                        <button type="button" class="pet-option-pill ${isActive ? 'active' : ''}" data-qty-type="${qtyType}">
+                            ${qtyType}
+                        </button>
+                    `;
+                }).join('');
+
+                qtyTypeContainer.querySelectorAll('.pet-option-pill').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        selectedQuantityType = btn.dataset.qtyType;
+                        renderQuantityTypePills();
+                        updatePricingDisplay();
+                        updateWhatsAppMessage();
+                    });
+                });
+            }
+            renderQuantityTypePills();
+
+            // 8. Extra Color/Strain Variants (e.g. Lovebirds Color Strains)
             const variantGroup = document.getElementById('variantSelectionGroup');
             const variantContainer = document.getElementById('variantPillContainer');
-            if (Array.isArray(pet.variants) && pet.variants.length > 0 && variantGroup && variantContainer) {
+            const isColorStrainPet = Array.isArray(pet.variants) && pet.variants.some(v => {
+                const id = (v.id || '').toLowerCase();
+                return id.includes('green') || id.includes('blue') || id.includes('yellow') || id.includes('red');
+            });
+
+            if (isColorStrainPet && variantGroup && variantContainer) {
                 variantGroup.style.display = 'block';
                 variantContainer.innerHTML = pet.variants.map((v) => {
                     const isActive = selectedVariant && String(selectedVariant.id) === String(v.id);
@@ -540,47 +734,6 @@
                 variantGroup.style.display = 'none';
             }
 
-            // 7. Interactive Gender Selection
-            let selectedGender = pet.defaultGender || (pet.genderOptions && pet.genderOptions[0]) || 'Male';
-            const genderContainer = document.getElementById('genderPillContainer');
-            if (pet.genderOptions && pet.genderOptions.length > 0) {
-                genderContainer.innerHTML = pet.genderOptions.map(g => `
-                    <button type="button" class="pet-option-pill ${g === selectedGender ? 'active' : ''}" data-gender="${g}">
-                        ${g}
-                    </button>
-                `).join('');
-
-                genderContainer.querySelectorAll('.pet-option-pill').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        genderContainer.querySelectorAll('.pet-option-pill').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        selectedGender = btn.dataset.gender;
-                        updateWhatsAppMessage();
-                    });
-                });
-            } else {
-                document.getElementById('genderSelectionGroup').style.display = 'none';
-            }
-
-            // 8. Age Selection
-            let selectedAge = pet.age || '3 Months';
-            const ageContainer = document.getElementById('agePillContainer');
-            const ageOptions = pet.ageOptions || [pet.age];
-            ageContainer.innerHTML = ageOptions.map((a, i) => `
-                <button type="button" class="pet-option-pill ${i === 0 ? 'active' : ''}" data-age="${a}">
-                    ${a}
-                </button>
-            `).join('');
-
-            ageContainer.querySelectorAll('.pet-option-pill').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    ageContainer.querySelectorAll('.pet-option-pill').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    selectedAge = btn.dataset.age;
-                    updateWhatsAppMessage();
-                });
-            });
-
             // 9. Key Specs Grid
             const specsGrid = document.getElementById('petSpecsGrid');
             if (pet.characteristics) {
@@ -597,21 +750,22 @@
                 let message = `Hi UR WORLD AQUARIUM & PET SHOP! I would like to inquire about reserving:\n`;
                 message += `• Companion: ${pet.name}\n`;
                 message += `• Breed / Species: ${pet.breed}\n`;
-                if (selectedVariant && selectedVariant.name) {
-                    message += `• Selected Variant / Size: ${selectedVariant.name}\n`;
+                if (categoryMeta && categoryMeta.name) {
+                    message += `• Category: ${categoryMeta.name}\n`;
                 }
-                if (pet.genderOptions && pet.genderOptions.length > 0) {
-                    message += `• Selected Gender: ${selectedGender}\n`;
+                if (selectedVariant && selectedVariant.name && isColorStrainPet) {
+                    message += `• Selected Color / Strain: ${selectedVariant.name}\n`;
                 }
-                if (pet.ageOptions && pet.ageOptions.length > 0) {
-                    message += `• Age / Stage: ${selectedAge}\n`;
-                }
+                message += `• Selected Gender: ${selectedGender}\n`;
+                message += `• Current Age & Stage: ${selectedStage}\n`;
+                message += `• Quantity Type: ${selectedQuantityType}\n`;
+
                 if (isEnquiry) {
                     message += `• Pricing: Enquire for Price / Live Availability\n\n`;
                     message += `Could you please confirm current availability, pricing, health records, and store handover procedure? Thank you!`;
                 } else {
-                    const currentPrice = selectedVariant ? selectedVariant.price : pet.price;
-                    message += `• Price: ₹${Number(currentPrice).toLocaleString('en-IN')}${pet.unit ? ` (${pet.unit})` : ''}\n\n`;
+                    const currentPrice = calculateCurrentPrice();
+                    message += `• Price: ₹${Number(currentPrice).toLocaleString('en-IN')} (${selectedQuantityType})\n\n`;
                     message += `Could you please confirm current availability, vaccination/health records, and store handover / adoption procedure? Thank you!`;
                 }
                 btnWhatsApp.href = `https://wa.me/919980039294?text=${encodeURIComponent(message)}`;
@@ -626,18 +780,19 @@
                         return;
                     }
                     if (typeof window.addLiveAnimalToCart === 'function') {
-                        const currentPrice = selectedVariant ? selectedVariant.price : pet.price;
+                        const currentPrice = calculateCurrentPrice();
                         const depositVal = pet.reservationDeposit || Math.round(currentPrice * 0.2) || 1000;
-                        const variantSuffix = selectedVariant ? ` - ${selectedVariant.name}` : '';
+                        const variantText = `${selectedStage} • ${selectedGender} • ${selectedQuantityType}`;
                         window.addLiveAnimalToCart({
-                            id: `live_${pet.id}_${(selectedVariant ? selectedVariant.id : 'std')}_${selectedGender.toLowerCase().replace(/\s+/g, '_')}`,
+                            id: `live_${pet.id}_${selectedStage.toLowerCase()}_${selectedGender.toLowerCase()}_${selectedQuantityType.toLowerCase()}`,
                             petId: pet.id,
-                            name: `${pet.name}${variantSuffix}`,
+                            name: `${pet.name} (${selectedStage} • ${selectedQuantityType})`,
                             breed: pet.breed,
                             category: pet.category,
                             gender: selectedGender,
-                            age: selectedAge,
-                            variant: selectedVariant ? selectedVariant.name : '',
+                            age: selectedStage,
+                            quantityType: selectedQuantityType,
+                            variant: variantText,
                             price: currentPrice,
                             deposit: depositVal,
                             isLiveAnimal: true,

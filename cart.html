@@ -151,7 +151,7 @@
                         <h3 class="footer-company-name">UR WORLD AQUARIUM &amp; PET SHOP</h3>
                         <p class="footer-tagline">Your One-Stop Destination for Pets &amp; Pet Essentials.</p>
                         <p class="footer-desc">
-                            A comprehensive multi-pet store offering dogs, cats, birds, aquarium fish, hamsters, mice, small pets, pet food and accessories.
+                            A comprehensive multi-pet store offering dogs, cats, birds, aquarium fish, hamsters, small pets, rabbits, pet food and accessories.
                         </p>
                     </div>
                 </div>
@@ -176,8 +176,8 @@
                         <li><a href="collections/cats.html">Cats &amp; Kittens</a></li>
                         <li><a href="collections/birds.html">Birds</a></li>
                         <li><a href="collections/aquarium-fish.html">Aquarium Fish</a></li>
-                        <li><a href="collections/small-pets.html">Hamsters, Mice &amp; Small Pets</a></li>
-                        <li><a href="collections/other-animals.html">Other Animals</a></li>
+                        <li><a href="collections/small-pets.html">Hamsters &amp; Small Pets</a></li>
+                        <li><a href="collections/rabbits.html">Rabbits</a></li>
                     </ul>
                 </div>
 
@@ -263,6 +263,7 @@
                     category: item.category || (pet ? pet.category : 'Companion'),
                     gender: item.gender || (item.options && item.options.gender) || 'Verified',
                     age: item.age || (item.options && item.options.age) || 'Young',
+                    quantityType: item.quantityType || (item.options && item.options.quantityType) || 'Single',
                     price: Number(item.price || (pet ? pet.price : 0)),
                     deposit: item.deposit || (pet ? pet.reservationDeposit : 2000),
                     image: item.image || (pet && pet.gallery && pet.gallery[0]) || 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80',
@@ -340,7 +341,8 @@
                                     
                                     <div class="cart-animal-specs">
                                         <span class="cart-spec-chip">Gender: <strong>${item.gender}</strong></span>
-                                        <span class="cart-spec-chip">Age: <strong>${item.age}</strong></span>
+                                        <span class="cart-spec-chip">Age &amp; Stage: <strong>${item.age}</strong></span>
+                                        <span class="cart-spec-chip">Quantity Type: <strong>${item.quantityType}</strong></span>
                                         <span class="cart-spec-chip">Health: <strong>Verified &amp; Vaccinated</strong></span>
                                     </div>
 
@@ -543,7 +545,7 @@
                     msg += `${index + 1}. *${item.name}*\n`;
                     if (item.breed) msg += `   • Breed / Species: ${item.breed}\n`;
                     if (item.variant) msg += `   • Selected Variant: ${item.variant}\n`;
-                    if (item.gender || item.age) msg += `   • Selected: Gender: ${item.gender || 'Standard'} | Age: ${item.age || 'Standard'}\n`;
+                    msg += `   • Selected: Gender: ${item.gender || 'Standard'} | Age & Stage: ${item.age || 'Standard'} | Quantity Type: ${item.quantityType || 'Single'}\n`;
                     msg += `   • Valuation: ₹${price.toLocaleString('en-IN')}${deposit}\n`;
                 });
                 msg += `\n_Live Animal Note: Companion availability, health & vaccination documents, reservation confirmation, and physical handover must be confirmed directly with UR WORLD AQUARIUM & PET SHOP._\n\n`;
