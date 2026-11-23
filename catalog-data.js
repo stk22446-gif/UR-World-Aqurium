@@ -318,7 +318,7 @@
         "diet": "Small-bite nutrient dense puppy food"
       },
       "gallery": [
-        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795459220/download.webp"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795471711/2f0e7807-9e5b-41ed-9e79-3219698c6911.png"
       ]
     },
     "siberian-husky": {
@@ -1536,7 +1536,7 @@
         "diet": "Betta pellets, freeze-dried bloodworms"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=1200&q=85"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795465857/c60c072a-b13a-4d7e-8389-d8c058d5750b.png"
       ]
     },
     "betta-fish-fullmoon": {
@@ -1559,12 +1559,7 @@
         "diet": "High-grade betta micro pellets, daphnia"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795467044/620eb948-e918-45af-abc3-51c4058707b8.png"
       ]
     },
     "neon-tetra": {
@@ -1587,12 +1582,7 @@
         "diet": "Micro flakes, baby brine, cyclops"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795467334/0ecf8710-fedc-4dcc-8cc9-207d2da7d5cd.png"
       ]
     },
     "reminos": {
@@ -1615,12 +1605,7 @@
         "diet": "Fine flakes, micro bits, golden pearls"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795467456/c3f5cead-abc6-4cd3-96ab-e51a3768571f.png"
       ]
     },
     "mixed-zebra-danio": {
@@ -1643,12 +1628,7 @@
         "diet": "Crushed flakes, micro pellets"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795467536/67b186f6-c95e-4578-87a5-165df4a0a2e8.png"
       ]
     },
     "koi-carp": {
@@ -1689,12 +1669,7 @@
         "diet": "Koi growth pellets, spirulina sticks, wheatgerm"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795467671/3f6e5dd6-9f8b-4779-a7c5-0e615f8adde7.png"
       ]
     },
     "tiger-shark": {
@@ -1717,12 +1692,7 @@
         "diet": "Sinking carnivore pellets, flake foods"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795467896/4fb0e5a6-3125-41d9-92e3-0a15a0ed6832.png"
       ]
     },
     "red-parrot-fish": {
@@ -1745,12 +1715,7 @@
         "diet": "Colour-enhancing floating cichlid pellets"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468011/10439d2c-e5e5-465b-b542-a6987859ef68.png"
       ]
     },
     "yellow-parrot-fish": {
@@ -1773,12 +1738,7 @@
         "diet": "Specialized yellow parrot pellets, krill"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468149/9cff077b-776c-4430-8e13-498c9f993399.png"
       ]
     },
     "banana-fish": {
@@ -1801,12 +1761,7 @@
         "diet": "Spirulina flakes, cichlid pellets, vegetable matter"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468238/44605b46-689a-48d1-8246-dab684377889.png"
       ]
     },
     "mixed-cichlids": {
@@ -1829,12 +1784,7 @@
         "diet": "Cichlid bites, spirulina pellets"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468340/5196aa71-c411-4669-9e43-db131b09aeaa.png"
       ]
     },
     "molly": {
@@ -1857,12 +1807,7 @@
         "diet": "Algae flakes, tropical crisps, boiled peas"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468415/8f508ee6-276a-4244-b32c-d23524da07b1.png"
       ]
     },
     "tinfoil-barb": {
@@ -1898,12 +1843,7 @@
         "diet": "Vegetable pellets, sinking wafers, worms"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468487/344122f4-b48f-4c5e-99b0-26d509c4b428.png"
       ]
     },
     "albino-oscar": {
@@ -1926,12 +1866,7 @@
         "diet": "Oscar pellets, crickets, freeze dried krill"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468604/7ca9dd87-1d74-4827-a419-539dea4c1776.png"
       ]
     },
     "tiger-oscar": {
@@ -1954,12 +1889,7 @@
         "diet": "Large cichlid sticks, earthworms, shrimp"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468690/19f48375-0b0c-40a7-8ddb-efaa3ad99f5c.png"
       ]
     },
     "copper-oscar": {
@@ -1982,12 +1912,7 @@
         "diet": "Floating carnivore sticks, mealworms"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468810/6407ea47-5312-4e05-8352-7a41109fcb0e.png"
       ]
     },
     "red-oscar": {
@@ -2010,7 +1935,7 @@
         "diet": "Color-enhancing cichlid pellets, seafood"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795468921/5d307325-3566-4f09-96b1-9dc81fe285d6.png"
       ],
       "recommendedProducts": [
         "fish_food_taiyo_100g",
@@ -2038,12 +1963,7 @@
         "diet": "Premium cichlid sticks, fresh prawns, krill"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469091/44878d8b-3b03-4363-846c-3cd84d81adbb.png"
       ]
     },
     "albino-red-tail-shark": {
@@ -2066,12 +1986,7 @@
         "diet": "Algae wafers, sinking pellets, bloodworms"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469189/81dbee2d-ec01-4b9f-ba0e-cbb9a2663538.png"
       ]
     },
     "rainbow-shark": {
@@ -2094,12 +2009,7 @@
         "diet": "Sinking carnivore/herbivore wafers, blanched zucchini"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469307/53b01351-4f5d-4286-980c-6a21d328e41b.png"
       ]
     },
     "sucker-catfish": {
@@ -2122,12 +2032,7 @@
         "diet": "Algae wafers, sinking spirulina disks, driftwood"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469442/20a8b59b-dbb5-4140-9c17-c97ab866fe70.png"
       ]
     },
     "eel": {
@@ -2150,12 +2055,7 @@
         "diet": "Frozen bloodworms, sinking pellets, tubifex"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469506/5ba2f281-820e-4f3e-a1a4-a37db8ca1b41.png"
       ]
     },
     "silver-shark": {
@@ -2178,12 +2078,7 @@
         "diet": "Pellets, flakes, freeze-dried treats"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469619/8d31c2c4-0e93-4444-8188-c33371ed4679.png"
       ]
     },
     "algae-eater-fish": {
@@ -2206,12 +2101,7 @@
         "diet": "Algae, sinking wafers, blanched vegetables"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469685/faea5d60-1531-49a9-beea-763d4fa19b35.png"
       ]
     },
     "crystal-nose-pleco": {
@@ -2234,19 +2124,14 @@
         "diet": "Spirulina wafers, cucumber slices, bogwood"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469833/9f5aa0e0-8d5b-44fe-8a37-804563a3cdbc.png"
       ]
     },
-    "colour-video-tetra": {
-      "id": "colour-video-tetra",
+    "colour-widow-tetra": {
+      "id": "colour-widow-tetra",
       "category": "aquarium-fish",
       "categoryName": "Aquarium Fish",
-      "name": "Colour Video Tetra",
+      "name": "Colour Widow Tetra",
       "breed": "Gymnocorymbus ternetzi (Glo / Colour Tetra)",
       "unit": "Pair",
       "badge": "Fluorescent Glow",
@@ -2262,12 +2147,7 @@
         "diet": "Micro pellets, flakes"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469842/78df0ce2-16d9-47fb-900f-e53031698a3a.png"
       ]
     },
     "lobster": {
@@ -2290,12 +2170,7 @@
         "diet": "Sinking crustacean pellets, algae wafers, dead plant matter"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
-      ],
-      "recommendedProducts": [
-        "fish_food_taiyo_100g",
-        "fish_food_tetra_bits_30g",
-        "pebbles_natural"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795469943/712f3d8b-b4f1-450c-9433-2f9646aa2d5d.png"
       ]
     },
     "rabbit": {
@@ -2338,9 +2213,7 @@
         "housing": "Indoor exercise pen or roomy hutch with chew toys"
       },
       "gallery": [
-        "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1518796745738-41048802f99a?auto=format&fit=crop&w=1200&q=85"
-      ]
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795470027/9119b3d9-7813-4723-bbe0-74df79283a00.png"]
     }
   };
 
@@ -2355,9 +2228,9 @@
       "categoryName": "Fish Food",
       "filterCategory": "fish-food",
       "subcategory": "Taiyo",
-      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "image": "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795470461/31c18151-cfed-44e2-82dc-50e51fe6f355.png",
       "gallery": [
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795470461/31c18151-cfed-44e2-82dc-50e51fe6f355.png"
       ],
       "desc": "Taiyo staple diet daily fish food pellets rich in spirulina and essential multivitamins for vibrant colouration, strong immunity, and daily vitality.",
       "variant": "100g",
@@ -2386,9 +2259,9 @@
       "categoryName": "Fish Food",
       "filterCategory": "fish-food",
       "subcategory": "Taiyo",
-      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "image": "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795471038/3160aaa6-aff7-45bf-9783-98e8b10018f3.png",
       "gallery": [
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795471038/3160aaa6-aff7-45bf-9783-98e8b10018f3.png"
       ],
       "desc": "Taiyo daily nutrition fish food pellets for all freshwater tropical aquarium fish. Provides optimal energy and digestive wellness.",
       "variant": "200g",
@@ -2417,9 +2290,9 @@
       "categoryName": "Fish Food",
       "filterCategory": "fish-food",
       "subcategory": "Taiyo",
-      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "image": "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795471228/6e136765-11b8-4fb0-9283-33b824956d97.png",
       "gallery": [
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795471228/6e136765-11b8-4fb0-9283-33b824956d97.png"
       ],
       "desc": "Taiyo staple diet 500g value pack for healthy growth, colour, and clean water in community aquariums and goldfish ponds.",
       "variant": "500g",
@@ -2448,9 +2321,9 @@
       "categoryName": "Fish Food",
       "filterCategory": "fish-food",
       "subcategory": "Taiyo",
-      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "image": "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472009/347f70d3-a553-4dc4-ac3b-146169d3a3d1.png",
       "gallery": [
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472009/347f70d3-a553-4dc4-ac3b-146169d3a3d1.png"
       ],
       "desc": "Taiyo economy 1kg (1000g) jumbo bucket for large community tanks, multi-tank hobbyists, and outdoor koi/goldfish ponds.",
       "variant": "1000g (1kg)",
@@ -2479,9 +2352,9 @@
       "categoryName": "Fish Food",
       "filterCategory": "fish-food",
       "subcategory": "Optimum",
-      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "image": "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472380/f9ff991b-f22b-4a2f-8665-969674556eaa.png",
       "gallery": [
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472380/f9ff991b-f22b-4a2f-8665-969674556eaa.png"
       ],
       "desc": "Optimum Gold premium fish food enriched with spirulina, carotenoids, astaxanthin, and stabilized vitamins for brilliant colour enhancement.",
       "variant": "100g",
@@ -2510,9 +2383,9 @@
       "categoryName": "Fish Food",
       "filterCategory": "fish-food",
       "subcategory": "Optimum",
-      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "image": "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472427/a8097037-9401-4826-8869-52122813510d.png",
       "gallery": [
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472427/a8097037-9401-4826-8869-52122813510d.png"
       ],
       "desc": "Optimum Gold highly digestible premium formula for bright colours and enhanced disease resistance in all tropical companions.",
       "variant": "200g",
@@ -2541,9 +2414,9 @@
       "categoryName": "Fish Food",
       "filterCategory": "fish-food",
       "subcategory": "Optimum",
-      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "image": "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472500/de29910e-dbf6-447a-aa17-9997b0ec5ae2.png",
       "gallery": [
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472500/de29910e-dbf6-447a-aa17-9997b0ec5ae2.png"
       ],
       "desc": "Optimum Gold 500g premium nutrition for all show and community tropical fish, promoting robust immunity and lustrous finnage.",
       "variant": "500g",
@@ -2572,9 +2445,9 @@
       "categoryName": "Fish Food",
       "filterCategory": "fish-food",
       "subcategory": "Optimum",
-      "image": "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
+      "image": "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472633/e456c99e-0582-481d-9046-ee8a6eb7b0d2.png",
       "gallery": [
-        "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80"
+        "https://res.cloudinary.com/vwvbtkfe/image/upload/v1795472633/e456c99e-0582-481d-9046-ee8a6eb7b0d2.png"
       ],
       "desc": "Optimum Gold 1kg mega saver pack with bio-active immune boosting formula for avid hobbyists and multi-aquarium collections.",
       "variant": "1000g (1kg)",
