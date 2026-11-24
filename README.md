@@ -10,7 +10,7 @@ UR-WORLD-AQUARIUM is a complete premium pet and aquatic lifestyle website cateri
 ## 🌟 Key Features
 
 1. **Cinematic Hero Video Background**
-   - Full-width HD underwater video loop (`HERO_PAGE_yg0wvw.mp4`).
+   - Full-width HD underwater video loop (Cloudinary optimized MP4).
    - Autoplay, muted, loop, playsinline, pure black background (`#000000`).
    - Compact responsive mobile layout with optimized viewport height and fish framing.
    - Updated headline: *"A World Full of Life & Companionship"*

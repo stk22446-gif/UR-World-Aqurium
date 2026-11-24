@@ -1097,29 +1097,101 @@ const revealObserver = new IntersectionObserver(
 $$(".reveal").forEach((el) => revealObserver.observe(el));
 
 // -----------------------------------------------------------------------------
-// 10. Hero Video Autoplay Assurance
+// 10. Hero Video Autoplay Assurance & Playback Reliability
 // -----------------------------------------------------------------------------
-const heroVideo = $("#heroVideo");
-if (heroVideo && typeof heroVideo.play === "function") {
+function initHeroVideo() {
+  const heroVideo = document.getElementById("heroVideo");
+  if (!heroVideo || typeof heroVideo.play !== "function") return;
+
+  // Explicitly ensure muted properties and inline attributes for mobile/desktop policies
   heroVideo.muted = true;
   heroVideo.defaultMuted = true;
+  heroVideo.playsInline = true;
+  heroVideo.setAttribute("playsinline", "");
+  heroVideo.setAttribute("webkit-playsinline", "");
 
-  const playPromise = heroVideo.play();
-  if (playPromise !== undefined && typeof playPromise.catch === "function") {
-    playPromise.catch(() => {
-      const startVideoOnInteraction = () => {
-        if (heroVideo && typeof heroVideo.play === "function") {
-          heroVideo.play().catch(() => {});
-        }
-        window.removeEventListener("touchstart", startVideoOnInteraction);
-        window.removeEventListener("scroll", startVideoOnInteraction);
-        window.removeEventListener("click", startVideoOnInteraction);
-      };
-      window.addEventListener("touchstart", startVideoOnInteraction, { passive: true });
-      window.addEventListener("scroll", startVideoOnInteraction, { passive: true });
-      window.addEventListener("click", startVideoOnInteraction, { passive: true });
-    });
+  let isPlaying = false;
+  let interactionListenersAttached = false;
+
+  const attemptPlay = () => {
+    if (isPlaying) return;
+    try {
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined && typeof playPromise.then === "function") {
+        playPromise
+          .then(() => {
+            isPlaying = true;
+            removeInteractionListeners();
+          })
+          .catch(() => {
+            // Autoplay rejected or waiting for user gesture (e.g. Low Power Mode)
+            attachInteractionListeners();
+          });
+      }
+    } catch (e) {
+      attachInteractionListeners();
+    }
+  };
+
+  const onUserInteraction = () => {
+    removeInteractionListeners();
+    if (!isPlaying && heroVideo) {
+      heroVideo.muted = true;
+      const promise = heroVideo.play();
+      if (promise !== undefined && typeof promise.then === "function") {
+        promise.then(() => {
+          isPlaying = true;
+        }).catch(() => {});
+      }
+    }
+  };
+
+  function attachInteractionListeners() {
+    if (interactionListenersAttached) return;
+    interactionListenersAttached = true;
+    window.addEventListener("touchstart", onUserInteraction, { passive: true, once: true });
+    window.addEventListener("scroll", onUserInteraction, { passive: true, once: true });
+    window.addEventListener("click", onUserInteraction, { passive: true, once: true });
   }
+
+  function removeInteractionListeners() {
+    if (!interactionListenersAttached) return;
+    interactionListenersAttached = false;
+    window.removeEventListener("touchstart", onUserInteraction);
+    window.removeEventListener("scroll", onUserInteraction);
+    window.removeEventListener("click", onUserInteraction);
+  }
+
+  // Listen to video loading and lifecycle events
+  heroVideo.addEventListener("playing", () => {
+    isPlaying = true;
+    removeInteractionListeners();
+  });
+
+  heroVideo.addEventListener("pause", () => {
+    if (document.visibilityState === "visible" && !isPlaying) {
+      attemptPlay();
+    }
+  });
+
+  heroVideo.addEventListener("error", () => {
+    console.warn("Hero video playback notice:", heroVideo.error);
+  });
+
+  // Attempt playback after video element is ready
+  if (heroVideo.readyState >= 2) {
+    attemptPlay();
+  } else {
+    heroVideo.addEventListener("loadeddata", attemptPlay, { once: true });
+    heroVideo.addEventListener("canplay", attemptPlay, { once: true });
+    attemptPlay();
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initHeroVideo);
+} else {
+  initHeroVideo();
 }
 
 // -----------------------------------------------------------------------------
